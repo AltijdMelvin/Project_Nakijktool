@@ -5,10 +5,10 @@ using NUnit.Framework;
 using System.Diagnostics;
 
 
-Voornaam: RACQUEL
-Achternaam: DANIEL
-StudentNr: s41279
-Klas: i1b
+//Voornaam: RACQUEL
+//Achternaam: DANIEL
+//StudentNr: s41279
+//Klas: i1b
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen

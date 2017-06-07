@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 
-Voornaam: SUSANNA
-Achternaam: EDIE
-StudentNr: s86355
-Klas: i1b
+//Voornaam: SUSANNA
+//Achternaam: EDIE
+//StudentNr: s86355
+//Klas: i1b
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen

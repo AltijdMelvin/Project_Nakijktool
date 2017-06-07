@@ -4,10 +4,10 @@ using System.Linq;
 using NUnit.Framework;
 
 
-Voornaam: ANYA
-Achternaam: FLO
-StudentNr: s97357
-Klas: i1d
+//Voornaam: ANYA
+//Achternaam: FLO
+//StudentNr: s97357
+//Klas: i1d
 
     //commentaar: ik heb de meeste properties nie zoals het schema gedaan
     //omdat ik dat zelf zo duidelijker vind

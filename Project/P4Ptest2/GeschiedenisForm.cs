@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace P4Ptest2
 {
-    public partial class ResultatenForm : Form
+    public partial class GeschiedenisForm : Form
     {
-        public ResultatenForm()
+        public GeschiedenisForm()
         {
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeschiedenisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeschiedenisForm.Designer.cs">
+      <DependentUpon>GeschiedenisForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResultatenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GeschiedenisForm.resx">
+      <DependentUpon>GeschiedenisForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResultatenForm.resx">
       <DependentUpon>ResultatenForm.cs</DependentUpon>
     </EmbeddedResource>

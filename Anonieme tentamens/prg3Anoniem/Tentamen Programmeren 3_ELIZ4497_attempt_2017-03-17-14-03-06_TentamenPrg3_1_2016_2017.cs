@@ -4,10 +4,10 @@ using System.Linq;
 using NUnit.Framework;
 
 
-Voornaam: VICTOR
-Achternaam: ELIZEBETH
-StudentNr: s44975
-Klas: i1a
+//Voornaam: VICTOR
+//Achternaam: ELIZEBETH
+//StudentNr: s44975
+//Klas: i1a
 //Datum: 17-03-17
 
 //!-----------------------!

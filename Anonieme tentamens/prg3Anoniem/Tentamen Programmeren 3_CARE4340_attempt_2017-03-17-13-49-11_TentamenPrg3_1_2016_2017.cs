@@ -5,10 +5,10 @@ using NUnit.Framework;
 using System.Text;
 
 
-Voornaam: LENNY
-Achternaam: CAREY
-StudentNr: s43401
-Klas: i1c
+//Voornaam: LENNY
+//Achternaam: CAREY
+//StudentNr: s43401
+//Klas: i1c
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen
