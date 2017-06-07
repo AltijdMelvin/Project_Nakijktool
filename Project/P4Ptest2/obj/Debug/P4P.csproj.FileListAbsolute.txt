@@ -9,3 +9,14 @@ C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.Properties.
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4P.csproj.GenerateResource.Cache
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.exe
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.pdb
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.exe.config
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.exe
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.pdb
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4P.csprojResolveAssemblyReference.cache
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.ResultatenForm.resources
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.StartForm.resources
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.NakijkForm.resources
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.Properties.Resources.resources
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4P.csproj.GenerateResource.Cache
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.exe
+C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.pdb

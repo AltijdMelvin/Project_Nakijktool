@@ -5,10 +5,10 @@ using NUnit.Framework;
 using System.Diagnostics;
 
 
-Voornaam: EMA
-Achternaam: ELANA
-StudentNr: s69696
-Klas: i1d
+//Voornaam: EMA
+//Achternaam: ELANA
+//StudentNr: s69696
+//Klas: i1d
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen

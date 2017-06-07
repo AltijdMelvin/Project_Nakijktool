@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.TerugButton = new System.Windows.Forms.Button();
             this.Toets = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resultaten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bekijk = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Gemiddelde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TerugButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,15 +52,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(683, 386);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // TerugButton
-            // 
-            this.TerugButton.Location = new System.Drawing.Point(13, 13);
-            this.TerugButton.Name = "TerugButton";
-            this.TerugButton.Size = new System.Drawing.Size(75, 23);
-            this.TerugButton.TabIndex = 1;
-            this.TerugButton.Text = "Terug";
-            this.TerugButton.UseVisualStyleBackColor = true;
             // 
             // Toets
             // 
@@ -85,6 +76,15 @@
             this.Gemiddelde.HeaderText = "Gemiddelde";
             this.Gemiddelde.Name = "Gemiddelde";
             this.Gemiddelde.ReadOnly = true;
+            // 
+            // TerugButton
+            // 
+            this.TerugButton.Location = new System.Drawing.Point(13, 13);
+            this.TerugButton.Name = "TerugButton";
+            this.TerugButton.Size = new System.Drawing.Size(75, 23);
+            this.TerugButton.TabIndex = 1;
+            this.TerugButton.Text = "Terug";
+            this.TerugButton.UseVisualStyleBackColor = true;
             // 
             // ResultatenForm
             // 

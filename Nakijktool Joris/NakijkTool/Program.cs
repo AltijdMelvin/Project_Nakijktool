@@ -118,8 +118,6 @@ namespace NakijkTool
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
         //const string Prefix = "Tentamen Programmeren 3_";
 
-            
-
         readonly string[] _questionNamesTest = { "TestVraag1", "TestVraag2", "TestVraag3", "TestVraag4A", "TestVraag5A" };
         private static readonly ClassesCodeLocator classesCodeLocator = new ClassesCodeLocator(new string[] { "Bus", "Lijn", "Halte" });
         readonly ICodeLocator[] _questionCodeLoactors = { new MethodCodeLocator("Vraag1"),

@@ -5,10 +5,10 @@ using NUnit.Framework;
 using System.Text;
 
 
-Voornaam: MAMMIE
-Achternaam: MOHAMED
-StudentNr: s37560
-Klas: i1f
+//Voornaam: MAMMIE
+//Achternaam: MOHAMED
+//StudentNr: s37560
+//Klas: i1f
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen

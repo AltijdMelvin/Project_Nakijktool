@@ -4,10 +4,10 @@ using System.Linq;
 using NUnit.Framework;
 
 
-Voornaam: HANNA
-Achternaam: DENISSE
-StudentNr: s61630
-Klas: i1c
+//Voornaam: HANNA
+//Achternaam: DENISSE
+//StudentNr: s61630
+//Klas: i1c
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen

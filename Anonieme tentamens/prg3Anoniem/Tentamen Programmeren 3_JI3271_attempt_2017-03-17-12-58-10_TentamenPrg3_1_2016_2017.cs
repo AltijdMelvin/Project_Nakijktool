@@ -4,10 +4,10 @@ using System.Linq;
 using NUnit.Framework;
 
 // 17-3-2017 // 12:56
-Voornaam: LAWANDA
-Achternaam: JI
-StudentNr: s32712
-Klas: i1f
+//Voornaam: LAWANDA
+//Achternaam: JI
+//StudentNr: s32712
+//Klas: i1f
 
 //!-----------------------!
 //De TestCases staan na de vraag in de region. De region kan je uitklappen
