@@ -1,0 +1,11 @@
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\bin\Debug\P4Ptest2.exe.config
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\bin\Debug\P4Ptest2.exe
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\bin\Debug\P4Ptest2.pdb
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4P.csprojResolveAssemblyReference.cache
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.ResultatenForm.resources
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.StartForm.resources
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.NakijkForm.resources
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.Properties.Resources.resources
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4P.csproj.GenerateResource.Cache
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.exe
+C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.pdb

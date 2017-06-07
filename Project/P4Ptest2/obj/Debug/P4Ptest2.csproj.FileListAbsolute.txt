@@ -1,0 +1,11 @@
+c:\users\benjamin\documents\visual studio 2015\Projects\P4Ptest2\P4Ptest2\bin\Debug\P4Ptest2.exe.config
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\bin\Debug\P4Ptest2.exe
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\bin\Debug\P4Ptest2.pdb
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.csprojResolveAssemblyReference.cache
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.Properties.Resources.resources
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.csproj.GenerateResource.Cache
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.exe
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.pdb
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.StartForm.resources
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.NakijkForm.resources
+c:\Users\Benjamin\Documents\Visual Studio 2015\Projects\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.ResultatenForm.resources
