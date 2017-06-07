@@ -9,3 +9,6 @@ C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.Properties.
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4P.csproj.GenerateResource.Cache
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.exe
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.pdb
+C:\Users\Benjamin\Documents\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.exe.config
+C:\Users\Benjamin\Documents\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.exe
+C:\Users\Benjamin\Documents\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.pdb
