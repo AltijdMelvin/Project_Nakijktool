@@ -18,6 +18,7 @@ namespace P4Ptest2
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
         
         private void button1_Click(object sender, EventArgs e)
         {
@@ -43,6 +44,9 @@ namespace P4Ptest2
         }
 
         private void button1_Click_1(object sender, EventArgs e)
+=======
+        private void TentamensButton_Click(object sender, EventArgs e)
+>>>>>>> 0b07029d4f6cbb62e9733fd45b4fca8fed8cfd67
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -51,7 +55,7 @@ namespace P4Ptest2
             }
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void NakijkButton_Click(object sender, EventArgs e)
         {
             if (NakijkKlik != null)
                 NakijkKlik(sender, e);
@@ -76,6 +80,11 @@ namespace P4Ptest2
             {
                 ExporteerBox.Text = fbd.SelectedPath;
             }
+        }
+
+        private void GeschiedenisButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

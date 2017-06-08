@@ -9,6 +9,7 @@ C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.Properties.
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4P.csproj.GenerateResource.Cache
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.exe
 C:\Users\AltijdMelvin\Downloads\P4Ptest2\P4Ptest2\obj\Debug\P4Ptest2.pdb
+<<<<<<< HEAD
 C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.exe.config
 C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.exe
 C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.pdb
@@ -21,3 +22,8 @@ C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4P.csproj
 C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.exe
 C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.pdb
 C:\School\Project 4 GIT\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.GeschiedenisForm.resources
+=======
+C:\Users\Benjamin\Documents\Project_Nakijktool\Project\P4Ptest2\bin\Debug\P4Ptest2.exe.config
+C:\Users\Benjamin\Documents\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.exe
+C:\Users\Benjamin\Documents\Project_Nakijktool\Project\P4Ptest2\obj\Debug\P4Ptest2.pdb
+>>>>>>> 0b07029d4f6cbb62e9733fd45b4fca8fed8cfd67

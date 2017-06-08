@@ -57,11 +57,10 @@
             this.AntwoordenmodelLabel.Size = new System.Drawing.Size(92, 13);
             this.AntwoordenmodelLabel.TabIndex = 1;
             this.AntwoordenmodelLabel.Text = "Antwoordenmodel";
-            this.AntwoordenmodelLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // AntwoordenmodelButton
             // 
-            this.AntwoordenmodelButton.Location = new System.Drawing.Point(316, 29);
+            this.AntwoordenmodelButton.Location = new System.Drawing.Point(316, 27);
             this.AntwoordenmodelButton.Name = "AntwoordenmodelButton";
             this.AntwoordenmodelButton.Size = new System.Drawing.Size(52, 23);
             this.AntwoordenmodelButton.TabIndex = 2;
@@ -77,7 +76,7 @@
             this.TentamensButton.TabIndex = 5;
             this.TentamensButton.Text = "...";
             this.TentamensButton.UseVisualStyleBackColor = true;
-            this.TentamensButton.Click += new System.EventHandler(this.button1_Click_1);
+            this.TentamensButton.Click += new System.EventHandler(this.TentamensButton_Click);
             // 
             // TentamensLabel
             // 
@@ -87,7 +86,6 @@
             this.TentamensLabel.Size = new System.Drawing.Size(60, 13);
             this.TentamensLabel.TabIndex = 4;
             this.TentamensLabel.Text = "Tentamens";
-            this.TentamensLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // TentamensBox
             // 
@@ -96,7 +94,6 @@
             this.TentamensBox.ReadOnly = true;
             this.TentamensBox.Size = new System.Drawing.Size(297, 20);
             this.TentamensBox.TabIndex = 3;
-            this.TentamensBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // ExporteerButton
             // 
@@ -133,6 +130,7 @@
             this.GeschiedenisButton.TabIndex = 9;
             this.GeschiedenisButton.Text = "Geschiedenis";
             this.GeschiedenisButton.UseVisualStyleBackColor = true;
+            this.GeschiedenisButton.Click += new System.EventHandler(this.GeschiedenisButton_Click);
             // 
             // NakijkButton
             // 
@@ -142,7 +140,7 @@
             this.NakijkButton.TabIndex = 10;
             this.NakijkButton.Text = "Nakijken";
             this.NakijkButton.UseVisualStyleBackColor = true;
-            this.NakijkButton.Click += new System.EventHandler(this.button1_Click_2);
+            this.NakijkButton.Click += new System.EventHandler(this.NakijkButton_Click);
             // 
             // StartForm
             // 

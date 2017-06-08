@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ResultatenGrid = new System.Windows.Forms.DataGridView();
             this.Toets = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resultaten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bekijk = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Gemiddelde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TerugButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultatenGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // ResultatenGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ResultatenGrid.AllowUserToAddRows = false;
+            this.ResultatenGrid.AllowUserToDeleteRows = false;
+            this.ResultatenGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ResultatenGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Toets,
             this.Resultaten,
             this.Bekijk,
             this.Gemiddelde});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(683, 386);
-            this.dataGridView1.TabIndex = 0;
+            this.ResultatenGrid.Location = new System.Drawing.Point(12, 45);
+            this.ResultatenGrid.Name = "ResultatenGrid";
+            this.ResultatenGrid.ReadOnly = true;
+            this.ResultatenGrid.Size = new System.Drawing.Size(683, 386);
+            this.ResultatenGrid.TabIndex = 0;
             // 
             // Toets
             // 
@@ -92,17 +92,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 443);
             this.Controls.Add(this.TerugButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ResultatenGrid);
             this.Name = "ResultatenForm";
             this.Text = "Resultaten";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultatenGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ResultatenGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Toets;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resultaten;
         private System.Windows.Forms.DataGridViewButtonColumn Bekijk;
