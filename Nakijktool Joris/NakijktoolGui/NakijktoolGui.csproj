@@ -100,10 +100,6 @@
       <Project>{41405347-055b-472e-9633-f70d6586867f}</Project>
       <Name>NakijkTool</Name>
     </ProjectReference>
-    <ProjectReference Include="..\wpf-propertygrid-master\wpf-propertygrid-master\demo\WpfPropertyGrid_Demo.csproj">
-      <Project>{f391a081-0658-44f6-943f-99cf8d23ed5a}</Project>
-      <Name>WpfPropertyGrid_Demo</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

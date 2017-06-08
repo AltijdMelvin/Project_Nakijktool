@@ -6,7 +6,23 @@ Compiler Errors:
 (22,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
 (23,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
 (24,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
-(57,31): error CS7036: There is no argument given that corresponds to the required formal parameter 'Naam' of 'QuestionAndTest.Halte.Halte(string, TimeSpan)'
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(32,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(33,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(34,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(35,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(37,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(39,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(74,31): error CS7036: There is no argument given that corresponds to the required formal parameter 'Naam' of 'QuestionAndTest.Halte.Halte(string, TimeSpan)'
 ##################
 
 ADEL5471,CompileError,
@@ -60,7 +76,6 @@ public class Halte
       
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ALET4995 	 ---Begin---------------------
@@ -79,6 +94,22 @@ Compiler Errors:
 (23,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
 (24,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
 (24,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(27,47): error CS0122: 'QuestionAndTest.Bus.BestuurderNaam' is inaccessible due to its protection level
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(32,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(33,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(34,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(35,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(37,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(39,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS0122: 'QuestionAndTest.Bus.BusNr' is inaccessible due to its protection level
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 ALET4995,CompileError,
@@ -107,7 +138,6 @@ public class Halte
         private string Naam = "";
         private int Reisduur = 0;
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ALYC1623 	 ---Begin---------------------
@@ -188,7 +218,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ALYS6101 	 ---Begin---------------------
@@ -259,13 +288,12 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 AMAL2619 	 ---Begin---------------------
 Compiler Errors:
-(78,25): error CS0111: Type 'QuestionAndTest.Lijn' already defines a member called 'Reistijd' with the same parameter types
-(26,38): error CS0121: The call is ambiguous between the following methods or properties: 'QuestionAndTest.Lijn.Reistijd()' and 'QuestionAndTest.Lijn.Reistijd()'
+(95,25): error CS0111: Type 'QuestionAndTest.Lijn' already defines a member called 'Reistijd' with the same parameter types
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 AMAL2619,CompileError,
@@ -332,7 +360,6 @@ public class Halte
             reisduur = Reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 AMY2745 	 ---Begin---------------------
@@ -414,7 +441,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ANAS9806 	 ---Begin---------------------
@@ -492,12 +518,13 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 BENE1792 	 ---Begin---------------------
 Compiler Errors:
-(26,38): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.Reistijd' cannot be used like a method.
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 BENE1792,CompileError,
@@ -625,7 +652,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 BERN6422 	 ---Begin---------------------
@@ -709,7 +735,6 @@ public class Halte
             _reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 BERN9648 	 ---Begin---------------------
@@ -783,14 +808,16 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 BOYD9800 	 ---Begin---------------------
 BOYD9800,ExceptionDuringExecution,
-Runtime exception: System.NotImplementedException: De methode of bewerking is niet geïmplementeerd.
-   bij Tentamens.QuestionAndTest.Lijn.Reistijd()
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  null
+
+   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         private string _voornaam;
@@ -856,18 +883,17 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 CAND6333 	 ---Begin---------------------
 Compiler Errors:
-(191,9): error CS1028: Unexpected preprocessor directive
+(208,9): error CS1028: Unexpected preprocessor directive
 (17,35): error CS1503: Argument 2: cannot convert from 'Tentamens.QuestionAndTest.Lijn' to 'Tentamens.QuestionAndTest.Bus.Lijn'
-(432,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Halte>' to 'double'
-(432,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
-(120,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Bus.Halte>' to 'double'
-(120,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
-(245,20): error CS1061: 'QuestionAndTest.Bus.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.Bus.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
+(449,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Halte>' to 'double'
+(449,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
+(137,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Bus.Halte>' to 'double'
+(137,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
+(262,20): error CS1061: 'QuestionAndTest.Bus.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.Bus.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 CAND6333,CompileError,
@@ -1297,7 +1323,6 @@ public class Halte
                 this.Reisduur = reisduur;
             }
         }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 CARE4340 	 ---Begin---------------------
@@ -1433,7 +1458,6 @@ public class Halte
             this._reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 CARL7568 	 ---Begin---------------------
@@ -1581,7 +1605,6 @@ public class Halte
             this.reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 CEDR5803 	 ---Begin---------------------
@@ -1652,7 +1675,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 CRIS4658 	 ---Begin---------------------
@@ -1730,14 +1752,12 @@ public class Halte
             this.Reisduur = reisduur;
         } 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DAIN1774 	 ---Begin---------------------
 DAIN1774,ExceptionDuringExecution,
 Runtime exception: System.NullReferenceException: De objectverwijzing is niet op een exemplaar van een object ingesteld.
-   bij Tentamens.QuestionAndTest.Lijn.Reistijd()
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         public int BusNr;
@@ -1820,18 +1840,17 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DAMA6428 	 ---Begin---------------------
 Compiler Errors:
-(191,9): error CS1028: Unexpected preprocessor directive
+(208,9): error CS1028: Unexpected preprocessor directive
 (17,35): error CS1503: Argument 2: cannot convert from 'Tentamens.QuestionAndTest.Lijn' to 'Tentamens.QuestionAndTest.Bus.Lijn'
-(432,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Halte>' to 'double'
-(432,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
-(245,20): error CS1061: 'QuestionAndTest.Bus.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.Bus.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
-(120,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Bus.Halte>' to 'double'
-(120,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
+(449,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Halte>' to 'double'
+(449,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
+(262,20): error CS1061: 'QuestionAndTest.Bus.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.Bus.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
+(137,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Bus.Halte>' to 'double'
+(137,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
 ##################
 
 DAMA6428,CompileError,
@@ -2261,17 +2280,14 @@ public class Halte
                 this.Reisduur = reisduur;
             }
         }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DANI4127 	 ---Begin---------------------
-DANI4127,ExceptionDuringExecution,
-Runtime exception: NUnit.Framework.AssertionException:   Expected: 00:12:00
-  But was:  00:00:00
+Compiler Errors:
+(30,54): error CS0176: Member 'QuestionAndTest.Halte.Reisduur' cannot be accessed with an instance reference; qualify it with a type name instead
+##################
 
-   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
-   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+DANI4127,CompileError,
 public class Bus
     {
         private int _BusNr;
@@ -2410,11 +2426,16 @@ public class Halte
             _Naam = naam;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DANN7437 	 ---Begin---------------------
-DANN7437,Correct,
+DANN7437,ExceptionDuringExecution,
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  null
+
+   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
 
@@ -2480,7 +2501,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DARC1947 	 ---Begin---------------------
@@ -2569,13 +2589,12 @@ public class Halte
             this._reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DARR4000 	 ---Begin---------------------
 Compiler Errors:
-(78,25): error CS0111: Type 'QuestionAndTest.Lijn' already defines a member called 'Reistijd' with the same parameter types
-(26,38): error CS0121: The call is ambiguous between the following methods or properties: 'QuestionAndTest.Lijn.Reistijd()' and 'QuestionAndTest.Lijn.Reistijd()'
+(95,25): error CS0111: Type 'QuestionAndTest.Lijn' already defines a member called 'Reistijd' with the same parameter types
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 DARR4000,CompileError,
@@ -2642,11 +2661,16 @@ public class Halte
             reisduur = Reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DEET1208 	 ---Begin---------------------
-DEET1208,Correct,
+DEET1208,ExceptionDuringExecution,
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  null
+
+   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         public int BusNr { get; set; }
@@ -2710,7 +2734,6 @@ public class Halte
         }
        
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DENI6163 	 ---Begin---------------------
@@ -2799,7 +2822,6 @@ public class Halte
             this._Reisduur = Reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DEWE5190 	 ---Begin---------------------
@@ -2880,11 +2902,16 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DEXT4229 	 ---Begin---------------------
-DEXT4229,Correct,
+DEXT4229,ExceptionDuringExecution,
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  null
+
+   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
 
@@ -2950,7 +2977,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 DIMP1403 	 ---Begin---------------------
@@ -3034,7 +3060,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 EDIE8635 	 ---Begin---------------------
@@ -3182,17 +3207,14 @@ public class Halte
             this.reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ELAN6969 	 ---Begin---------------------
-ELAN6969,ExceptionDuringExecution,
-Runtime exception: NUnit.Framework.AssertionException:   Expected: 00:12:00
-  But was:  00:00:00
+Compiler Errors:
+(30,54): error CS0176: Member 'QuestionAndTest.Halte.Reisduur' cannot be accessed with an instance reference; qualify it with a type name instead
+##################
 
-   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
-   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+ELAN6969,CompileError,
 public class Bus
     {
         private int _BusNr;
@@ -3331,7 +3353,6 @@ public class Halte
             _Naam = naam;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ELIZ4497 	 ---Begin---------------------
@@ -3345,7 +3366,13 @@ ELIZ4497,CompileError,
 NakijkTool.TestRapport 	 ---End---------------------
 
 ESTE9689 	 ---Begin---------------------
-ESTE9689,Correct,
+ESTE9689,ExceptionDuringExecution,
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  0.0d
+
+   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         private string _voornaam;
@@ -3422,15 +3449,10 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 FLO9735 	 ---Begin---------------------
-Compiler Errors:
-(26,38): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'Reistijd' and no extension method 'Reistijd' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
-##################
-
-FLO9735,CompileError,
+FLO9735,Correct,
 public class Bus
     {
         private int busNr;
@@ -3596,12 +3618,11 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 FLOR2590 	 ---Begin---------------------
 Compiler Errors:
-(99,25): error CS0102: The type 'QuestionAndTest.Lijn' already contains a definition for 'Reistijd'
+(116,25): error CS0102: The type 'QuestionAndTest.Lijn' already contains a definition for 'Reistijd'
 (16,29): error CS7036: There is no argument given that corresponds to the required formal parameter 'Haltes' of 'QuestionAndTest.Lijn.Lijn(int, string)'
 (17,27): error CS7036: There is no argument given that corresponds to the required formal parameter 'Achternaam' of 'QuestionAndTest.Bus.Bus(int, QuestionAndTest.Lijn, DateTime, string, string, string)'
 (19,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
@@ -3610,6 +3631,18 @@ Compiler Errors:
 (22,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
 (23,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
 (24,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(33,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(34,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 FLOR2590,CompileError,
@@ -3711,7 +3744,6 @@ public class Halte
 
     
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 GENE1812 	 ---Begin---------------------
@@ -3784,7 +3816,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 GORD9509 	 ---Begin---------------------
@@ -3913,7 +3944,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 GROV5119 	 ---Begin---------------------
@@ -4010,14 +4040,13 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 HEAT2141 	 ---Begin---------------------
 HEAT2141,ExceptionDuringExecution,
 Runtime exception: System.NullReferenceException: De objectverwijzing is niet op een exemplaar van een object ingesteld.
    bij Tentamens.QuestionAndTest.Lijn.AddHalte(Halte halte)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         private string _voornaam;
@@ -4170,7 +4199,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 HERS2947 	 ---Begin---------------------
@@ -4267,7 +4295,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 HOLL9608 	 ---Begin---------------------
@@ -4345,7 +4372,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 IDEL3311 	 ---Begin---------------------
@@ -4438,14 +4464,13 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 JEAN5397 	 ---Begin---------------------
 JEAN5397,ExceptionDuringExecution,
 Runtime exception: System.NullReferenceException: De objectverwijzing is niet op een exemplaar van een object ingesteld.
    bij Tentamens.QuestionAndTest.Lijn.AddHalte(Halte halte)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         public int BusNr { get; set; }
@@ -4511,7 +4536,6 @@ public class Halte
             reisduur = Reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 JENI3878 	 ---Begin---------------------
@@ -4599,12 +4623,11 @@ public class Halte
             _reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 JI3271 	 ---Begin---------------------
 Compiler Errors:
-(83,33): error CS1061: 'List<QuestionAndTest.Halte>' does not contain a definition for 'Sum' and no extension method 'Sum' accepting a first argument of type 'List<QuestionAndTest.Halte>' could be found (are you missing a using directive or an assembly reference?)
+(100,33): error CS1061: 'List<QuestionAndTest.Halte>' does not contain a definition for 'Sum' and no extension method 'Sum' accepting a first argument of type 'List<QuestionAndTest.Halte>' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 JI3271,CompileError,
@@ -4675,7 +4698,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 JONI5678 	 ---Begin---------------------
@@ -4752,7 +4774,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 JOSL1600 	 ---Begin---------------------
@@ -4834,7 +4855,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 JULI7164 	 ---Begin---------------------
@@ -4846,6 +4866,16 @@ Compiler Errors:
 (22,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
 (23,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
 (24,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,70): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'Haltes' and no extension method 'Haltes' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(30,69): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'Haltes' and no extension method 'Haltes' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(32,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(35,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(37,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(39,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,47): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'Haltes' and no extension method 'Haltes' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 JULI7164,CompileError,
@@ -4921,7 +4951,6 @@ public class Halte
 
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 KARL3288 	 ---Begin---------------------
@@ -5059,7 +5088,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 KENT7416 	 ---Begin---------------------
@@ -5186,7 +5214,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 KRIS6980 	 ---Begin---------------------
@@ -5260,14 +5287,12 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 KRIS7275 	 ---Begin---------------------
 KRIS7275,ExceptionDuringExecution,
 Runtime exception: System.NullReferenceException: De objectverwijzing is niet op een exemplaar van een object ingesteld.
-   bij Tentamens.QuestionAndTest.Lijn.Reistijd()
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         public int BusNr;
@@ -5350,7 +5375,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 KRIS9526 	 ---Begin---------------------
@@ -5441,12 +5465,17 @@ public class Halte
             this.reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 KYOK8089 	 ---Begin---------------------
 Compiler Errors:
-(105,24): error CS0117: 'QuestionAndTest.Halte' does not contain a definition for 'reisduur'
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(122,24): error CS0117: 'QuestionAndTest.Halte' does not contain a definition for 'reisduur'
 ##################
 
 KYOK8089,CompileError,
@@ -5555,7 +5584,6 @@ public class Halte
         }
        
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LANE3745 	 ---Begin---------------------
@@ -5629,14 +5657,16 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LARR4533 	 ---Begin---------------------
 LARR4533,ExceptionDuringExecution,
-Runtime exception: System.NotImplementedException: De methode of bewerking is niet geïmplementeerd.
-   bij Tentamens.QuestionAndTest.Lijn.Reistijd()
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  null
+
+   bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         private string _voornaam;
@@ -5702,14 +5732,13 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LEON3342 	 ---Begin---------------------
 LEON3342,ExceptionDuringExecution,
 Runtime exception: System.NullReferenceException: De objectverwijzing is niet op een exemplaar van een object ingesteld.
    bij Tentamens.QuestionAndTest.Lijn.AddHalte(Halte halte)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         public int BusNr { get; set; }
@@ -5775,7 +5804,6 @@ public class Halte
             reisduur = Reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LORA2508 	 ---Begin---------------------
@@ -5964,7 +5992,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LORE7020 	 ---Begin---------------------
@@ -6057,7 +6084,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LUKE1767 	 ---Begin---------------------
@@ -6070,6 +6096,18 @@ Compiler Errors:
 (22,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
 (23,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
 (24,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(32,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(35,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(37,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(39,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 LUKE1767,CompileError,
@@ -6107,7 +6145,6 @@ public class Lijn
 public class Halte
     {
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LYLE1999 	 ---Begin---------------------
@@ -6239,7 +6276,6 @@ public class Halte
             }
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 LYND5408 	 ---Begin---------------------
@@ -6334,7 +6370,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MARC5765 	 ---Begin---------------------
@@ -6410,7 +6445,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MARG7204 	 ---Begin---------------------
@@ -6485,7 +6519,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MARI3455 	 ---Begin---------------------
@@ -6566,7 +6599,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MARL3334 	 ---Begin---------------------
@@ -6649,7 +6681,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MOHA3756 	 ---Begin---------------------
@@ -6785,7 +6816,6 @@ public class Halte
             this._reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MYRT3264 	 ---Begin---------------------
@@ -6866,7 +6896,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 MYRT9827 	 ---Begin---------------------
@@ -6947,12 +6976,11 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 NEDR3814 	 ---Begin---------------------
 Compiler Errors:
-(93,9): error CS1028: Unexpected preprocessor directive
+(110,9): error CS1028: Unexpected preprocessor directive
 ##################
 
 NEDR3814,CompileError,
@@ -7030,12 +7058,13 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 NERE4803 	 ---Begin---------------------
 Compiler Errors:
-(26,38): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.Reistijd' cannot be used like a method.
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 NERE4803,CompileError,
@@ -7163,7 +7192,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 PHYL1120 	 ---Begin---------------------
@@ -7240,14 +7268,13 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 PORT4586 	 ---Begin---------------------
 PORT4586,ExceptionDuringExecution,
 Runtime exception: System.NullReferenceException: De objectverwijzing is niet op een exemplaar van een object ingesteld.
    bij Tentamens.QuestionAndTest.Lijn.AddHalte(Halte halte)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         private string _voornaam;
@@ -7400,7 +7427,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ROBE1503 	 ---Begin---------------------
@@ -7494,7 +7520,6 @@ public class Halte
             this.reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 ROSE6277 	 ---Begin---------------------
@@ -7565,7 +7590,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 SHAK5818 	 ---Begin---------------------
@@ -7713,7 +7737,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 SHAN5018 	 ---Begin---------------------
@@ -7791,7 +7814,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 SHAR7380 	 ---Begin---------------------
@@ -7878,7 +7900,6 @@ public class Halte
             Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 SHEB3960 	 ---Begin---------------------
@@ -8005,17 +8026,16 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 SHER8777 	 ---Begin---------------------
 SHER8777,ExceptionDuringExecution,
-Runtime exception: NUnit.Framework.AssertionException:   Expected: 00:12:00
-  But was:  00:00:00
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Joris Lops"
+  But was:  null
 
    bij NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
    bij NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
-   bij Tentamens.QuestionAndTest.TestVraag3() Het doel van een aanroep heeft een uitzondering veroorzaakt.
+   bij Tentamens.QuestionAndTest.TestVraag2() Het doel van een aanroep heeft een uitzondering veroorzaakt.
 public class Bus
     {
         public int BusNr
@@ -8118,7 +8138,6 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 SONN5711 	 ---Begin---------------------
@@ -8222,12 +8241,17 @@ public class Halte
             this.reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 VALO3181 	 ---Begin---------------------
 Compiler Errors:
-(105,24): error CS0117: 'QuestionAndTest.Halte' does not contain a definition for 'reisduur'
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(122,24): error CS0117: 'QuestionAndTest.Halte' does not contain a definition for 'reisduur'
 ##################
 
 VALO3181,CompileError,
@@ -8336,7 +8360,6 @@ public class Halte
         }
        
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 VAND2394 	 ---Begin---------------------
@@ -8411,12 +8434,11 @@ public class Halte
         }
 
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 VEDA8631 	 ---Begin---------------------
 Compiler Errors:
-(99,25): error CS0102: The type 'QuestionAndTest.Lijn' already contains a definition for 'Reistijd'
+(116,25): error CS0102: The type 'QuestionAndTest.Lijn' already contains a definition for 'Reistijd'
 (16,29): error CS7036: There is no argument given that corresponds to the required formal parameter 'Haltes' of 'QuestionAndTest.Lijn.Lijn(int, string)'
 (17,27): error CS7036: There is no argument given that corresponds to the required formal parameter 'Achternaam' of 'QuestionAndTest.Bus.Bus(int, QuestionAndTest.Lijn, DateTime, string, string, string)'
 (19,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
@@ -8425,6 +8447,18 @@ Compiler Errors:
 (22,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
 (23,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
 (24,18): error CS1955: Non-invocable member 'QuestionAndTest.Lijn.AddHalte' cannot be used like a method.
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(33,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(34,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 VEDA8631,CompileError,
@@ -8526,11 +8560,14 @@ public class Halte
 
     
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 WILT2547 	 ---Begin---------------------
-WILT2547,Correct,
+Compiler Errors:
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+WILT2547,CompileError,
 public class Bus
     {
         public int BusNr { get; set; }
@@ -8604,7 +8641,6 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 
 YAHA2309 	 ---Begin---------------------
@@ -8687,6 +8723,5 @@ public class Halte
             this.Reisduur = reisduur;
         }
     }
-
 NakijkTool.TestRapport 	 ---End---------------------
 

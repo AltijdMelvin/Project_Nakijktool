@@ -114,7 +114,7 @@ namespace NakijkTool
 
     public class Program
     {
-        readonly int? questionNumber = 5;
+        readonly int? questionNumber = 2;
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
         //const string Prefix = "Tentamen Programmeren 3_";
 
@@ -130,8 +130,8 @@ namespace NakijkTool
         private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
-        private const string directoryExamResults = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
-        private const string TestsFileSrc = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
+        private const string directoryExamResults = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\prg3Anoniem\";
+        private const string TestsFileSrc = @"C:\Users\AltijdMelvin\Google Drive\School\Periode 4\Project 4\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
         
         MetadataReference[] references = new MetadataReference[]
         {
@@ -142,8 +142,9 @@ namespace NakijkTool
 
         public Program()
         {
-            _testMethodeCode = LoadTestMethodsCode(TestsFileSrc);
+            _testMethodeCode = LoadTestMethodsCode(TestsFileSrc); //laad testmethodes uit het nakijkblad
 
+            //controleert of de vraag bestaat
             if (questionNumber.HasValue)
             {
                 if (string.IsNullOrWhiteSpace(_testMethodeCode[questionNumber.Value-1]))
@@ -159,15 +160,16 @@ namespace NakijkTool
 
         static void Main(string[] args)
         {
-            List<TestRapport> repports = new List<TestRapport>();
+            List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
 
-
+            //haalt alle tentamens uit de ingevuld maplocatie (eindigend op .cs)
             var files = Directory.GetFiles(
                 directoryExamResults,
                 searchPattern: "*.cs");
 
             Program p = new Program();
 
+            //maakt van alle .cs files testrapporten
             foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
             {
                 Console.WriteLine($"Processing {stundentCsFilePath}");
@@ -178,13 +180,13 @@ namespace NakijkTool
 
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
 
-            using (StreamWriter writer = File.CreateText(@"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\test.txt"))
+            using (StreamWriter writer = File.CreateText(@"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\test2.txt"))
             {
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)
                 {
                     if (rep.StudentInfo.UserName != "NA")
-                        reportsByName.Add(rep.StudentInfo.UserName.ToLower(), rep);
+                        reportsByName.Add(rep.StudentInfo.UserName, rep);
                 }
 
 
@@ -293,7 +295,7 @@ namespace NakijkTool
             TestRapport rapport = new TestRapport
             {
                 CsCode = csCode,
-                StudentInfo = ExtractStudentInfo(csCode, csCodeFilePath, examPrefixNameBeforeUserName),
+                StudentInfo = ExtractStudentInfo(csCode, csCodeFilePath, examPrefixNameBeforeUserName), //haalt alle gegevens uit .cs file
                 RapportQuestions =
                     ExecuteTests(csCode)
                         .ToList()
@@ -408,7 +410,7 @@ namespace NakijkTool
         }
 
 
-        private static StudentInfo ExtractStudentInfo(string csSourceCode, string fileName, string prefix)
+        private static StudentInfo ExtractStudentInfo(string csSourceCode, string fileName, string prefix) //haalt informatie uit het .cs bestand/rapport
         {
             StudentInfo info = new StudentInfo();
 
