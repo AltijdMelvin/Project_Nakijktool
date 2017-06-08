@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="button" Content="runt code" HorizontalAlignment="Left" Margin="398,252,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <TextBox x:Name="AntwoordenModelBox" HorizontalAlignment="Left" Height="23" Margin="44,44,0,0" VerticalAlignment="Top" Width="300" TextChanged="TextBox_TextChanged" IsReadOnly="True" MaxLines="1" HorizontalScrollBarVisibility="Disabled"/>
+        <Button x:Name="AntwoordenModelButton" Content="..." HorizontalAlignment="Left" Margin="398,44,0,0" VerticalAlignment="Top" Width="75" Click="AntwoordenModelButton_Click"/>
+        <TextBox x:Name="TentamenBox" HorizontalAlignment="Left" Height="23" Margin="44,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" TextChanged="TextBox_TextChanged_1"/>
+        <Button x:Name="TentamenButton" Content="..." HorizontalAlignment="Left" Margin="398,99,0,0" VerticalAlignment="Top" Width="75" Click="TentamenButton_Click_1"/>
+        <Button x:Name="ExportButton" Content="..." HorizontalAlignment="Left" Margin="398,149,0,0" VerticalAlignment="Top" Width="75" Click="ExportButton_Click_1"/>
+        <TextBox x:Name="ExportBox" HorizontalAlignment="Left" Height="23" Margin="44,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Nakijken" HorizontalAlignment="Left" Margin="44,252,0,0" VerticalAlignment="Top" Width="75" Click="NakijkButton_Click"/>
 
     </Grid>
 </Window>

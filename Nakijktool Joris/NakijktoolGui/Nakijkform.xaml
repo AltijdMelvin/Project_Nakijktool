@@ -1,0 +1,33 @@
+﻿<Window x:Class="NakijktoolGui.Nakijkform"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NakijktoolGui"
+        mc:Ignorable="d"
+        Title="Nakijkform" Height="478.5" Width="757">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="319*"/>
+            <ColumnDefinition Width="221*"/>
+            <ColumnDefinition Width="209*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="nakijken stoppen en opslaan" HorizontalAlignment="Left" Margin="26,23,0,0" VerticalAlignment="Top" Width="177"/>
+        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="380" Margin="26,57,0,0" VerticalAlignment="Top" Width="697" Grid.ColumnSpan="3">
+            <Grid HorizontalAlignment="Left" Height="361" VerticalAlignment="Top" Width="687" Margin="0,0,-2,-3">
+                <Label Content="Opdracht 1/3 (1 van 25)" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="28" Width="145"/>
+                <ProgressBar HorizontalAlignment="Left" Height="16" Margin="10,33,0,0" VerticalAlignment="Top" Width="155"/>
+                <ComboBox HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="155" SelectionChanged="ComboBox_SelectionChanged"/>
+                <TextBox HorizontalAlignment="Left" Height="213" Margin="10,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Text="Commentaar hier..."/>
+                <Button Content="Vorige" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="75" Click="Vorige_Tentamen_Click"/>
+                <Button Content="Volgende" HorizontalAlignment="Left" Margin="90,331,0,0" VerticalAlignment="Top" Width="75" Click="Volgende_Tentamen_Click"/>
+                <TextBox HorizontalAlignment="Left" Height="241" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="487"/>
+                <TextBox HorizontalAlignment="Left" Height="62" Margin="190,280,0,0" TextWrapping="Wrap" Text="Geen fouten." VerticalAlignment="Top" Width="487" TextChanged="TextBox_TextChanged"/>
+                <Label Content="Foutmeldingen&#xD;&#xA;" HorizontalAlignment="Left" Margin="190,254,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <Button Content="Vorige Opdracht" Grid.Column="1" HorizontalAlignment="Left" Margin="57,23,0,0" VerticalAlignment="Top" Width="133" Click="Vorige_Opdracht_Click"/>
+        <Button Content="Volgende Opdracht" Grid.Column="2" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="133" Click="Volgende_Opdracht_Click"/>
+
+    </Grid>
+</Window>
