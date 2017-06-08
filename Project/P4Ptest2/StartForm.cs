@@ -12,11 +12,13 @@ namespace P4Ptest2
 {
     public partial class StartForm : Form
     {
+        public event EventHandler NakijkKlik;
+
         public StartForm()
         {
             InitializeComponent();
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             NakijkForm form = new NakijkForm();
@@ -51,6 +53,9 @@ namespace P4Ptest2
 
         private void button1_Click_2(object sender, EventArgs e)
         {
+            if (NakijkKlik != null)
+                NakijkKlik(sender, e);
+
             NakijkForm nakijk = new NakijkForm();
             nakijk.Show();
             this.Hide();

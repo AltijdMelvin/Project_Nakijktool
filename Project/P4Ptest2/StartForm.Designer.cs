@@ -176,11 +176,11 @@
         private System.Windows.Forms.Button AntwoordenmodelButton;
         private System.Windows.Forms.Button TentamensButton;
         private System.Windows.Forms.Label TentamensLabel;
-        private System.Windows.Forms.TextBox TentamensBox;
         private System.Windows.Forms.Button ExporteerButton;
         private System.Windows.Forms.Label ExporteerLabel;
         private System.Windows.Forms.TextBox ExporteerBox;
         private System.Windows.Forms.Button GeschiedenisButton;
+        private System.Windows.Forms.TextBox TentamensBox;
         private System.Windows.Forms.Button NakijkButton;
     }
 }

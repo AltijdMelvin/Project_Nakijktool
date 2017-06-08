@@ -12,6 +12,10 @@ namespace P4Ptest2
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+
+        //static TextBox tentamens = Application.OpenForms["StartForm"].Controls["TentamensBox"] as TextBox;
+        //private static string directoryExamResults = tentamens.Text;
+
         [STAThread]
         static void Main()
         {
@@ -19,5 +23,6 @@ namespace P4Ptest2
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartForm());
         }
+        
     }
 }

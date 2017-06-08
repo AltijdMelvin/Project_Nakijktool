@@ -130,8 +130,8 @@ namespace NakijkTool
         private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
-        private const string directoryExamResults = @"C:\Users\AltijdMelvin\Google Drive\School\Periode 4\Project 4\Anonieme tentamens\prg3Anoniem";
-        private const string TestsFileSrc = @"C:\Users\AltijdMelvin\Google Drive\School\Periode 4\Project 4\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
+        private const string directoryExamResults = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
+        private const string TestsFileSrc = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
         
         MetadataReference[] references = new MetadataReference[]
         {
@@ -178,7 +178,7 @@ namespace NakijkTool
 
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
 
-            using (StreamWriter writer = File.CreateText(@"c:\dev\tmp\test.txt"))
+            using (StreamWriter writer = File.CreateText(@"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\test.txt"))
             {
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)
