@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Configuration;
+using System.Data.SqlClient;
 
 
 namespace NakijkTool
@@ -114,6 +116,10 @@ namespace NakijkTool
 
     public class Program
     {
+        private static string connectionstring;
+        static SqlConnection connection;
+
+        string tentamennaam = "Programmeren 3 2017";
         readonly int? questionNumber = 2;
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
         //const string Prefix = "Tentamen Programmeren 3_";
@@ -130,8 +136,8 @@ namespace NakijkTool
         private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
-        private const string directoryExamResults = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
-        private const string TestsFileSrc = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
+        private const string directoryExamResults = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
+        private const string TestsFileSrc = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
         
         MetadataReference[] references = new MetadataReference[]
         {
@@ -160,6 +166,8 @@ namespace NakijkTool
 
         static void Main(string[] args)
         {
+            connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
+
             List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
 
             //haalt alle tentamens uit de ingevuld maplocatie (eindigend op .cs)
@@ -180,7 +188,7 @@ namespace NakijkTool
 
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
 
-            using (StreamWriter writer = File.CreateText(@"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\test3.txt"))
+            using (StreamWriter writer = File.CreateText(@"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\test3.txt"))
             {
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)
@@ -234,7 +242,6 @@ namespace NakijkTool
                             writer.WriteLine();
                         }
 
-                        
                         writer.WriteLine(
                             $"{username},{testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result},{errorMsg}");
 
@@ -255,8 +262,70 @@ namespace NakijkTool
                         writer.WriteLine(username);
                     }
                 }
-            }
 
+                foreach (string username in usernames) //database vullen
+                {
+                    if (reportsByName.ContainsKey(username))
+                    {
+                        var testRapport = reportsByName[username];
+                        var testError = string.Empty;
+
+                        var errors = testRapport.RapportQuestions
+                            .SelectMany(x => x.RapportTestCases)
+                            .Select(x => x.Error);
+
+                        StringBuilder errorBuilder = new StringBuilder();
+                        foreach (var error in errors)
+                        {
+                            var parts = error.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                            errorBuilder.Append(parts[0]);
+                            if (parts.Length > 1)
+                            {
+                                errorBuilder.Append(",");
+                                errorBuilder.Append(parts[1]);
+                            }
+                        }
+
+                        string errorMsg = errorBuilder.ToString(0, errorBuilder.Length > 100 ? 100 : errorBuilder.Length);
+
+                        if (testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result ==
+                            CompilerUtil.CompileAndExecuteInfo.eStatus.CompileError)
+                        {
+                            testError += testRapport.RapportQuestions[0].CompileAndExecuteInfo.CompilerDiagnostics.Select(x => x.ToString());
+                        }
+
+                        if (testRapport.RapportQuestions[0].Exception != null)
+                        {
+                            testError = testRapport.RapportQuestions[0].Exception.Message;
+                        }
+
+                        if (testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result ==
+                            CompilerUtil.CompileAndExecuteInfo.eStatus.ExceptionDuringExecution)
+                        {
+                            testError = testRapport.RapportQuestions[0].CompileAndExecuteInfo.Message;
+                        }
+
+                        string query = "INSERT INTO Testrapport VALUES (@vraagid, @studentnummer, @naam, @errors, @studentpunten, @commentaar, @studentcode)";
+                        using (connection = new SqlConnection(connectionstring))
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            connection.Open();
+
+                            command.Parameters.AddWithValue("@vraagid", 1);
+                            command.Parameters.AddWithValue("@studentnummer", testRapport.StudentInfo.StudentNr);
+                            command.Parameters.AddWithValue("@naam", testRapport.StudentInfo.LastName + ", " + testRapport.StudentInfo.FirstName);
+                            command.Parameters.AddWithValue("@errors", testError);
+                            command.Parameters.AddWithValue("@studentpunten", 10);
+                            command.Parameters.AddWithValue("@commentaar", "Correct!");
+                            command.Parameters.AddWithValue("@studentcode", testRapport.RapportQuestions[0].StudentSourceCode);
+
+                            command.ExecuteScalar();
+                        }
+                    }
+                }
+
+
+            }
 
             Console.WriteLine("finished!");
             Console.ReadLine();
