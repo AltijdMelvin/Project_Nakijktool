@@ -189,7 +189,6 @@ namespace NakijkTool
                         reportsByName.Add(rep.StudentInfo.UserName, rep);
                 }
 
-
                 foreach (string username in usernames)
                 {
                     if (reportsByName.ContainsKey(username))
