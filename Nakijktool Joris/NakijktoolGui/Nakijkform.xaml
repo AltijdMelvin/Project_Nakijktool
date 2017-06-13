@@ -21,7 +21,7 @@
                 <TextBox HorizontalAlignment="Left" Height="213" Margin="10,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Text="Commentaar hier..."/>
                 <Button Content="Vorige" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="75" Click="Vorige_Tentamen_Click"/>
                 <Button Content="Volgende" HorizontalAlignment="Left" Margin="90,331,0,0" VerticalAlignment="Top" Width="75" Click="Volgende_Tentamen_Click"/>
-                <TextBox HorizontalAlignment="Left" Height="241" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="487"/>
+                <TextBox x:Name="CodeBox" HorizontalAlignment="Left" Height="241" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="487"/>
                 <TextBox HorizontalAlignment="Left" Height="62" Margin="190,280,0,0" TextWrapping="Wrap" Text="Geen fouten." VerticalAlignment="Top" Width="487" TextChanged="TextBox_TextChanged"/>
                 <Label Content="Foutmeldingen&#xD;&#xA;" HorizontalAlignment="Left" Margin="190,254,0,0" VerticalAlignment="Top"/>
             </Grid>

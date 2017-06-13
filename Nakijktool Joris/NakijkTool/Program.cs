@@ -136,8 +136,13 @@ namespace NakijkTool
         private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
+<<<<<<< HEAD
         private const string directoryExamResults = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
         private const string TestsFileSrc = @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.cs";
+=======
+        private const string directoryExamResults = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
+        private const string TestsFileSrc = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.txt";
+>>>>>>> master
         
         MetadataReference[] references = new MetadataReference[]
         {
@@ -146,9 +151,9 @@ namespace NakijkTool
             MetadataReference.CreateFromFile(typeof(NUnit.Framework.Assert).Assembly.Location)
         };
 
-        public Program()
+        public Program(string testfilesrc)
         {
-            _testMethodeCode = LoadTestMethodsCode(TestsFileSrc); //laad testmethodes uit het nakijkblad
+            _testMethodeCode = LoadTestMethodsCode(testfilesrc); //laad testmethodes uit het nakijkblad
 
             //controleert of de vraag bestaat
             if (questionNumber.HasValue)
@@ -206,7 +211,7 @@ namespace NakijkTool
                 directoryExamResults,
                 searchPattern: "*.cs");
 
-            Program p = new Program();
+            Program p = new Program(TestsFileSrc);
 
             //maakt van alle .cs files testrapporten
             foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
@@ -216,7 +221,10 @@ namespace NakijkTool
                 repports.Add(testRapport);
             }
             //ExcelWriter.CreateTestRapport(repports);
+        }
 
+        public void FileWriterReport(string[] files, List<TestRapport> repports)
+        {
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
 
             using (StreamWriter writer = File.CreateText(@"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\test3.txt")) //schrijft de testrapporten
@@ -273,6 +281,10 @@ namespace NakijkTool
                             writer.WriteLine();
                         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                         writer.WriteLine(
                             $"{username},{testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result},{errorMsg}");
 
@@ -286,13 +298,13 @@ namespace NakijkTool
 
                         writer.WriteLine($"{testRapport} \t ---End---------------------");
                         writer.WriteLine();
-
                     }
                     else
                     {
                         writer.WriteLine(username);
                     }
                 }
+<<<<<<< HEAD
 
                 foreach (string username in usernames) //database vullen
                 {
@@ -360,6 +372,9 @@ namespace NakijkTool
 
             Console.WriteLine("finished!");
             Console.ReadLine();
+=======
+            }
+>>>>>>> master
         }
 
         public static string[] LoadTestMethodsCode(string testsFileSrcPath)
@@ -504,7 +519,6 @@ namespace NakijkTool
                         throw new NotImplementedException();
                 }
             }
-
             return rapportQuestions;
         }
 
