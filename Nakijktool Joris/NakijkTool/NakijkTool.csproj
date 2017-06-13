@@ -167,10 +167,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerUtil.cs" />
-    <Compile Include="Database_Nakijktool.Designer.cs">
+    <Compile Include="Database_NakijktoolDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database_Nakijktool.xsd</DependentUpon>
+      <DependentUpon>Database_NakijktoolDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="ExcelWriter.cs" />
     <Compile Include="Model.cs" />
@@ -185,17 +185,19 @@
     <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Database_Nakijktool.xsc">
-      <DependentUpon>Database_Nakijktool.xsd</DependentUpon>
-    </None>
-    <None Include="Database_Nakijktool.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Database_Nakijktool.Designer.cs</LastGenOutput>
+    <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Database_Nakijktool.xss">
-      <DependentUpon>Database_Nakijktool.xsd</DependentUpon>
+    <None Include="Database_NakijktoolDataSet1.xsc">
+      <DependentUpon>Database_NakijktoolDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Database_NakijktoolDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database_NakijktoolDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database_NakijktoolDataSet1.xss">
+      <DependentUpon>Database_NakijktoolDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
