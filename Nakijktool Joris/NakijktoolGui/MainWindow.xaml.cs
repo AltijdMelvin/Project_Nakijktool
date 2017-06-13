@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,27 +25,41 @@ namespace NakijktoolGui
     public partial class MainWindow : Window
     {
         private List<string> filePaths;
+        private string[] files;
+        private string directoryExamResults;
+        private string TestsFileSrc;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            //filePaths = Directory.GetFiles(
-            //    @"C:\Users\Joris Lops\Desktop\gradebook_TECH_E_16_185_Tentamen20Programmeren202_2016-12-15-12-39-42",
-            //    searchPattern: "*.cs");
+
 
             filePaths = new List<string>()
             {
-                @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\TentamenPrg2Tentamen20162017.cs"
+                @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\prg3Anoniem\Tentamen Programmeren 3_ALYS6101_attempt_2017-03-17-12-57-02_TentamenPrg3_1_2016_2017.cs"
             };
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Program p = new Program();
-            TestRapport r = p.GetTestRapport(filePaths[0]);
-
+            TestsFileSrc = @AntwoordenModelBox.Text;
+            Program p = new Program(TestsFileSrc);
+            directoryExamResults = TentamenBox.Text;
+            files = Directory.GetFiles(
+                directoryExamResults,
+                searchPattern: "*.cs");
             
+
+            List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
+            foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
+            {
+                Console.WriteLine($"Processing {stundentCsFilePath}");
+                TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
+                repports.Add(testRapport);
+            }
+            p.FileWriterReport(files, repports);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -87,6 +102,8 @@ namespace NakijktoolGui
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
         {
             Nakijkform nakijk = new Nakijkform();
+            directoryExamResults = TentamenBox.Text;
+            nakijk.CodeBox.Text = directoryExamResults;
             this.Hide();
             nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             nakijk.Show();
