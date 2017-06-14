@@ -140,3 +140,83 @@ public class Halte
     }
 NakijkTool.TestRapport 	 ---End---------------------
 
+ALYC1623 	 ---Begin---------------------
+ALYC1623,Correct,
+public class Bus
+    {
+        private string _voornaam;
+        private string _achternaam;
+
+        public int BusNr { get; set; }
+        public int AantalPassagiers { get; set; }
+        public Lijn RijdOpLijn { get; set; }
+        public DateTime Vertrektijd { get; set; }
+        public string BestuurderNaam { get; set; }
+
+        public Bus(int busNr, Lijn lijn, DateTime vertrektijd, string voornaam, string achternaam)
+        {
+            BusNr = busNr;
+            RijdOpLijn = lijn;
+            Vertrektijd = vertrektijd;
+            BestuurderNaam = voornaam + " " + achternaam;
+
+            this._voornaam = voornaam;
+            this._achternaam = achternaam;
+        }
+
+        public void StapIn()
+        {
+            // Verhoog het aantal passagiers
+            AantalPassagiers += 1;
+        }
+
+        public void StapUit()
+        {
+            // Verlaag het aantal passagiers
+            AantalPassagiers -= 1;
+        }
+    }
+public class Lijn
+    {
+        public int LijnNr { get; set; }
+        public List<Halte> Haltes = new List<Halte>();
+
+        public Lijn(int lijnNr)
+        {
+            // Set lijnnummer
+            LijnNr = lijnNr;
+        }
+
+        public void AddHalte(Halte halte)
+        {
+            // Halte toevoegen
+            Haltes.Add(halte);
+        }
+
+        //Vraag 3 Hier invullen!
+        #region Vraag3
+        public TimeSpan Reistijd()
+        {
+            TimeSpan reistijd = TimeSpan.FromSeconds(0);
+            
+            foreach (var halte in Haltes) {
+                reistijd += halte.Reisduur;
+            }
+
+            return reistijd;
+        }
+        #endregion
+    }
+public class Halte
+    {
+        public string Naam { get; set; }
+        public TimeSpan Reisduur { get; set; }
+
+        public Halte(string naam, TimeSpan reisduur)
+        {
+            Naam = naam;
+            Reisduur = reisduur;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+

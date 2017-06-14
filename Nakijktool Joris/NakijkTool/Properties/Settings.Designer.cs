@@ -33,5 +33,28 @@ namespace NakijkTool.Properties {
                 return ((string)(this["Database_NakijktoolConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\Dat" +
+            "abase_Nakijktool.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string Database_NakijktoolConnectionString1 {
+            get {
+                return ((string)(this["Database_NakijktoolConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\School\\Project 4 GIT\\Proj" +
+            "ect_Nakijktool\\Nakijktool Joris\\NakijktoolGui\\bin\\Debug\\Database_Nakijktool.mdf\"" +
+            ";Integrated Security=True;Connect Timeout=30")]
+        public string Database_NakijktoolConnectionString2 {
+            get {
+                return ((string)(this["Database_NakijktoolConnectionString2"]));
+            }
+        }
     }
 }
