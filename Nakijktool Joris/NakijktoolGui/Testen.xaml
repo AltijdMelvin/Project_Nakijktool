@@ -1,0 +1,33 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NakijktoolGui"
+        xmlns:NakijkTool="clr-namespace:NakijkTool;assembly=NakijkTool" x:Class="NakijktoolGui.Testen"
+        mc:Ignorable="d"
+        Title="Testen" Height="488.338" Width="766.032" Loaded="Window_Loaded">
+    <Window.Resources>
+        <NakijkTool:Database_NakijktoolDataSet x:Key="database_NakijktoolDataSet"/>
+        <CollectionViewSource x:Key="tentamensViewSource" Source="{Binding Tentamens, Source={StaticResource database_NakijktoolDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource tentamensViewSource}">
+
+        <DataGrid x:Name="tentamensDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,5,10,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="tentamenidColumn" Width="SizeToHeader" IsReadOnly="True" Header="tentamenid" Binding="{Binding tentamenid}"/>
+                <DataGridTemplateColumn x:Name="datumColumn" Width="SizeToHeader" Header="datum">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding datum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="aantal_vragenColumn" Width="SizeToHeader" Header="aantal vragen" Binding="{Binding aantal_vragen}"/>
+                <DataGridTextColumn x:Name="aantal_puntenColumn" Width="SizeToHeader" Header="aantal punten" Binding="{Binding aantal_punten}"/>
+                <DataGridTextColumn x:Name="tentamen_naamColumn" Width="SizeToHeader" Header="tentamen naam" Binding="{Binding tentamen_naam}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
