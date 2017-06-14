@@ -59,7 +59,7 @@ namespace NakijktoolGui
                 TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
                 repports.Add(testRapport);
             }
-            Program.FileWriterReport(files, repports);
+            p.FileWriterReport(files, repports);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -101,15 +101,12 @@ namespace NakijktoolGui
 
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
         {
-            //Nakijkform nakijk = new Nakijkform();
-            //directoryExamResults = TentamenBox.Text;
-            //nakijk.CodeBox.Text = directoryExamResults;
-            //this.Hide();
-            //nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //nakijk.Show();
-            Testen testenform = new Testen();
+            Nakijkform nakijk = new Nakijkform();
+            directoryExamResults = TentamenBox.Text;
+            nakijk.CodeBox.Text = directoryExamResults;
             this.Hide();
-            testenform.Show();
+            nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            nakijk.Show();
         }
     }
 }
