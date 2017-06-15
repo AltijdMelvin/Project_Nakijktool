@@ -1,98 +1,222 @@
-\Project 	 ---Begin---------------------
+ADEL5471 	 ---Begin---------------------
 Compiler Errors:
-(116,18): error CS1061: 'List<QuestionAndTest.Halte>' does not contain a definition for 'Aggregate' and no extension method 'Aggregate' accepting a first argument of type 'List<QuestionAndTest.Halte>' could be found (are you missing a using directive or an assembly reference?)
+(19,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
+(20,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
+(21,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
+(22,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
+(23,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
+(24,18): error CS1501: No overload for method 'AddHalte' takes 1 arguments
+(27,47): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BestuurderNaam' and no extension method 'BestuurderNaam' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(32,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(33,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(34,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(35,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(37,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(39,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'BusNr' and no extension method 'BusNr' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(74,31): error CS7036: There is no argument given that corresponds to the required formal parameter 'Naam' of 'QuestionAndTest.Halte.Halte(string, TimeSpan)'
 ##################
 
-\Project,CompileError,
-public class Bus 
+ADEL5471,CompileError,
+public class Bus
     {
-        public int BusNr { get; }
-        public int AantalPassagiers { get; private set; }
-        public Lijn RijdOpLijn { get; }
-        public DateTime Vertrektijd { get; }
+        public Bus(int busNr, Lijn lijn, DateTime vertrektijd, string voornaam, string achternaam)
+        {
+
+        }
+       
+        
+            
+        
+    }
+public class Lijn
+    {
+        private int lijn;
+        
+        public List<Halte> Haltes = new List<Halte>();
+
+        public Lijn(int Lijn)
+        {
+            this.lijn = Lijn;
+            
+        }
+
+        public void AddHalte()
+        {
+            Halte halte = new Halte();
+            Haltes.Add(halte);
+        }
+        //Vraag 3 Hier invullen!
+        #region Vraag3
+        public TimeSpan Reistijd()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+    }
+public class Halte
+    {
+        private string naam;
+        private TimeSpan reisduur;
+
+        public Halte(string Naam, TimeSpan Reisduur)
+        {
+            this.naam = Naam;
+            this.reisduur = Reisduur;
+        }
+
+      
+
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ALET4995 	 ---Begin---------------------
+Compiler Errors:
+(16,29): error CS1729: 'QuestionAndTest.Lijn' does not contain a constructor that takes 1 arguments
+(17,27): error CS1729: 'QuestionAndTest.Bus' does not contain a constructor that takes 5 arguments
+(19,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(19,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(20,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(20,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(21,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(21,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(22,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(22,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(23,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(23,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(24,31): error CS1729: 'QuestionAndTest.Halte' does not contain a constructor that takes 2 arguments
+(24,18): error CS1061: 'QuestionAndTest.Lijn' does not contain a definition for 'AddHalte' and no extension method 'AddHalte' accepting a first argument of type 'QuestionAndTest.Lijn' could be found (are you missing a using directive or an assembly reference?)
+(27,47): error CS0122: 'QuestionAndTest.Bus.BestuurderNaam' is inaccessible due to its protection level
+(28,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(29,59): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(30,58): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(32,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(33,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(34,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapIn' and no extension method 'StapIn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(35,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(36,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(37,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(38,17): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'StapUit' and no extension method 'StapUit' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(39,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'AantalPassagiers' and no extension method 'AantalPassagiers' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(41,36): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(43,37): error CS0122: 'QuestionAndTest.Bus.BusNr' is inaccessible due to its protection level
+(45,38): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'RijdOpLijn' and no extension method 'RijdOpLijn' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+(47,72): error CS1061: 'QuestionAndTest.Bus' does not contain a definition for 'Vertrektijd' and no extension method 'Vertrektijd' accepting a first argument of type 'QuestionAndTest.Bus' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+ALET4995,CompileError,
+public class Bus
+    {
+        private int BusNr = 0;
+        private int AantalPas = 0;
+        private DateTime VertrekTijd = DateTime.MinValue;
+        private string BestuurderNaam = "";
+    }
+public class Lijn
+    {
+        private int LijnNr = 0;
+        private List<string>Halte = new List<string>();
+
+        //Vraag 3 Hier invullen!
+        #region Vraag3
+        public TimeSpan Reistijd()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+    }
+public class Halte
+    {
+        private string Naam = "";
+        private int Reisduur = 0;
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ALYC1623 	 ---Begin---------------------
+ALYC1623,Correct,
+public class Bus
+    {
         private string _voornaam;
         private string _achternaam;
 
-        public string BestuurderNaam
-        {
-            get { return $"{_voornaam} {_achternaam}"; }
-        }
+        public int BusNr { get; set; }
+        public int AantalPassagiers { get; set; }
+        public Lijn RijdOpLijn { get; set; }
+        public DateTime Vertrektijd { get; set; }
+        public string BestuurderNaam { get; set; }
 
-        public Bus(int busNr, Lijn rijdOpLijn, DateTime vertrektijd, string voornaam, string achternaam)
+        public Bus(int busNr, Lijn lijn, DateTime vertrektijd, string voornaam, string achternaam)
         {
-            if (rijdOpLijn == null) throw new ArgumentNullException(nameof(rijdOpLijn));
-            if (voornaam == null) throw new ArgumentNullException(nameof(voornaam));
-            if (achternaam == null) throw new ArgumentNullException(nameof(achternaam));
-
             BusNr = busNr;
-            RijdOpLijn = rijdOpLijn;
+            RijdOpLijn = lijn;
             Vertrektijd = vertrektijd;
-            AantalPassagiers = 0;
-            _voornaam = voornaam;
-            _achternaam = achternaam;
+            BestuurderNaam = voornaam + " " + achternaam;
+
+            this._voornaam = voornaam;
+            this._achternaam = achternaam;
         }
 
         public void StapIn()
         {
-            AantalPassagiers++;
+            // Verhoog het aantal passagiers
+            AantalPassagiers += 1;
         }
 
         public void StapUit()
         {
-            AantalPassagiers--;
+            // Verlaag het aantal passagiers
+            AantalPassagiers -= 1;
         }
     }
 public class Lijn
     {
-        //twee varianten!
-        public int LijnNr { get; }
-
-        private List<Halte> _haltes;
-
-        public List<Halte> Haltes 
-        {
-            get { return _haltes; }
-        } 
+        public int LijnNr { get; set; }
+        public List<Halte> Haltes = new List<Halte>();
 
         public Lijn(int lijnNr)
         {
+            // Set lijnnummer
             LijnNr = lijnNr;
-            _haltes = new List<Halte>();
         }
 
         public void AddHalte(Halte halte)
         {
-            if (halte == null) throw new ArgumentNullException(nameof(halte));
-
-            _haltes.Add(halte);
+            // Halte toevoegen
+            Haltes.Add(halte);
         }
 
-        //Vraag 2
+        //Vraag 3 Hier invullen!
+        #region Vraag3
         public TimeSpan Reistijd()
         {
-            return _haltes
-                .Aggregate(TimeSpan.Zero,
-                    (current, halte) => current + halte.Reisduur);
-
-            TimeSpan t = TimeSpan.Zero;
-            foreach (var halte in _haltes)
-            {
-                t += halte.Reisduur;
+            TimeSpan reistijd = TimeSpan.FromSeconds(0);
+            
+            foreach (var halte in Haltes) {
+                reistijd += halte.Reisduur;
             }
-            return t;
+
+            return reistijd;
         }
+        #endregion
     }
 public class Halte
     {
-        public string Naam { get; }
+        public string Naam { get; set; }
+        public TimeSpan Reisduur { get; set; }
 
-        public Halte(string naam, TimeSpan reisduur = default(TimeSpan))
+        public Halte(string naam, TimeSpan reisduur)
         {
             Naam = naam;
             Reisduur = reisduur;
         }
-
-        public TimeSpan Reisduur { get; set; }
     }
 NakijkTool.TestRapport 	 ---End---------------------
 

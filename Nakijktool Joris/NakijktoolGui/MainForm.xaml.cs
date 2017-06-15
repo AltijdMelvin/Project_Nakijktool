@@ -22,14 +22,14 @@ namespace NakijktoolGui
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainForm: Window
     {
         private List<string> filePaths;
         private string[] files;
         private string directoryExamResults;
         private string TestsFileSrc;
 
-        public MainWindow()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -82,7 +82,7 @@ namespace NakijktoolGui
         {
             Nakijkform nakijk = new Nakijkform();
             directoryExamResults = TentamenBox.Text;
-            nakijk.CodeBox.Text = directoryExamResults;
+            nakijk.StudentCodeBox.Text = directoryExamResults;
             this.Hide();
             nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             nakijk.Show();

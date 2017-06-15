@@ -183,7 +183,7 @@ namespace NakijkTool
             }
             //ExcelWriter.CreateTestRapport(repports);
 
-            FileWriterReport(files, repports, "Hoi", DateTime.Today.Date);
+            FileWriterReport(files, repports, "Programmeren 3 tentamen", DateTime.Today.Date);
         }
 
         public static void FileWriterReport(string[] files, List<TestRapport> repports, string tentamennaam, DateTime dag)
@@ -191,7 +191,9 @@ namespace NakijkTool
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
             //tentamen in database
-            string querytentamen = "INSERT INTO Tentamens VALUES (@datum, @aantal_vragen, @aantal_punten, @tentamen_naam)";
+            int tentamenid;
+            string querytentamen = "INSERT INTO Tentamens VALUES (@datum, @aantal_vragen, @aantal_punten, @tentamen_naam)" +
+                "SELECT SCOPE_IDENTITY()";
             using (connection = new SqlConnection(connectionstring))
             using (SqlCommand command = new SqlCommand(querytentamen, connection))
             {
@@ -201,24 +203,26 @@ namespace NakijkTool
                 command.Parameters.AddWithValue("@aantal_vragen", 5);
                 command.Parameters.AddWithValue("@aantal_punten", 100);
                 command.Parameters.AddWithValue("@tentamen_naam", tentamennaam);
+                tentamenid = Convert.ToInt32(command.ExecuteScalar());
 
-                command.ExecuteScalar();
             }
 
             //vraag in database
-            string queryvraag = "INSERT INTO Vraag VALUES (@tentamenid, @vraagnummer, @testcode, @vraagpunten, @vraagcode)";
+            int vraagid;
+            string queryvraag = "INSERT INTO Vraag VALUES (@tentamenid, @vraagnummer, @testcode, @vraagpunten, @vraagcode)" +
+                "SELECT SCOPE_IDENTITY()";
             using (connection = new SqlConnection(connectionstring))
             using (SqlCommand command = new SqlCommand(queryvraag, connection))
             {
                 connection.Open();
 
-                command.Parameters.AddWithValue("@tentamenid",);
+                command.Parameters.AddWithValue("@tentamenid", tentamenid);
                 command.Parameters.AddWithValue("@vraagnummer", questionNumber);
                 command.Parameters.AddWithValue("@testcode", LoadTestMethodsCode(TestsFileSrc).ToString());
                 command.Parameters.AddWithValue("@vraagpunten", 15);
                 command.Parameters.AddWithValue("@vraagcode", "???");
+                vraagid = Convert.ToInt32(command.ExecuteScalar());
 
-                command.ExecuteScalar();
             }
 
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
@@ -345,7 +349,7 @@ namespace NakijkTool
                         {
                             connection.Open();
 
-                            command.Parameters.AddWithValue("@vraagid", 1);
+                            command.Parameters.AddWithValue("@vraagid", vraagid);
                             command.Parameters.AddWithValue("@studentnummer", testRapport.StudentInfo.StudentNr);
                             command.Parameters.AddWithValue("@student_naam", testRapport.StudentInfo.LastName + ", " + testRapport.StudentInfo.FirstName);
                             command.Parameters.AddWithValue("@errors", testError);
