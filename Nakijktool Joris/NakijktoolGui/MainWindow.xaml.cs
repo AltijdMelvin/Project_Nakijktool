@@ -33,8 +33,6 @@ namespace NakijktoolGui
         {
             InitializeComponent();
 
-
-
             filePaths = new List<string>()
             {
                 @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\prg3Anoniem\Tentamen Programmeren 3_ALYS6101_attempt_2017-03-17-12-57-02_TentamenPrg3_1_2016_2017.cs"
@@ -51,20 +49,15 @@ namespace NakijktoolGui
                 directoryExamResults,
                 searchPattern: "*.cs");
             
-
             List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
+
             foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
             {
                 Console.WriteLine($"Processing {stundentCsFilePath}");
                 TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
                 repports.Add(testRapport);
             }
-            Program.FileWriterReport(files, repports);
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            Program.FileWriterReport(files, repports, TentamenNaam.Text, TentamenDatum.DisplayDate);
         }
 
         private void AntwoordenModelButton_Click(object sender, RoutedEventArgs e)
@@ -76,11 +69,6 @@ namespace NakijktoolGui
             }
         }
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void TentamenButton_Click_1(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -90,26 +78,19 @@ namespace NakijktoolGui
             }
         }
 
-        private void ExportButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                ExportBox.Text = fbd.SelectedPath;
-            }
-        }
-
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
         {
-            //Nakijkform nakijk = new Nakijkform();
-            //directoryExamResults = TentamenBox.Text;
-            //nakijk.CodeBox.Text = directoryExamResults;
-            //this.Hide();
-            //nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //nakijk.Show();
-            Testen testenform = new Testen();
+            Nakijkform nakijk = new Nakijkform();
+            directoryExamResults = TentamenBox.Text;
+            nakijk.CodeBox.Text = directoryExamResults;
             this.Hide();
-            testenform.Show();
+            nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            nakijk.Show();
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

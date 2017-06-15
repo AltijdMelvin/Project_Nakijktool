@@ -119,7 +119,6 @@ namespace NakijkTool
         private static string connectionstring;
         static SqlConnection connection;
 
-        static string tentamennaam = "Programmeren 3 2017";
         readonly static int? questionNumber = 2;
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
         //const string Prefix = "Tentamen Programmeren 3_";
@@ -184,10 +183,10 @@ namespace NakijkTool
             }
             //ExcelWriter.CreateTestRapport(repports);
 
-            FileWriterReport(files, repports);
+            FileWriterReport(files, repports, "Hoi", DateTime.Today.Date);
         }
 
-        public static void FileWriterReport(string[] files, List<TestRapport> repports)
+        public static void FileWriterReport(string[] files, List<TestRapport> repports, string tentamennaam, DateTime dag)
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
@@ -198,7 +197,7 @@ namespace NakijkTool
             {
                 connection.Open();
 
-                command.Parameters.AddWithValue("@datum", DateTime.Today);
+                command.Parameters.AddWithValue("@datum", dag.Date);
                 command.Parameters.AddWithValue("@aantal_vragen", 5);
                 command.Parameters.AddWithValue("@aantal_punten", 100);
                 command.Parameters.AddWithValue("@tentamen_naam", tentamennaam);
@@ -213,7 +212,7 @@ namespace NakijkTool
             {
                 connection.Open();
 
-                command.Parameters.AddWithValue("@tentamenid", 1);
+                command.Parameters.AddWithValue("@tentamenid",);
                 command.Parameters.AddWithValue("@vraagnummer", questionNumber);
                 command.Parameters.AddWithValue("@testcode", LoadTestMethodsCode(TestsFileSrc).ToString());
                 command.Parameters.AddWithValue("@vraagpunten", 15);
