@@ -114,7 +114,7 @@ namespace NakijkTool
 
     public class Program
     {
-        readonly int? questionNumber = 2;
+        int? questionNumber;
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
         //const string Prefix = "Tentamen Programmeren 3_";
 
@@ -140,10 +140,10 @@ namespace NakijkTool
             MetadataReference.CreateFromFile(typeof(NUnit.Framework.Assert).Assembly.Location)
         };
 
-        public Program(string testfilesrc)
+        public Program(string testfilesrc, int questionNr)
         {
             _testMethodeCode = LoadTestMethodsCode(testfilesrc); //laad testmethodes uit het nakijkblad
-
+            questionNumber = questionNr;
             //controleert of de vraag bestaat
             if (questionNumber.HasValue)
             {
@@ -167,7 +167,7 @@ namespace NakijkTool
                 directoryExamResults,
                 searchPattern: "*.cs");
 
-            Program p = new Program(TestsFileSrc);
+            Program p = new Program(TestsFileSrc, 2);
 
             //maakt van alle .cs files testrapporten
             foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
@@ -179,11 +179,11 @@ namespace NakijkTool
             //ExcelWriter.CreateTestRapport(repports);
         }
 
-        public void FileWriterReport(string[] files, List<TestRapport> repports)
+        public void FileWriterReport(string[] files, List<TestRapport> repports, int questionNr)
         {
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
-
-            using (StreamWriter writer = File.CreateText(@"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\test3.txt"))
+            string test = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\test" + Convert.ToString(questionNr) + ".txt";
+            using (StreamWriter writer = File.CreateText(test))
             {
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)

@@ -28,11 +28,12 @@ namespace NakijktoolGui
         private string[] files;
         private string directoryExamResults;
         private string TestsFileSrc;
+        private int nrOfQuestions;
 
         public MainWindow()
         {
             InitializeComponent();
-
+            
 
 
             filePaths = new List<string>()
@@ -45,22 +46,27 @@ namespace NakijktoolGui
         private void button_Click(object sender, RoutedEventArgs e)
         {
             TestsFileSrc = @AntwoordenModelBox.Text;
-            Program p = new Program(TestsFileSrc);
+            nrOfQuestions = Convert.ToInt32(NrOfQuestionsBox.Text);
+            
             directoryExamResults = TentamenBox.Text;
             files = Directory.GetFiles(
                 directoryExamResults,
                 searchPattern: "*.cs");
-            
 
-            List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
-            foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
+            for(int i = 2; i <= nrOfQuestions; i++)
             {
-                Console.WriteLine($"Processing {stundentCsFilePath}");
-                TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
-                repports.Add(testRapport);
+                Program p = new Program(TestsFileSrc, i);
+                List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
+                foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
+                {
+                    Console.WriteLine($"Processing {stundentCsFilePath}");
+                    TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
+                    repports.Add(testRapport);
+                }
+                p.FileWriterReport(files, repports, i);
             }
-            p.FileWriterReport(files, repports);
         }
+
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

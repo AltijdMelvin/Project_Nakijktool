@@ -1,0 +1,4313 @@
+ADEL5471 	 ---Begin---------------------
+ADEL5471,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ALET4995 	 ---Begin---------------------
+ALET4995,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ALYC1623 	 ---Begin---------------------
+Compiler Errors:
+(73,39): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+ALYC1623,CompileError,
+public class HalteStack
+    {
+        private string[] haltes = new string[20]; // Stack
+        private int h_count = 0; // Index counter
+
+        public bool IsEmpty {
+            get {
+                if ( h_count > 0 ) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig hebt*
+        }
+
+        public void Push(string halteNaam)
+        {
+            haltes[h_count] = halteNaam; // Geef huidige index waarde
+            h_count++; // Verhoog de index met 1
+        }
+
+        public string Pop()
+        {
+            int vorigeHalte = h_count - 1; // De index counter is hier hoger dan de hoogste index van de stack. Daarom doe ik min 1.
+            h_count--; // Verlaag de index met 1
+
+            return haltes[vorigeHalte];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string haltesReversed = string.Empty;
+            int aantalHaltes = haltes.Count(); // Hier heb ik de fout ontdekt maar ik heb het niet kunnen oplossen door tijdsnood van het tentamen.
+
+            for (int i = aantalHaltes; i >= 0; i--)
+            {
+                if (haltesReversed.Length > 0)
+                {
+                    haltesReversed += "," + haltes[i];
+                } else
+                {
+                    haltesReversed = haltes[i];
+                }
+            }
+
+            return haltesReversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ALYS6101 	 ---Begin---------------------
+ALYS6101,Correct,
+public class HalteStack
+    {
+        private string[] _stack = new string[20];
+        private int _count = 0;
+        public bool IsEmpty => _count == 0;
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            _stack[_count] = halteNaam;
+            _count++;
+        }
+
+        public string Pop()
+        {
+            _count--;
+            return _stack[_count];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while (_count != 0)
+            {
+                result += this.Pop() + ",";
+            }
+            return result.Trim(',');
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+AMAL2619 	 ---Begin---------------------
+AMAL2619,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+AMY2745 	 ---Begin---------------------
+AMY2745,Correct,
+public class HalteStack
+    {
+        string[] stack = new string[20];
+        private int top = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                if (top < 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            stack[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string popped = stack[top];
+            stack[top] = null;
+            top--;
+            return popped;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = Pop();
+            while (!IsEmpty)
+            {
+                result += "," + Pop();
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ANAS9806 	 ---Begin---------------------
+ANAS9806,Correct,
+public class HalteStack
+    {
+        private string[] haltes = new string[20];
+        private int count;
+        public bool IsEmpty
+        {
+            get
+            {
+                return count == 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            haltes[count] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            count--;
+            string result = haltes[count];
+            haltes[count] = null;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while (!IsEmpty)
+            {
+                result += Pop();
+                if (!IsEmpty)
+                {
+                    result += ",";
+                }
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+BENE1792 	 ---Begin---------------------
+BENE1792,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+BERN6422 	 ---Begin---------------------
+BERN6422,Correct,
+public class HalteStack
+    {
+        // Size = 20
+        private string[] _stack = new string[20];
+        private int _count;
+
+        public bool IsEmpty => _count == -1;
+        public HalteStack()
+        {
+            _count = -1;
+        }
+
+        public void Push(string halteNaam)
+        {
+            _count++;
+            _stack[_count] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string result = _stack[_count];
+            _stack[_count] = null;
+            _count--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while(!IsEmpty)
+            {
+                if(!string.IsNullOrEmpty(result))
+                {
+                    result += ",";
+                }
+                result += Pop();
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+BERN9648 	 ---Begin---------------------
+BERN9648,Correct,
+public class HalteStack
+    {
+        private string[] Haltes = new string[20];
+        private int index = 0;
+        public bool IsEmpty
+        {
+            get
+            {
+                return Haltes[0] == null || Haltes[0].Length == 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            Haltes[index] = halteNaam;
+            index++;
+        }
+
+        public string Pop()
+        {
+            index--;
+            string halte = Haltes[index];
+            Haltes[index] = "";
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string reversed = "";
+
+            while(!IsEmpty)
+            {
+                reversed += Pop();
+                if(!IsEmpty) reversed += ",";
+            }
+            return reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+BOYD9800 	 ---Begin---------------------
+BOYD9800,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+CAND6333 	 ---Begin---------------------
+Compiler Errors:
+(55,20): error CS1061: 'QuestionAndTest.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+CAND6333,CompileError,
+public class HalteStack
+        {
+            HalteStack[] hs = new HalteStack[20];
+            int top = -1;
+
+            public bool IsEmpty
+            {   
+                get
+                {
+                    return top == -1;
+                }
+            }
+
+            public HalteStack()
+            {
+                //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+            }
+
+            public void Push(string halteNaam)
+            {
+                hs.Push(halteNaam);
+            }
+
+            public string Pop()
+            {
+                throw new NotImplementedException();
+            }
+
+            //Vraag 4b
+            public string PrintHaltesReversed()
+            {
+                throw new NotImplementedException();
+            }
+        }
+NakijkTool.TestRapport 	 ---End---------------------
+
+CARE4340 	 ---Begin---------------------
+CARE4340,Correct,
+public class HalteStack
+    {
+        private int index = -1;
+        private int count = 0;
+        private string[] stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(count <= 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            index++;
+            stack[index] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            string popped = stack[index];
+
+            stack[index] = null;
+            index--;
+            count--;
+
+            return popped;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            StringBuilder toReturn = new StringBuilder();
+
+            while(count != 0)
+            {
+                if (count == 1)
+                {
+                    toReturn.Append(this.Pop());
+                }
+                else
+                {
+                    toReturn.Append(this.Pop() + ",");
+                }
+            }
+
+            Console.WriteLine("testline");
+
+            return toReturn.ToString();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+CARL7568 	 ---Begin---------------------
+CARL7568,Correct,
+public class HalteStack
+    {
+        private string[] stack = new string[20];
+        private int count = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(stack[0] == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            stack[count] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            string halte = stack[count - 1];
+            stack[count - 1] = null;
+            count--;
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string reversed = "";
+            while(IsEmpty == false)
+            {
+                reversed = reversed + Pop();
+                if(IsEmpty == false)
+                {
+                    reversed = reversed + ",";
+                }
+            }
+            return reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+CEDR5803 	 ---Begin---------------------
+CEDR5803,Correct,
+public class HalteStack
+    {
+        string[] haltestack = new string[20];
+        int count = -1;
+        
+        public bool IsEmpty
+        {
+            get
+            {
+                if (count < 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig hebt
+        }
+
+        public void Push(string halteNaam)
+        {
+            count++;
+            haltestack[count] = halteNaam;            
+        }
+
+        public string Pop()
+        {
+            string temp;
+            temp = haltestack[count];
+            count--;
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string temp = string.Empty;
+            for (int i = haltestack.Length -1; i > -1; i--)
+            {
+                if (haltestack[i] != null)
+                    temp += Pop() + ",";
+            }
+            // removed de laatste comma van de string.
+            temp = temp.Remove(temp.Length - 1, 1);
+            return temp;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+CRIS4658 	 ---Begin---------------------
+CRIS4658,ExceptionDuringExecution,
+Runtime exception: NUnit.Framework.AssertionException:   Expected: "Bushalte Harmonie"
+  But was:  null
+
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        private string _haltenaam;
+        private int top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+            
+        }
+
+        public void Push(string halteNaam)
+        {
+            this._haltenaam = halteNaam;
+            top++;
+        }
+
+        public string Pop()
+        {
+            string result = _haltenaam;
+            _haltenaam = null;
+
+            top--;
+                        
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while (!IsEmpty)
+            {
+                result += Pop();
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DAIN1774 	 ---Begin---------------------
+Compiler Errors:
+(37,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(37,40): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+##################
+
+DAIN1774,CompileError,
+public class HalteStack
+    {
+        Stack<string> Lijndienst = new Stack<string>();
+        public bool IsEmpty
+        {
+            get
+            {
+                if(Lijndienst == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+           
+        }
+
+        public void Push(string halteNaam)
+        {
+            Lijndienst.Push(halteNaam);
+           
+        }
+
+        public string Pop()
+        {
+           // string pop = Lijndienst.Pop(Haltenaam) dan Pop't de haltenaam van de lijst
+            string pop = Lijndienst.Pop();
+            return pop;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string Reversing = "";// = Lijndienst.Reverse();
+            return Reversing;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DAMA6428 	 ---Begin---------------------
+Compiler Errors:
+(55,20): error CS1061: 'QuestionAndTest.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+DAMA6428,CompileError,
+public class HalteStack
+        {
+            HalteStack[] hs = new HalteStack[20];
+            int top = -1;
+
+            public bool IsEmpty
+            {   
+                get
+                {
+                    return top == -1;
+                }
+            }
+
+            public HalteStack()
+            {
+                //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+            }
+
+            public void Push(string halteNaam)
+            {
+                hs.Push(halteNaam);
+            }
+
+            public string Pop()
+            {
+                throw new NotImplementedException();
+            }
+
+            //Vraag 4b
+            public string PrintHaltesReversed()
+            {
+                throw new NotImplementedException();
+            }
+        }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DANI4127 	 ---Begin---------------------
+Compiler Errors:
+(57,38): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+(70,32): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+(86,40): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+DANI4127,CompileError,
+public class HalteStack
+    {
+        public string[] Stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                bool IsIt = true;
+                foreach (var x in Stack)
+                {
+                    if(!string.IsNullOrWhiteSpace(x))
+                    {
+                        IsIt = false;
+                    }
+                }
+                return IsIt;
+            }
+        }
+
+        public void Push(string halteNaam)
+        {
+            for (int i = 0;i < Stack.Count();i++)
+            {
+                if(string.IsNullOrWhiteSpace(Stack[i]))
+                {
+                    Stack[i] = halteNaam;
+                    break;
+                }
+            }
+        }
+
+        public string Pop()
+        {
+            string Return = "";
+            for (int i = Stack.Count() - 1; i > 0; i--)
+            {
+                if (!string.IsNullOrWhiteSpace(Stack[i]))
+                {
+                    Return = Stack[i];
+                    Stack[i] = null;
+                    break;
+                }
+            }
+            return Return;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string ReversedAll = "";
+            for (int i = 0;  i < Stack.Count(); i++)
+            {
+                ReversedAll += Pop() + ",";
+            }
+            return ReversedAll;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DANN7437 	 ---Begin---------------------
+DANN7437,Correct,
+public class HalteStack
+    {
+        string [] haltes = new string [20];
+        int top = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            haltes[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            top--;
+            return haltes[top + 1];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            return null;
+
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DARC1947 	 ---Begin---------------------
+DARC1947,Correct,
+public class HalteStack
+    {
+        private string[] _array;
+        private int _count;
+        private int _index;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return _count == 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            _array = new string[20];
+            _count = 0;
+            _index = -1;
+        }
+
+        public void Push(string halteNaam)
+        {
+            _index++;
+            _array[_index] = halteNaam;
+            _count++;
+        }
+
+        public string Pop()
+        {
+            string result = _array[_index];
+            _array[_index] = null;
+            _index--;
+            _count--;
+
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string temp1;
+            string result = "";
+
+            for (int i = _index; i >= 0 ; i--)
+            {
+                temp1 = _array[i];
+                result = result + temp1;
+
+                if (i != 0)
+                {
+                    result = result + ",";
+                }
+            }
+
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DARR4000 	 ---Begin---------------------
+DARR4000,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DEET1208 	 ---Begin---------------------
+Compiler Errors:
+(37,17): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(37,44): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+##################
+
+DEET1208,CompileError,
+public class HalteStack
+    {
+        private Stack<string> haltes = new Stack<string>();
+        private string isleeg = "";
+        public bool IsEmpty
+        {
+            get
+            {
+                if (isleeg == "")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            haltes.Push(halteNaam);
+            isleeg = haltes.ToString();
+        }
+
+        public string Pop()
+        {
+            haltes.Pop();
+            isleeg = haltes.ToString();
+            return isleeg;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string reversed = "";
+            for(int i = 0; i < haltes.Count; i++)
+            {
+                reversed += Pop();
+            }
+            return reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DENI6163 	 ---Begin---------------------
+DENI6163,Correct,
+public class HalteStack
+    {
+        private string[] s;
+        private int index;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return (index == 0);
+            }
+        }
+
+        public HalteStack()
+        {
+            s = new string[20];
+            index = 0;
+        }
+
+        public void Push(string halteNaam)
+        {
+            index++;
+            s[index] = halteNaam;
+            
+        }
+
+        public string Pop()
+        {
+            string temp = s[index];
+            s[index] = null;
+            index--;
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string builder = "";
+
+            while (!IsEmpty)
+            {
+                builder += s[index] + ",";
+                Pop();
+            }
+
+            builder = builder.Remove(builder.Length - 1);
+            
+            return builder;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DEWE5190 	 ---Begin---------------------
+DEWE5190,Correct,
+public class HalteStack
+    {
+        public int top = -1;
+        private string[] stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return top < 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            stack[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string result = stack[top];
+            stack[top] = null;
+            top--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+
+            string[] temp = new string[top + 1];
+
+            int temptop = top + 1;
+
+            for (int i = 0; i < temptop; i++)
+            {
+                if (i != temptop - 1)
+                    result += Pop() + ",";
+                else
+                    result += Pop();
+            }
+
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DEXT4229 	 ---Begin---------------------
+DEXT4229,Correct,
+public class HalteStack
+    {
+        string [] haltes = new string [20];
+        int top = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            haltes[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            top--;
+            return haltes[top + 1];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            return null;
+
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+DIMP1403 	 ---Begin---------------------
+DIMP1403,Correct,
+public class HalteStack
+    {
+        private string[] haltes;
+        private int count = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                if(count == -1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            haltes = new string[20];
+        }
+
+        public void Push(string halteNaam)
+        {
+            count++;
+            haltes[count] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string halte = haltes[count];
+            haltes[count] = null;
+            count--;
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string halte = "";
+            for (int i = count; i >= 0; i--)
+            {
+                halte += Pop();
+                if (count >= 0)
+                {
+                    halte += ",";
+                }
+            }
+            return halte;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+EDIE8635 	 ---Begin---------------------
+EDIE8635,Correct,
+public class HalteStack
+    {
+        private string[] stack = new string[20];
+        private int count = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(stack[0] == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            stack[count] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            string halte = stack[count - 1];
+            stack[count - 1] = null;
+            count--;
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string reversed = "";
+            while(IsEmpty == false)
+            {
+                reversed = reversed + Pop();
+                if(IsEmpty == false)
+                {
+                    reversed = reversed + ",";
+                }
+            }
+            return reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ELAN6969 	 ---Begin---------------------
+Compiler Errors:
+(57,38): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+(70,32): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+(86,40): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+ELAN6969,CompileError,
+public class HalteStack
+    {
+        public string[] Stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                bool IsIt = true;
+                foreach (var x in Stack)
+                {
+                    if(!string.IsNullOrWhiteSpace(x))
+                    {
+                        IsIt = false;
+                    }
+                }
+                return IsIt;
+            }
+        }
+
+        public void Push(string halteNaam)
+        {
+            for (int i = 0;i < Stack.Count();i++)
+            {
+                if(string.IsNullOrWhiteSpace(Stack[i]))
+                {
+                    Stack[i] = halteNaam;
+                    break;
+                }
+            }
+        }
+
+        public string Pop()
+        {
+            string Return = "";
+            for (int i = Stack.Count() - 1; i > 0; i--)
+            {
+                if (!string.IsNullOrWhiteSpace(Stack[i]))
+                {
+                    Return = Stack[i];
+                    Stack[i] = null;
+                    break;
+                }
+            }
+            return Return;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string ReversedAll = "";
+            for (int i = 0;  i < Stack.Count(); i++)
+            {
+                ReversedAll += Pop() + ",";
+            }
+            return ReversedAll;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ELIZ4497 	 ---Begin---------------------
+Compiler Errors:
+(292,39): error CS1001: Identifier expected
+(301,39): error CS1001: Identifier expected
+##################
+
+ELIZ4497,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+ESTE9689 	 ---Begin---------------------
+Compiler Errors:
+(39,17): error CS0236: A field initializer cannot reference the non-static field, method, or property 'QuestionAndTest.HalteStack.halten'
+##################
+
+ESTE9689,CompileError,
+public class HalteStack
+    {
+        
+        HalteStack[] halten = new HalteStack[20];
+        int i = halten[0];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (i == -1)
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+FLO9735 	 ---Begin---------------------
+FLO9735,Correct,
+public class HalteStack
+    {
+        private string[] stack = new string[20];
+        private int head = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                if(stack[0] == null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            head += 1;
+            stack[head] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string old = stack[head];
+            stack[head] = null;
+            head -= 1;
+            return old;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string returnString = "";
+            for(int i = head; i >= 0; i--)
+            {
+                returnString += Pop();
+                if(i != 0)
+                {
+                    returnString += ",";
+                }
+            }
+            return returnString;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+FLOR2590 	 ---Begin---------------------
+FLOR2590,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+GENE1812 	 ---Begin---------------------
+GENE1812,Correct,
+public class HalteStack
+    {
+        private string[] stack = new string[20];
+        private int index = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (index <= 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            stack[index] = halteNaam;
+            index++;
+        }
+
+        public string Pop()
+        {
+            index--;
+            string temp = stack[index];
+            stack[index] = null;
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string reversed = "";
+            int currentindex = index;
+            for (int i = 0; i < currentindex; i++)
+            {
+                if (i != 0)
+                    reversed += ",";
+                reversed += Pop();
+            }
+            return reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+GORD9509 	 ---Begin---------------------
+GORD9509,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+GROV5119 	 ---Begin---------------------
+Compiler Errors:
+(302,24): error CS1525: Invalid expression term 'for'
+(302,24): error CS1002: ; expected
+##################
+
+GROV5119,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+HARR8301 	 ---Begin---------------------
+Compiler Errors:
+(307,27): error CS1001: Identifier expected
+(307,27): error CS0230: Type and identifier are both required in a foreach statement
+(397,22): error CS1525: Invalid expression term '}'
+(397,22): error CS1002: ; expected
+##################
+
+HARR8301,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+HARV7941 	 ---Begin---------------------
+Compiler Errors:
+(50,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(51,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(50,40): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(51,48): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+##################
+
+HARV7941,CompileError,
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                if (halteStack.Count == 0)
+                {
+                    return true;
+                }
+                else { return false; }
+                
+            }
+        }
+
+        Stack<string> halteStack = new Stack<string>(20);
+        Stack<string> halteStackReversed = new Stack<string>(20);
+
+        public HalteStack()
+        {
+            
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteStack.Push(halteNaam);
+            halteStackReversed.Push(halteNaam);
+        }
+
+        public string Pop()
+        {
+            return halteStack.Pop();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            //while (halteStack.Count != 0)
+            //{
+            //    halteStackReversed.Push(halteStack.Pop());
+            //}
+            List<string> reversedList = new List<string>();
+            
+            while (halteStackReversed.Count != 0)
+            {
+                reversedList.Add(halteStackReversed.Pop());
+            }
+            string reversedString = "";
+            foreach (string s in reversedList)
+            {
+                reversedString = reversedString + s + ",";
+            }
+            
+            return reversedString;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+HEAT2141 	 ---Begin---------------------
+HEAT2141,Correct,
+public class HalteStack
+    {
+        public string[] arraystack = new string[20];
+
+
+       
+        int count = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return count <= 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            arraystack[count] = halteNaam;
+            count++;
+
+
+
+        }
+
+        public string Pop()
+        {
+            string popped;
+            arraystack[count-1].Remove(count-1);
+            popped = arraystack[count-1];
+            count--;
+            return popped;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            //string result;
+            // for (int i = arraystack.Length; i == 0; i--)
+            // {
+            //     result += arraystack[i];
+            //     arraystack[i].Remove(i);
+
+            // }
+            // return result;
+            throw new NotFiniteNumberException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+HERS2947 	 ---Begin---------------------
+HERS2947,ExceptionDuringExecution,
+Runtime exception: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Tentamens.QuestionAndTest.HalteStack.Push(String halteNaam)
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        private int top = -1;
+        private HalteStack[] s;
+        public string naam { get; set; }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+            s = new HalteStack[20];
+        }
+
+        public void Push(string halteNaam)
+        { 
+            top++;
+            s[top].naam = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string result = s[top].naam;
+            top--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while (!IsEmpty)
+            {
+                result = result + Pop() + ",";
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+HOLL9608 	 ---Begin---------------------
+HOLL9608,Correct,
+public class HalteStack
+    {
+        private string[] halteStack = new string[20];
+        private int count = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (count <= 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteStack[count] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            count--;
+            string result = halteStack[count];
+
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+
+            for(int i = count-1; i >= 0; i--)
+            {
+                result += halteStack[i];
+                if (i != 0)
+                    result += ",";
+            }
+
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+IDEL3311 	 ---Begin---------------------
+IDEL3311,Correct,
+public class HalteStack
+    {
+        string[] hs = new string[20];
+        int count = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (hs[0] == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            count++;
+            hs[count] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            
+            string result = hs[count];
+            hs[count] = null;
+            count--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string resultString = "";
+
+            for (int i = count; i > -1; i--)
+            {
+                resultString += hs[i];
+                if (i > 0)
+                {
+                    resultString += ",";
+                }
+            }
+            return resultString;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+JEAN5397 	 ---Begin---------------------
+JEAN5397,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+JENI3878 	 ---Begin---------------------
+JENI3878,Correct,
+public class HalteStack
+    {
+        private string[] halteArray = new string[20];
+        private int count = 0;
+        private int index = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return (halteArray[0] == null);
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteArray[count++] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string str = string.Empty;
+            if (count != 0)
+            {
+                str = halteArray[count - 1];
+                halteArray[--count] = null;
+            }
+            return str;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string[] strArr = new string[20];
+            string str = string.Empty;
+
+            for (int i = 0; i < halteArray.Length; i++)
+            {
+                strArr[i] = Pop();
+            }
+
+            for (int i = 0; i < halteArray.Length; i++)
+            {
+                if (i == 0)
+                {
+                    str += strArr[i];
+                }
+                else if (strArr[i] != string.Empty)
+                {
+                    str += "," + strArr[i];
+                }
+            }
+
+
+            return str;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+JI3271 	 ---Begin---------------------
+Compiler Errors:
+(43,35): error CS1061: 'string[]' does not contain a definition for 'All' and no extension method 'All' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+JI3271,CompileError,
+public class HalteStack
+    {
+        public string[] halteNamen { get; protected set; }
+        private int total = 0;
+        public bool IsEmpty
+        {
+            get
+            {
+                return halteNamen.All(string.IsNullOrEmpty) && total == 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            halteNamen = new string[20];
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteNamen[total] = halteNaam;
+            total += 1;
+        }
+
+        public string Pop()
+        {
+            if (total == 0)
+                return string.Empty;
+
+            string naam = halteNamen[total - 1];
+
+            if (string.IsNullOrEmpty(naam))
+                return string.Empty;
+
+            halteNamen[total - 1] = null;
+            total -= 1;
+            return naam;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            List<string> names = new List<string>();
+            for (int i = halteNamen.Length; i != 0; i--)
+            {
+                if (string.IsNullOrEmpty(halteNamen[i - 1]))
+                    continue;
+                names.Add(this.Pop());
+            }
+            return string.Join(",", names);
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+JONI5678 	 ---Begin---------------------
+JONI5678,Correct,
+public class HalteStack
+    {
+        string[] arr = new string[20];
+        int top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(top == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            arr[++top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string temp = arr[top];
+            arr[top--] = default(string);
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string str = "";
+            int index = top;
+            while(index > -1)
+            {
+                str += arr[index] + ",";
+                index--;
+            }
+            str = str.TrimEnd(',');
+            return str;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+JOSL1600 	 ---Begin---------------------
+JOSL1600,Correct,
+public class HalteStack
+    {
+        private string[] halteNaamArray = new string[20];
+        private int top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteNaamArray[++top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string returnValue = halteNaamArray[top];
+            halteNaamArray[top--] = null;
+            return returnValue;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string haltesReversed = "";
+
+            while(top > -1)
+            {
+                haltesReversed += $"{Pop()},";
+            }
+            return haltesReversed.TrimEnd(',');
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+JULI7164 	 ---Begin---------------------
+JULI7164,ExceptionDuringExecution,
+Runtime exception: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Tentamens.QuestionAndTest.HalteStack.Pop()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        private string[] Haltes = new string[20];
+        private int i = 0;
+        public bool IsEmpty
+        {
+            get
+            {
+                for(i = 0; i < Haltes.Length; i++)
+                {
+                    if(Haltes[i] == null)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            for (i = 0; i < Haltes.Length; i++)
+            {
+                Haltes[i] += halteNaam;
+            }         
+        }
+
+        public string Pop()
+        {
+            for (i = Haltes.Length; i > 0; i--)
+            {
+                Haltes[i] = null;
+            }
+            return null;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            return Pop();        
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+KARL3288 	 ---Begin---------------------
+Compiler Errors:
+(328,21): error CS1525: Invalid expression term '>'
+##################
+
+KARL3288,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+KENN7620 	 ---Begin---------------------
+KENN7620,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+KENT7416 	 ---Begin---------------------
+KENT7416,Correct,
+public class HalteStack
+    {
+        int Counter = 0;
+        string[] stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(stack[0] == null) { return true; }
+                else { return false; }
+            }
+        }
+
+        public HalteStack()
+        {
+
+        }
+
+        public void Push(string halteNaam)
+        {
+            stack[Counter] = halteNaam;
+            Counter++;
+        }
+
+        public string Pop()
+        {
+            string temp = stack[Counter - 1];
+            stack[Counter - 1] = null;
+            Counter--;
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            List<string> temp = new List<string>();
+            foreach(string s in stack)
+            {
+                if(s == null) { break; }
+                else { temp.Add(s); }
+            }
+            string[] Temp = temp.ToArray();
+            Array.Reverse(Temp);
+            string result = string.Join(",", Temp);
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+KRIS6980 	 ---Begin---------------------
+KRIS6980,Correct,
+public class HalteStack
+    {
+        private string[] Haltes = new string[20];
+        private int index = 0;
+        public bool IsEmpty
+        {
+            get
+            {
+                return Haltes[0] == null || Haltes[0].Length == 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            Haltes[index] = halteNaam;
+            index++;
+        }
+
+        public string Pop()
+        {
+            index--;
+            string halte = Haltes[index];
+            Haltes[index] = "";
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string reversed = "";
+
+            while(!IsEmpty)
+            {
+                reversed += Pop();
+                if(!IsEmpty) reversed += ",";
+            }
+            return reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+KRIS7275 	 ---Begin---------------------
+Compiler Errors:
+(37,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(37,40): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+##################
+
+KRIS7275,CompileError,
+public class HalteStack
+    {
+        Stack<string> Lijndienst = new Stack<string>();
+        public bool IsEmpty
+        {
+            get
+            {
+                if(Lijndienst == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+           
+        }
+
+        public void Push(string halteNaam)
+        {
+            Lijndienst.Push(halteNaam);
+           
+        }
+
+        public string Pop()
+        {
+           // string pop = Lijndienst.Pop(Haltenaam) dan Pop't de haltenaam van de lijst
+            string pop = Lijndienst.Pop();
+            return pop;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string Reversing = "";// = Lijndienst.Reverse();
+            return Reversing;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+KRIS9526 	 ---Begin---------------------
+KRIS9526,Correct,
+public class HalteStack
+    {
+        string[] haltes = new string[20];
+        int top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (top == -1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            haltes[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string val = null;
+            if (top >= 0)
+            {
+                val = haltes[top];
+                top--;
+            }
+            return val;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string res = string.Empty;
+            while (top > -1)
+            {
+                res += Pop() + ",";
+            }
+            return res.Substring(0, res.Length - 1); //laatste komma weg
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+KYOK8089 	 ---Begin---------------------
+KYOK8089,ExceptionDuringExecution,
+Runtime exception: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Tentamens.QuestionAndTest.HalteStack.Push(String halteNaam)
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        HalteStack[] s = new HalteStack[20];
+        int top = -1;
+        public bool IsEmpty
+        {
+
+            get
+            {
+                return true;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            s[top].Push(halteNaam);
+        }
+
+        public string Pop()
+        {
+            top--;
+            HalteStack temp = s[top + 1];
+            s[top + 1] = null;
+            return temp.ToString();
+
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            int index = 0;
+            string Reversed = "";
+            while (index >= 0 && s != null)
+            {
+                Reversed += s[index] + " ";
+                Pop();
+                index++;
+            }
+            return Reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LANE3745 	 ---Begin---------------------
+LANE3745,Correct,
+public class HalteStack
+    {
+        private string[] array = new string[20];
+        private int top=-1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (top == -1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            array[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string temp = array[top];
+            top--;
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string print = "";
+            for(int i=0;i< top+3; i++)
+            {
+                print += Pop() + ",";
+            }
+            print += Pop();
+            return print;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LARR4533 	 ---Begin---------------------
+LARR4533,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LEON3342 	 ---Begin---------------------
+LEON3342,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LORA2508 	 ---Begin---------------------
+LORA2508,Correct,
+public class HalteStack
+    {
+        private string[] stack = new string[20];
+
+        private int current;
+        private bool empty =true;
+        public bool IsEmpty
+        {
+            get
+            {
+                return empty;
+            }
+        }
+
+        public string[] Stack
+        {
+            get
+            {
+                return stack;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            empty = false;
+            Stack[current] = halteNaam;
+            current++;
+        }
+
+        public string Pop()
+        {
+            string value = "";
+            current--;
+            value = Stack[current];
+            if(current == 0)
+            {
+                empty = true;
+            }
+            return value;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+           string str = "";
+           for(int i = current; i > 0; i--)
+            {
+                str += Pop();
+                str += ",";
+            }
+             str = str.Remove(str.Length - 1);
+            return str;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LORE7020 	 ---Begin---------------------
+Compiler Errors:
+(52,16): error CS1525: Invalid expression term '}'
+(52,16): error CS1002: ; expected
+(246,22): error CS1001: Identifier expected
+(246,22): error CS1002: ; expected
+##################
+
+LORE7020,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+LUIS5466 	 ---Begin---------------------
+Compiler Errors:
+(73,39): error CS1061: 'string[]' does not contain a definition for 'Count' and no extension method 'Count' accepting a first argument of type 'string[]' could be found (are you missing a using directive or an assembly reference?)
+##################
+
+LUIS5466,CompileError,
+public class HalteStack
+    {
+        private string[] haltes = new string[20]; // Stack
+        private int h_count = 0; // Index counter
+
+        public bool IsEmpty {
+            get {
+                if ( h_count > 0 ) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig hebt*
+        }
+
+        public void Push(string halteNaam)
+        {
+            haltes[h_count] = halteNaam; // Geef huidige index waarde
+            h_count++; // Verhoog de index met 1
+        }
+
+        public string Pop()
+        {
+            int vorigeHalte = h_count - 1; // De index counter is hier hoger dan de hoogste index van de stack. Daarom doe ik min 1.
+            h_count--; // Verlaag de index met 1
+
+            return haltes[vorigeHalte];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string haltesReversed = string.Empty;
+            int aantalHaltes = haltes.Count(); // Hier heb ik de fout ontdekt maar ik heb het niet kunnen oplossen door tijdsnood van het tentamen.
+
+            for (int i = aantalHaltes; i >= 0; i--)
+            {
+                if (haltesReversed.Length > 0)
+                {
+                    haltesReversed += "," + haltes[i];
+                } else
+                {
+                    haltesReversed = haltes[i];
+                }
+            }
+
+            return haltesReversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LUKE1767 	 ---Begin---------------------
+LUKE1767,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LYLE1999 	 ---Begin---------------------
+LYLE1999,Correct,
+public class HalteStack
+    {
+        string[] _haltes = new string[20];
+        int _index = 0;
+        public bool IsEmpty
+        {
+            get
+            {
+                return _index <= 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            _haltes[_index] = halteNaam;
+            _index++;
+        }
+
+        public string Pop()
+        {
+            _index--;
+            return _haltes[_index];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            String s = "";
+            while (!IsEmpty)
+            {
+                s += Pop();
+                if (_index > 0) s += ",";
+            }
+            return s;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+LYND5408 	 ---Begin---------------------
+LYND5408,Correct,
+public class HalteStack
+    {
+        // stack variable aanmaken waar de string variables in kunnen worden gestopt
+        private string[] stack = new string[20];
+        // top variable aanmaken om bij te houden waar de volgende waarde moet worden opgeslagen
+        private int top = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == 0; // returned true als de top 0 is(dus lege stack) en anders false
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig hebt - constructor is niet nodig
+        }
+
+        public void Push(string halteNaam)
+        {
+            // item toevoegen aan de stack
+            stack[ top ] = halteNaam;
+            // top variable 1 omhoog doen zodat het volgende item deze niet overwrite
+            top++;
+        }
+
+        public string Pop()
+        {
+            // omdat de top variable altijd 1 hoger is dan de laatste waarde moeten we de variable eerst met 1 verkleinen en dan teruggeven
+            --top;
+            return stack[ top ];
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            // nieuwe string aanmaken waar het resultaat in wordt gestopt
+            string output = "";
+
+            // net zolang door de stack loopen totdat er niks meer in zit
+            while( top > 0 )
+            {
+                // de waarde van het huidige item toevoegen aan de output string
+                output += Pop() + ",";
+            }
+
+            // de laatste ',' eruit halen zodat de strings overeenkomen
+            output = output.Remove( output.Length - 1, 1 );
+
+            // de output teruggeven
+            return output;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MARC5765 	 ---Begin---------------------
+MARC5765,Correct,
+public class HalteStack
+    {
+        private string[] stack = new string[20];
+        private int top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (top == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            stack[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string x = stack[top];
+            top--;
+            return x;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string[] temp = stack;
+            string print = "";
+
+            foreach(string halte in temp)
+            {
+                if (halte == null)
+                {
+                    break;
+                }
+                print += Pop() + ",";
+            }
+            print = print.Substring(0, print.Length - 1);
+            return print;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MARG7204 	 ---Begin---------------------
+MARG7204,Correct,
+public class HalteStack
+    {
+        private string[] stackarray = new string[20];
+        private int top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(top == -1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            stackarray[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string halte = stackarray[top];
+            stackarray[top] = null;
+            top--;
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string haltes = Pop();
+            for (int i = top; i > -1; i--)
+            {
+                haltes += "," + Pop();
+            }
+            return haltes;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MARI3455 	 ---Begin---------------------
+MARI3455,Correct,
+public class HalteStack
+    {
+        private string[] haltes = new string[20];
+        private int top = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            haltes[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string result = haltes[top];
+            haltes[top] = null;
+            top--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while(!IsEmpty)
+            {
+                if(top == 0)
+                {
+                    result += Pop();
+                    break;
+                }
+                result += Pop() + ",";
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MARL3334 	 ---Begin---------------------
+MARL3334,Correct,
+public class HalteStack
+    {
+        private string[] _content;
+        private int _top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return _top < 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            _content = new string[20];
+        }
+
+        public void Push(string halteNaam)
+        {
+            if (_top + 1 == _content.Length)
+                throw new Exception("Vol");
+
+            _content[++_top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            if (IsEmpty)
+                throw new Exception("Leeg");
+
+            string temp = _content[_top];
+            _content[_top--] = null;
+
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while (!IsEmpty)
+            {
+                result += Pop();
+                if (!IsEmpty) result += ',';
+            }
+
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MOHA3756 	 ---Begin---------------------
+MOHA3756,Correct,
+public class HalteStack
+    {
+        private int index = -1;
+        private int count = 0;
+        private string[] stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(count <= 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            index++;
+            stack[index] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            string popped = stack[index];
+
+            stack[index] = null;
+            index--;
+            count--;
+
+            return popped;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            StringBuilder toReturn = new StringBuilder();
+
+            while(count != 0)
+            {
+                if (count == 1)
+                {
+                    toReturn.Append(this.Pop());
+                }
+                else
+                {
+                    toReturn.Append(this.Pop() + ",");
+                }
+            }
+
+            Console.WriteLine("testline");
+
+            return toReturn.ToString();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MYRT3264 	 ---Begin---------------------
+MYRT3264,Correct,
+public class HalteStack
+    {
+        public int top = -1;
+        private string[] stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return top < 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            stack[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string result = stack[top];
+            stack[top] = null;
+            top--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+
+            string[] temp = new string[top + 1];
+
+            int temptop = top + 1;
+
+            for (int i = 0; i < temptop; i++)
+            {
+                if (i != temptop - 1)
+                    result += Pop() + ",";
+                else
+                    result += Pop();
+            }
+
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+MYRT9827 	 ---Begin---------------------
+MYRT9827,Correct,
+public class HalteStack
+    {
+        private string[] haltes = new string[20];
+        private int top = -1;
+        public bool IsEmpty
+        {
+            get
+            {
+                return top == -1;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            haltes[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string result = haltes[top];
+            haltes[top] = null;
+            top--;
+            return result;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while(!IsEmpty)
+            {
+                if(top == 0)
+                {
+                    result += Pop();
+                    break;
+                }
+                result += Pop() + ",";
+            }
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+NEDR3814 	 ---Begin---------------------
+Compiler Errors:
+(37,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(37,32): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+##################
+
+NEDR3814,CompileError,
+public class HalteStack
+    {
+        Stack<string> hs = new Stack<string>();
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+        }
+
+        public void Push(string halteNaam)
+        {
+            hs.Push(halteNaam);
+        }
+
+        public string Pop()
+        {
+            string peek = hs.Peek();
+
+            if (hs.Count == 0)
+            {
+                return hs.Peek();
+            }
+            else if (peek == hs.Last())
+            {
+                hs.Pop();
+            }
+            return hs.Peek();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+NERE4803 	 ---Begin---------------------
+NERE4803,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+PHYL1120 	 ---Begin---------------------
+PHYL1120,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+PORT4586 	 ---Begin---------------------
+PORT4586,Correct,
+public class HalteStack
+    {
+        public string[] arraystack = new string[20];
+
+
+       
+        int count = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return count <= 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            arraystack[count] = halteNaam;
+            count++;
+
+
+
+        }
+
+        public string Pop()
+        {
+            string popped;
+            arraystack[count-1].Remove(count-1);
+            popped = arraystack[count-1];
+            count--;
+            return popped;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            //string result;
+            // for (int i = arraystack.Length; i == 0; i--)
+            // {
+            //     result += arraystack[i];
+            //     arraystack[i].Remove(i);
+
+            // }
+            // return result;
+            throw new NotFiniteNumberException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ROBE1503 	 ---Begin---------------------
+ROBE1503,Correct,
+public class HalteStack
+    {
+        string[] halteStack = new string[20];
+        public bool IsEmpty
+        {
+            get
+            {
+                for (int i = 0; i < halteStack.Length; i++)
+                {
+                    if (halteStack[i] != null)
+                    {
+                        return false;
+                    }
+                   
+                }
+
+                return true;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            int index = 0;
+
+            while (halteStack[index] != null)
+            {
+                index++;
+            }
+
+            halteStack[index] = halteNaam; 
+        }
+
+        public string Pop()
+        {
+            int index = 1;
+
+            while (halteStack[index] != null)
+            {
+                index++;
+            }
+
+            string returnPop = halteStack[index - 1];
+            halteStack[index - 1] = null;
+            return returnPop;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string returnString = "";
+
+            for (int i = halteStack.Length - 1; i > 0; i--)
+            {
+                if (halteStack[i] != null)
+                {
+                    returnString += Pop() + ",";
+                }
+            }
+            returnString += halteStack[0]; //zodat er niet nog een komma achteraan de returnstring komt
+            return returnString;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+ROSE6277 	 ---Begin---------------------
+ROSE6277,Correct,
+public class HalteStack
+    {
+        string[] Stack = new string[20];
+        int stackcount = 0;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (stackcount == 0) return true;
+                else return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            Stack[stackcount] = halteNaam;
+            stackcount++;
+        }
+
+        public string Pop()
+        {
+            stackcount--;
+            string halte = Stack[stackcount];
+            Stack[stackcount] = "";
+            return halte;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string haltes = "";
+            while(stackcount > 1)
+            {
+                haltes += Pop() + ",";
+            }
+            if (stackcount == 1) haltes += Pop();
+            return haltes;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+SHAK5818 	 ---Begin---------------------
+SHAK5818,Correct,
+public class HalteStack
+    {
+        private string[] stack;
+        private int top;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                foreach (string s in stack)
+                {
+                    if(s != null)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        public HalteStack()
+        {
+            this.stack = new string[20]; //ik vind this leuk om aan te roepen
+            this.top = -1;
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            stack[top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string halteToReturn = stack[top];
+            stack[top] = null;
+            top--;
+            return halteToReturn;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string printedHaltes = "";
+
+            while (top >= 1)
+            {
+                printedHaltes += Pop() + ",";
+            }
+            printedHaltes += Pop();
+
+            return printedHaltes;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+SHAN5018 	 ---Begin---------------------
+SHAN5018,Correct,
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(halteStack[0]))
+                    return true;
+                return false;
+            }
+        }
+
+        private string[] halteStack = new string[20];
+        private int count = 0;
+        
+        public HalteStack() { }
+
+        public void Push(string halteNaam)
+        {
+            halteStack[count] = halteNaam;
+            count++;
+        }
+
+        public string Pop()
+        {
+            count--;
+            string returnString = halteStack[count];
+            halteStack[count] = string.Empty;
+            return returnString;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string returnString = "";
+            while(count != 0)
+            {
+                returnString += Pop() + ",";
+            }
+            return returnString.Substring(0, returnString.Length - 1);
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+SHAR7380 	 ---Begin---------------------
+Compiler Errors:
+(292,39): error CS1001: Identifier expected
+(301,39): error CS1001: Identifier expected
+##################
+
+SHAR7380,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+SHAV3610 	 ---Begin---------------------
+SHAV3610,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+SHEB3960 	 ---Begin---------------------
+SHEB3960,Correct,
+public class HalteStack
+    {
+        int Counter = 0;
+        string[] stack = new string[20];
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if(stack[0] == null) { return true; }
+                else { return false; }
+            }
+        }
+
+        public HalteStack()
+        {
+
+        }
+
+        public void Push(string halteNaam)
+        {
+            stack[Counter] = halteNaam;
+            Counter++;
+        }
+
+        public string Pop()
+        {
+            string temp = stack[Counter - 1];
+            stack[Counter - 1] = null;
+            Counter--;
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            List<string> temp = new List<string>();
+            foreach(string s in stack)
+            {
+                if(s == null) { break; }
+                else { temp.Add(s); }
+            }
+            string[] Temp = temp.ToArray();
+            Array.Reverse(Temp);
+            string result = string.Join(",", Temp);
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+SHER8777 	 ---Begin---------------------
+SHER8777,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+SONN5711 	 ---Begin---------------------
+Compiler Errors:
+(88,40): error CS1525: Invalid expression term ')'
+##################
+
+SONN5711,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+TANN5293 	 ---Begin---------------------
+Compiler Errors:
+(376,36): error CS1001: Identifier expected
+(376,36): error CS1515: 'in' expected
+(376,36): error CS1525: Invalid expression term ')'
+##################
+
+TANN5293,CompileError,
+
+NakijkTool.TestRapport 	 ---End---------------------
+
+TARA9905 	 ---Begin---------------------
+TARA9905,Correct,
+public class HalteStack
+    {
+        private string[] halteStack;
+        private int top;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (top == 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+            halteStack = new string[20];
+            top = 0;
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteStack[top] = halteNaam;
+            top = top + 1;
+        }
+
+        public string Pop()
+        {
+            top = top - 1;
+            string temp = halteStack[top];
+            halteStack[top] = null;
+
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            List<string> haltes = new List<string>();
+            while (!IsEmpty)
+            {
+                haltes.Add(Pop());
+            }
+            return (string.Join(",", haltes.ToArray()));
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+VALO3181 	 ---Begin---------------------
+VALO3181,ExceptionDuringExecution,
+Runtime exception: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Tentamens.QuestionAndTest.HalteStack.Push(String halteNaam)
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        HalteStack[] s = new HalteStack[20];
+        int top = -1;
+        public bool IsEmpty
+        {
+
+            get
+            {
+                return true;
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            top++;
+            s[top].Push(halteNaam);
+        }
+
+        public string Pop()
+        {
+            top--;
+            HalteStack temp = s[top + 1];
+            s[top + 1] = null;
+            return temp.ToString();
+
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            int index = 0;
+            string Reversed = "";
+            while (index >= 0 && s != null)
+            {
+                Reversed += s[index] + " ";
+                Pop();
+                index++;
+            }
+            return Reversed;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+VAND2394 	 ---Begin---------------------
+Compiler Errors:
+(50,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(51,9): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(50,40): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+(51,48): error CS0246: The type or namespace name 'Stack<>' could not be found (are you missing a using directive or an assembly reference?)
+##################
+
+VAND2394,CompileError,
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                if (halteStack.Count == 0)
+                {
+                    return true;
+                }
+                else { return false; }
+                
+            }
+        }
+
+        Stack<string> halteStack = new Stack<string>(20);
+        Stack<string> halteStackReversed = new Stack<string>(20);
+
+        public HalteStack()
+        {
+            
+        }
+
+        public void Push(string halteNaam)
+        {
+            halteStack.Push(halteNaam);
+            halteStackReversed.Push(halteNaam);
+        }
+
+        public string Pop()
+        {
+            return halteStack.Pop();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            //while (halteStack.Count != 0)
+            //{
+            //    halteStackReversed.Push(halteStack.Pop());
+            //}
+            List<string> reversedList = new List<string>();
+            
+            while (halteStackReversed.Count != 0)
+            {
+                reversedList.Add(halteStackReversed.Pop());
+            }
+            string reversedString = "";
+            foreach (string s in reversedList)
+            {
+                reversedString = reversedString + s + ",";
+            }
+            
+            return reversedString;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+VEDA8631 	 ---Begin---------------------
+VEDA8631,ExceptionDuringExecution,
+Runtime exception: System.NotImplementedException: The method or operation is not implemented.
+   at Tentamens.QuestionAndTest.HalteStack.get_IsEmpty()
+   at Tentamens.QuestionAndTest.TestVraag4A() Exception has been thrown by the target of an invocation.
+public class HalteStack
+    {
+        public bool IsEmpty
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig bent
+        }
+
+        public void Push(string halteNaam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            throw new NotImplementedException();
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+WILT2547 	 ---Begin---------------------
+WILT2547,Correct,
+public class HalteStack
+    {
+        string[] haltes = new string[20];
+        int head = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                if (haltes[0] == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public HalteStack()
+        {
+            //Je mag de constructor ook leeg laten indien je deze niet nodig hebt
+        }
+
+        public void Push(string halteNaam)
+        {
+            head++;
+            haltes[head] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            string peek = haltes[head];
+            haltes[head] = null;
+            head--;
+            return peek;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string list = "";
+            for(int i = (haltes.Length-1); i >= 0; i--)
+            {
+                if (!(haltes[i] == null))
+                {
+                    list += haltes[i]+",";
+                }
+            }
+            list = list.TrimEnd(',');
+            return list;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+
+YAHA2309 	 ---Begin---------------------
+YAHA2309,Correct,
+public class HalteStack
+    {
+        private string[] _content;
+        private int _top = -1;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return _top < 0;
+            }
+        }
+
+        public HalteStack()
+        {
+            _content = new string[20];
+        }
+
+        public void Push(string halteNaam)
+        {
+            if (_top + 1 == _content.Length)
+                throw new Exception("Vol");
+
+            _content[++_top] = halteNaam;
+        }
+
+        public string Pop()
+        {
+            if (IsEmpty)
+                throw new Exception("Leeg");
+
+            string temp = _content[_top];
+            _content[_top--] = null;
+
+            return temp;
+        }
+
+        //Vraag 4b
+        public string PrintHaltesReversed()
+        {
+            string result = "";
+            while (!IsEmpty)
+            {
+                result += Pop();
+                if (!IsEmpty) result += ',';
+            }
+
+            return result;
+        }
+    }
+NakijkTool.TestRapport 	 ---End---------------------
+

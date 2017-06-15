@@ -15,6 +15,8 @@
         <Button x:Name="ExportButton" Content="..." HorizontalAlignment="Left" Margin="398,149,0,0" VerticalAlignment="Top" Width="75" Click="ExportButton_Click_1"/>
         <TextBox x:Name="ExportBox" HorizontalAlignment="Left" Height="23" Margin="44,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
         <Button Content="Nakijken" HorizontalAlignment="Left" Margin="44,252,0,0" VerticalAlignment="Top" Width="75" Click="NakijkButton_Click"/>
+        <TextBox x:Name="NrOfQuestionsBox" HorizontalAlignment="Left" Height="23" Margin="113,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"/>
+        <Label Content="Aantal Vragen&#xD;&#xA;" HorizontalAlignment="Left" Margin="23,201,0,0" VerticalAlignment="Top" Height="23"/>
 
     </Grid>
 </Window>
