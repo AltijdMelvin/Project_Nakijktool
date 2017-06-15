@@ -116,5 +116,6 @@ namespace NakijktoolGui
             nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             nakijk.Show();
         }
+
     }
 }

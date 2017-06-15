@@ -28,6 +28,7 @@
         </GroupBox>
         <Button Content="Vorige Opdracht" Grid.Column="1" HorizontalAlignment="Left" Margin="57,23,0,0" VerticalAlignment="Top" Width="133" Click="Vorige_Opdracht_Click"/>
         <Button Content="Volgende Opdracht" Grid.Column="2" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="133" Click="Volgende_Opdracht_Click"/>
+        <Button x:Name="backBtn" Content="Terug" HorizontalAlignment="Left" Margin="244,23,0,0" VerticalAlignment="Top" Width="75" Click="backBtn_Click"/>
 
     </Grid>
 </Window>

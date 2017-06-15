@@ -53,5 +53,12 @@ namespace NakijktoolGui
         {
 
         }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow wmd = (MainWindow)Application.Current.MainWindow;
+            this.Close();
+            wmd.Show();
+        }
     }
 }
