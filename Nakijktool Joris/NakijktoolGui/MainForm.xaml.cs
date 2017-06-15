@@ -57,7 +57,7 @@ namespace NakijktoolGui
                 TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
                 repports.Add(testRapport);
             }
-            Program.FileWriterReport(files, repports, TentamenNaam.Text, TentamenDatum.DisplayDate);
+            Program.FileWriterReport(files, repports, TentamenNaam.Text, TentamenDatum.DisplayDate, TestsFileSrc);
         }
 
         private void AntwoordenModelButton_Click(object sender, RoutedEventArgs e)
@@ -80,12 +80,16 @@ namespace NakijktoolGui
 
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
         {
-            Nakijkform nakijk = new Nakijkform();
-            directoryExamResults = TentamenBox.Text;
-            nakijk.StudentCodeBox.Text = directoryExamResults;
+            //Nakijkform nakijk = new Nakijkform();
+            //directoryExamResults = TentamenBox.Text;
+            //nakijk.StudentCodeBox.Text = directoryExamResults;
+            //this.Hide();
+            //nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            //nakijk.Show();
+            GeschiedenisForm gform = new GeschiedenisForm();
             this.Hide();
-            nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            nakijk.Show();
+            gform.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            gform.Show();
         }
 
         private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)

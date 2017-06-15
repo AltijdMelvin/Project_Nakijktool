@@ -183,10 +183,10 @@ namespace NakijkTool
             }
             //ExcelWriter.CreateTestRapport(repports);
 
-            FileWriterReport(files, repports, "Programmeren 3 tentamen", DateTime.Today.Date);
+            //FileWriterReport(files, repports, "Programmeren 3 tentamen", DateTime.Today.Date, );
         }
 
-        public static void FileWriterReport(string[] files, List<TestRapport> repports, string tentamennaam, DateTime dag)
+        public static void FileWriterReport(string[] files, List<TestRapport> repports, string tentamennaam, DateTime dag, string TestsFileSrc)
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
@@ -227,7 +227,7 @@ namespace NakijkTool
 
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
 
-            using (StreamWriter writer = File.CreateText(@"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\test3.txt")) //schrijft de testrapporten
+            using (StreamWriter writer = File.CreateText(@"D:\School\Project_Nakijktool\Anonieme tentamens\test3.txt")) //schrijft de testrapporten
             {
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)
@@ -343,7 +343,7 @@ namespace NakijkTool
                             testError = testRapport.RapportQuestions[0].CompileAndExecuteInfo.Message;
                         }
 
-                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagid, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode)";
+                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagid, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode, @tentamenid)";
                         using (connection = new SqlConnection(connectionstring))
                         using (SqlCommand command = new SqlCommand(querytestrapport, connection))
                         {
@@ -356,6 +356,7 @@ namespace NakijkTool
                             command.Parameters.AddWithValue("@studentpunten", 10);
                             command.Parameters.AddWithValue("@commentaar", "Correct!");
                             command.Parameters.AddWithValue("@studentcode", testRapport.RapportQuestions[0].StudentSourceCode);
+                            command.Parameters.AddWithValue("@tentamenid", tentamenid);
 
                             command.ExecuteScalar();
                         }
