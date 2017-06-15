@@ -53,9 +53,11 @@ namespace NakijktoolGui
                 directoryExamResults,
                 searchPattern: "*.cs");
 
-            for(int i = 2; i <= nrOfQuestions; i++)
+            Program p = new Program(TestsFileSrc);
+
+            for (int i = 2; i <= nrOfQuestions; i++)
             {
-                Program p = new Program(TestsFileSrc, i);
+                p.QuestionNumber = i;
                 List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
                 foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
                 {

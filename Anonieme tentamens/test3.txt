@@ -1829,9 +1829,9 @@ Compiler Errors:
 (17,35): error CS1503: Argument 2: cannot convert from 'Tentamens.QuestionAndTest.Lijn' to 'Tentamens.QuestionAndTest.Bus.Lijn'
 (432,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Halte>' to 'double'
 (432,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
-(245,20): error CS1061: 'QuestionAndTest.Bus.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.Bus.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
 (120,42): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.List<Tentamens.QuestionAndTest.Bus.Halte>' to 'double'
 (120,17): error CS0201: Only assignment, call, increment, decrement, and new object expressions can be used as a statement
+(245,20): error CS1061: 'QuestionAndTest.Bus.HalteStack[]' does not contain a definition for 'Push' and no extension method 'Push' accepting a first argument of type 'QuestionAndTest.Bus.HalteStack[]' could be found (are you missing a using directive or an assembly reference?)
 ##################
 
 DAMA6428,CompileError,

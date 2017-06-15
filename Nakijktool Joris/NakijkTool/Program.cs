@@ -114,7 +114,15 @@ namespace NakijkTool
 
     public class Program
     {
-        int? questionNumber;
+        int? questionNumber = 2;
+
+        public int? QuestionNumber
+        {
+            get { return this.questionNumber; }
+            set { this.questionNumber = value; }
+        }
+        
+
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
         //const string Prefix = "Tentamen Programmeren 3_";
 
@@ -140,10 +148,9 @@ namespace NakijkTool
             MetadataReference.CreateFromFile(typeof(NUnit.Framework.Assert).Assembly.Location)
         };
 
-        public Program(string testfilesrc, int questionNr)
+        public Program(string testfilesrc)
         {
             _testMethodeCode = LoadTestMethodsCode(testfilesrc); //laad testmethodes uit het nakijkblad
-            questionNumber = questionNr;
             //controleert of de vraag bestaat
             if (questionNumber.HasValue)
             {
@@ -167,7 +174,7 @@ namespace NakijkTool
                 directoryExamResults,
                 searchPattern: "*.cs");
 
-            Program p = new Program(TestsFileSrc, 2);
+            Program p = new Program(TestsFileSrc);
 
             //maakt van alle .cs files testrapporten
             foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
@@ -182,8 +189,8 @@ namespace NakijkTool
         public void FileWriterReport(string[] files, List<TestRapport> repports, int questionNr)
         {
             string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
-            string test = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\test" + Convert.ToString(questionNr) + ".txt";
-            using (StreamWriter writer = File.CreateText(test))
+            string vraag = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\Vraag" + Convert.ToString(questionNr) + ".txt";
+            using (StreamWriter writer = File.CreateText(vraag))
             {
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)
