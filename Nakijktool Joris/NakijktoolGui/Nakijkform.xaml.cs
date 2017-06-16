@@ -23,7 +23,9 @@ namespace NakijktoolGui
     /// </summary>
     public partial class Nakijkform : Window
     {
-        static int i = 0;
+        static int v = 0;
+        static int q = 2;
+        static int aantalvragen;
         private static string connectionstring;
         static SqlConnection connection;
         DataSet rapporten;
@@ -31,23 +33,32 @@ namespace NakijktoolGui
         public Nakijkform()
         {
             InitializeComponent();
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(); }));
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(q); }));
         }
 
-        private void data()
+        private void data(int vraagnummer)
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
-            string query = "SELECT * FROM Testrapport WHERE tentamenid = "+ TentamenIdBox.Text;
+            string query = "SELECT * FROM Testrapport WHERE tentamenid = "+ TentamenIdBox.Text + " AND vraagnummer = " + vraagnummer;
+            string aantalquery = "SELECT aantal_vragen FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
             using (connection = new SqlConnection(connectionstring))
-            using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
             {
-                connection.Open();
-                rapporten = new DataSet();
-                command.Fill(rapporten);
-                StudentCodeBox.Text = rapporten.Tables[0].Rows[i]["studentcode"].ToString();
-                FoutmeldingBox.Text = rapporten.Tables[0].Rows[i]["errors"].ToString();
+                using (SqlCommand command = new SqlCommand(aantalquery, connection))
+                {
+                    connection.Open();
+                    aantalvragen = (int)command.ExecuteScalar();
+                }
+                using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
+                {
+                    rapporten = new DataSet();
+                    command.Fill(rapporten);
+                    StudentCodeBox.Text = rapporten.Tables[0].Rows[v]["studentcode"].ToString();
+                    FoutmeldingBox.Text = rapporten.Tables[0].Rows[v]["errors"].ToString();
+                    VraagIdBox.Text = rapporten.Tables[0].Rows[v]["vraagnummer"].ToString();
+                }
             }
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,12 +68,24 @@ namespace NakijktoolGui
 
         private void Vorige_Opdracht_Click(object sender, RoutedEventArgs e)
         {
-
+            q--;
+            if (q >= 2)
+            {
+                data(q);
+                v = 0;
+            }
+            else q++;
         }
 
         private void Volgende_Opdracht_Click(object sender, RoutedEventArgs e)
         {
-
+            q++;
+            if (q <= aantalvragen)
+            {
+                data(q);
+                v = 0;
+            }
+            else q--;
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
@@ -75,22 +98,22 @@ namespace NakijktoolGui
 
         private void Vorige_Tentamen_Click(object sender, RoutedEventArgs e)
         {
-            i--;
-            if (i >= 0)
+            v--;
+            if (v >= 0)
             {
-                data();
+                data(q);
             }
-            else i++;
+            else v++;
         }
 
         private void Volgende_Tentamen_Click(object sender, RoutedEventArgs e)
         {
-            i++;
-            if (i <= rapporten.Tables[0].Rows.Count - 1)
+            v++;
+            if (v <= rapporten.Tables[0].Rows.Count - 1)
             {
-                data();
+                data(q);
             }
-            else i--;
+            else v--;
         }
     }
 }

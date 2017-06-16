@@ -28,6 +28,7 @@ namespace NakijktoolGui
         private string[] files;
         private string directoryExamResults;
         private string TestsFileSrc;
+        private int nrOfQuestions;
 
         public MainForm()
         {
@@ -43,21 +44,16 @@ namespace NakijktoolGui
         private void button_Click(object sender, RoutedEventArgs e)
         {
             TestsFileSrc = @AntwoordenModelBox.Text;
-            Program p = new Program(TestsFileSrc);
+            nrOfQuestions = Convert.ToInt32(NrOfQuestionsBox.Text);
             directoryExamResults = TentamenBox.Text;
+
+            Program p = new Program(TestsFileSrc);
+
             files = Directory.GetFiles(
                 directoryExamResults,
                 searchPattern: "*.cs");
-            
-            List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
-
-            foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
-            {
-                Console.WriteLine($"Processing {stundentCsFilePath}");
-                TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
-                repports.Add(testRapport);
-            }
-            Program.FileWriterReport(files, repports, TentamenNaam.Text, TentamenDatum.DisplayDate, TestsFileSrc);
+           
+            p.FileWriterReport(files, TentamenNaam.Text, TentamenDatum.SelectedDate.Value, TestsFileSrc, nrOfQuestions);
         }
 
         private void AntwoordenModelButton_Click(object sender, RoutedEventArgs e)
