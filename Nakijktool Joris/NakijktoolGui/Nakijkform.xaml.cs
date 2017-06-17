@@ -39,7 +39,7 @@ namespace NakijktoolGui
         private void data(int vraagnummer)
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
-
+            int vraag = v + 1;
             string query = "SELECT * FROM Testrapport WHERE tentamenid = "+ TentamenIdBox.Text + " AND vraagnummer = " + vraagnummer;
             string aantalquery = "SELECT aantal_vragen FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
             using (connection = new SqlConnection(connectionstring))
@@ -56,9 +56,9 @@ namespace NakijktoolGui
                     StudentCodeBox.Text = rapporten.Tables[0].Rows[v]["studentcode"].ToString();
                     FoutmeldingBox.Text = rapporten.Tables[0].Rows[v]["errors"].ToString();
                     VraagIdBox.Text = rapporten.Tables[0].Rows[v]["vraagnummer"].ToString();
+                    InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
                 }
             }
-
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,8 +71,8 @@ namespace NakijktoolGui
             q--;
             if (q >= 2)
             {
-                data(q);
                 v = 0;
+                data(q);
             }
             else q++;
         }
@@ -82,8 +82,8 @@ namespace NakijktoolGui
             q++;
             if (q <= aantalvragen)
             {
-                data(q);
                 v = 0;
+                data(q);
             }
             else q--;
         }

@@ -201,7 +201,6 @@ namespace NakijkTool
                     repports.Add(testRapport);
                 }
                 //vraag in database
-                int vraagid;
                 string queryvraag = "INSERT INTO Vraag VALUES (@tentamenid, @vraagnummer, @vraagpunten)";
                 using (connection = new SqlConnection(connectionstring))
                 using (SqlCommand command = new SqlCommand(queryvraag, connection))
