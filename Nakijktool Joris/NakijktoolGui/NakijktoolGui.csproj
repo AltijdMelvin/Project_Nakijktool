@@ -186,12 +186,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CToevoegenForm.xaml.cs">
+      <DependentUpon>CToevoegenForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GeschiedenisForm.xaml.cs">
       <DependentUpon>GeschiedenisForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Testen.xaml.cs">
       <DependentUpon>Testen.xaml</DependentUpon>
     </Compile>
+    <Page Include="CToevoegenForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GeschiedenisForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -252,6 +259,9 @@
       <Project>{41405347-055b-472e-9633-f70d6586867f}</Project>
       <Name>NakijkTool</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NakijkTool\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -29,11 +30,36 @@ namespace NakijktoolGui
         private static string connectionstring;
         static SqlConnection connection;
         DataSet rapporten;
+        DataSet commentaar;
+        public ObservableCollection<BoolStringClass> TheList { get; set; }
 
         public Nakijkform()
         {
             InitializeComponent();
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(q); }));
+        }
+
+        public void CheckedListBox(int vraagid)
+        {
+            TheList = new ObservableCollection<BoolStringClass>();
+
+            connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
+
+            string query = "SELECT * FROM Commentaar WHERE vraagid = " + vraagid;
+            using (connection = new SqlConnection(connectionstring))
+            {
+                using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
+                {
+                    commentaar = new DataSet();
+                    command.Fill(commentaar);
+                }
+            }
+            for (int i = 0; i < commentaar.Tables[0].Rows.Count; i++)
+            {
+                TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
+            }
+
+            DataContext = this;
         }
 
         private void data(int vraagnummer)
@@ -47,7 +73,7 @@ namespace NakijktoolGui
                 using (SqlCommand command = new SqlCommand(aantalquery, connection))
                 {
                     connection.Open();
-                    aantalvragen = (int)command.ExecuteScalar();
+                    aantalvragen = Convert.ToInt32(command.ExecuteScalar());
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
                 {
@@ -55,15 +81,20 @@ namespace NakijktoolGui
                     command.Fill(rapporten);
                     StudentCodeBox.Text = rapporten.Tables[0].Rows[v]["studentcode"].ToString();
                     FoutmeldingBox.Text = rapporten.Tables[0].Rows[v]["errors"].ToString();
-                    VraagIdBox.Text = rapporten.Tables[0].Rows[v]["vraagnummer"].ToString();
+                    VraagIdBox.Text = rapporten.Tables[0].Rows[v]["vraagid"].ToString();
                     InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
                 }
             }
+
+            CheckedListBox(Convert.ToInt32(rapporten.Tables[0].Rows[v]["vraagid"].ToString()));
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Commentaar_Click(object sender, RoutedEventArgs e)
         {
-
+            CToevoegenForm ctv = new CToevoegenForm();
+            ctv.VraagidBox.Text = rapporten.Tables[0].Rows[v]["vraagid"].ToString();
+            ctv.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            ctv.Show();
         }
 
         private void Vorige_Opdracht_Click(object sender, RoutedEventArgs e)
@@ -116,4 +147,10 @@ namespace NakijktoolGui
             else v--;
         }
     }
+}
+
+public class BoolStringClass
+{
+    public string TheText { get; set; }
+    public bool IsSelected { get; set; }
 }

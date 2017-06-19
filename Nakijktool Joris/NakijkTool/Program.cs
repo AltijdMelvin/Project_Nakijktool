@@ -200,8 +200,10 @@ namespace NakijkTool
                     TestRapport testRapport = GetTestRapport(stundentCsFilePath);
                     repports.Add(testRapport);
                 }
-                //vraag in database
-                string queryvraag = "INSERT INTO Vraag VALUES (@tentamenid, @vraagnummer, @vraagpunten)";
+                //vraag in databasev
+                int vraagid;
+                string queryvraag = "INSERT INTO Vraag VALUES (@tentamenid, @vraagnummer, @vraagpunten)" +
+                "SELECT SCOPE_IDENTITY()";
                 using (connection = new SqlConnection(connectionstring))
                 using (SqlCommand command = new SqlCommand(queryvraag, connection))
                 {
@@ -211,7 +213,7 @@ namespace NakijkTool
                     command.Parameters.AddWithValue("@vraagnummer", QuestionNumber);
                     command.Parameters.AddWithValue("@vraagpunten", 15);
 
-                    command.ExecuteScalar();
+                    vraagid = Convert.ToInt32(command.ExecuteScalar());
 
                 }
 
@@ -266,7 +268,7 @@ namespace NakijkTool
                             testError = testError + testRapport.RapportQuestions[0].CompileAndExecuteInfo.Message;
                         }
 
-                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode, @tentamenid)";
+                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode, @tentamenid, @vraagid)";
                         using (connection = new SqlConnection(connectionstring))
                         using (SqlCommand command = new SqlCommand(querytestrapport, connection))
                         {
@@ -280,6 +282,7 @@ namespace NakijkTool
                             command.Parameters.AddWithValue("@commentaar", "Dit is commentaar.");
                             command.Parameters.AddWithValue("@studentcode", testRapport.RapportQuestions[0].StudentSourceCode);
                             command.Parameters.AddWithValue("@tentamenid", tentamenid);
+                            command.Parameters.AddWithValue("@vraagid", vraagid);
 
                             command.ExecuteScalar();
                         }

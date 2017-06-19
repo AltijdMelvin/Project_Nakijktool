@@ -24,6 +24,8 @@ namespace NakijkTool {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class Database_NakijktoolDataSet : global::System.Data.DataSet {
         
+        private CommentaarDataTable tableCommentaar;
+        
         private TentamensDataTable tableTentamens;
         
         private TestrapportDataTable tableTestrapport;
@@ -31,6 +33,8 @@ namespace NakijkTool {
         private VraagDataTable tableVraag;
         
         private global::System.Data.DataRelation relationFK_Vraag;
+        
+        private global::System.Data.DataRelation relationFK_Tentamen;
         
         private global::System.Data.DataRelation relationFK_Tenamten;
         
@@ -62,6 +66,9 @@ namespace NakijkTool {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["Commentaar"] != null)) {
+                    base.Tables.Add(new CommentaarDataTable(ds.Tables["Commentaar"]));
+                }
                 if ((ds.Tables["Tentamens"] != null)) {
                     base.Tables.Add(new TentamensDataTable(ds.Tables["Tentamens"]));
                 }
@@ -87,6 +94,16 @@ namespace NakijkTool {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CommentaarDataTable Commentaar {
+            get {
+                return this.tableCommentaar;
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -186,6 +203,9 @@ namespace NakijkTool {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["Commentaar"] != null)) {
+                    base.Tables.Add(new CommentaarDataTable(ds.Tables["Commentaar"]));
+                }
                 if ((ds.Tables["Tentamens"] != null)) {
                     base.Tables.Add(new TentamensDataTable(ds.Tables["Tentamens"]));
                 }
@@ -228,6 +248,12 @@ namespace NakijkTool {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableCommentaar = ((CommentaarDataTable)(base.Tables["Commentaar"]));
+            if ((initTable == true)) {
+                if ((this.tableCommentaar != null)) {
+                    this.tableCommentaar.InitVars();
+                }
+            }
             this.tableTentamens = ((TentamensDataTable)(base.Tables["Tentamens"]));
             if ((initTable == true)) {
                 if ((this.tableTentamens != null)) {
@@ -247,6 +273,7 @@ namespace NakijkTool {
                 }
             }
             this.relationFK_Vraag = this.Relations["FK_Vraag"];
+            this.relationFK_Tentamen = this.Relations["FK_Tentamen"];
             this.relationFK_Tenamten = this.Relations["FK_Tenamten"];
         }
         
@@ -258,6 +285,8 @@ namespace NakijkTool {
             this.Namespace = "http://tempuri.org/Database_NakijktoolDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableCommentaar = new CommentaarDataTable();
+            base.Tables.Add(this.tableCommentaar);
             this.tableTentamens = new TentamensDataTable();
             base.Tables.Add(this.tableTentamens);
             this.tableTestrapport = new TestrapportDataTable();
@@ -266,12 +295,22 @@ namespace NakijkTool {
             base.Tables.Add(this.tableVraag);
             this.relationFK_Vraag = new global::System.Data.DataRelation("FK_Vraag", new global::System.Data.DataColumn[] {
                         this.tableVraag.vraagidColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTestrapport.vraagidColumn}, false);
+                        this.tableCommentaar.vraagidColumn}, false);
             this.Relations.Add(this.relationFK_Vraag);
+            this.relationFK_Tentamen = new global::System.Data.DataRelation("FK_Tentamen", new global::System.Data.DataColumn[] {
+                        this.tableTentamens.tentamenidColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTestrapport.tentamenidColumn}, false);
+            this.Relations.Add(this.relationFK_Tentamen);
             this.relationFK_Tenamten = new global::System.Data.DataRelation("FK_Tenamten", new global::System.Data.DataColumn[] {
                         this.tableTentamens.tentamenidColumn}, new global::System.Data.DataColumn[] {
                         this.tableVraag.tentamenidColumn}, false);
             this.Relations.Add(this.relationFK_Tenamten);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeCommentaar() {
+            return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -348,6 +387,9 @@ namespace NakijkTool {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void CommentaarRowChangeEventHandler(object sender, CommentaarRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void TentamensRowChangeEventHandler(object sender, TentamensRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -355,6 +397,333 @@ namespace NakijkTool {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void VraagRowChangeEventHandler(object sender, VraagRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CommentaarDataTable : global::System.Data.TypedTableBase<CommentaarRow> {
+            
+            private global::System.Data.DataColumn columncommentaarid;
+            
+            private global::System.Data.DataColumn columncommentaar;
+            
+            private global::System.Data.DataColumn columnminpunten;
+            
+            private global::System.Data.DataColumn columnvraagid;
+            
+            private global::System.Data.DataColumn columncommentaarnaam;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarDataTable() {
+                this.TableName = "Commentaar";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CommentaarDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected CommentaarDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn commentaaridColumn {
+                get {
+                    return this.columncommentaarid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn commentaarColumn {
+                get {
+                    return this.columncommentaar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn minpuntenColumn {
+                get {
+                    return this.columnminpunten;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn vraagidColumn {
+                get {
+                    return this.columnvraagid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn commentaarnaamColumn {
+                get {
+                    return this.columncommentaarnaam;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarRow this[int index] {
+                get {
+                    return ((CommentaarRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CommentaarRowChangeEventHandler CommentaarRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CommentaarRowChangeEventHandler CommentaarRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CommentaarRowChangeEventHandler CommentaarRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CommentaarRowChangeEventHandler CommentaarRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddCommentaarRow(CommentaarRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarRow AddCommentaarRow(string commentaar, decimal minpunten, VraagRow parentVraagRowByFK_Vraag, string commentaarnaam) {
+                CommentaarRow rowCommentaarRow = ((CommentaarRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        commentaar,
+                        minpunten,
+                        null,
+                        commentaarnaam};
+                if ((parentVraagRowByFK_Vraag != null)) {
+                    columnValuesArray[3] = parentVraagRowByFK_Vraag[0];
+                }
+                rowCommentaarRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCommentaarRow);
+                return rowCommentaarRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarRow FindBycommentaarid(int commentaarid) {
+                return ((CommentaarRow)(this.Rows.Find(new object[] {
+                            commentaarid})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CommentaarDataTable cln = ((CommentaarDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CommentaarDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columncommentaarid = base.Columns["commentaarid"];
+                this.columncommentaar = base.Columns["commentaar"];
+                this.columnminpunten = base.Columns["minpunten"];
+                this.columnvraagid = base.Columns["vraagid"];
+                this.columncommentaarnaam = base.Columns["commentaarnaam"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columncommentaarid = new global::System.Data.DataColumn("commentaarid", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncommentaarid);
+                this.columncommentaar = new global::System.Data.DataColumn("commentaar", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncommentaar);
+                this.columnminpunten = new global::System.Data.DataColumn("minpunten", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnminpunten);
+                this.columnvraagid = new global::System.Data.DataColumn("vraagid", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvraagid);
+                this.columncommentaarnaam = new global::System.Data.DataColumn("commentaarnaam", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncommentaarnaam);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columncommentaarid}, true));
+                this.columncommentaarid.AutoIncrement = true;
+                this.columncommentaarid.AutoIncrementSeed = -1;
+                this.columncommentaarid.AutoIncrementStep = -1;
+                this.columncommentaarid.AllowDBNull = false;
+                this.columncommentaarid.ReadOnly = true;
+                this.columncommentaarid.Unique = true;
+                this.columncommentaar.AllowDBNull = false;
+                this.columncommentaar.MaxLength = 2147483647;
+                this.columnminpunten.AllowDBNull = false;
+                this.columnvraagid.AllowDBNull = false;
+                this.columncommentaarnaam.AllowDBNull = false;
+                this.columncommentaarnaam.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarRow NewCommentaarRow() {
+                return ((CommentaarRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CommentaarRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CommentaarRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CommentaarRowChanged != null)) {
+                    this.CommentaarRowChanged(this, new CommentaarRowChangeEvent(((CommentaarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CommentaarRowChanging != null)) {
+                    this.CommentaarRowChanging(this, new CommentaarRowChangeEvent(((CommentaarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CommentaarRowDeleted != null)) {
+                    this.CommentaarRowDeleted(this, new CommentaarRowChangeEvent(((CommentaarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CommentaarRowDeleting != null)) {
+                    this.CommentaarRowDeleting(this, new CommentaarRowChangeEvent(((CommentaarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveCommentaarRow(CommentaarRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Database_NakijktoolDataSet ds = new Database_NakijktoolDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CommentaarDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -688,7 +1057,7 @@ namespace NakijkTool {
             
             private global::System.Data.DataColumn columnrapportid;
             
-            private global::System.Data.DataColumn columnvraagid;
+            private global::System.Data.DataColumn columnvraagnummer;
             
             private global::System.Data.DataColumn columnstudentnummer;
             
@@ -701,6 +1070,8 @@ namespace NakijkTool {
             private global::System.Data.DataColumn columncommentaar;
             
             private global::System.Data.DataColumn columnstudentcode;
+            
+            private global::System.Data.DataColumn columntentamenid;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -745,9 +1116,9 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn vraagidColumn {
+            public global::System.Data.DataColumn vraagnummerColumn {
                 get {
-                    return this.columnvraagid;
+                    return this.columnvraagnummer;
                 }
             }
             
@@ -801,6 +1172,14 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tentamenidColumn {
+                get {
+                    return this.columntentamenid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -836,19 +1215,20 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TestrapportRow AddTestrapportRow(VraagRow parentVraagRowByFK_Vraag, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode) {
+            public TestrapportRow AddTestrapportRow(int vraagnummer, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode, TentamensRow parentTentamensRowByFK_Tentamen) {
                 TestrapportRow rowTestrapportRow = ((TestrapportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        vraagnummer,
                         studentnummer,
                         student_naam,
                         errors,
                         studentpunten,
                         commentaar,
-                        studentcode};
-                if ((parentVraagRowByFK_Vraag != null)) {
-                    columnValuesArray[1] = parentVraagRowByFK_Vraag[0];
+                        studentcode,
+                        null};
+                if ((parentTentamensRowByFK_Tentamen != null)) {
+                    columnValuesArray[8] = parentTentamensRowByFK_Tentamen[0];
                 }
                 rowTestrapportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTestrapportRow);
@@ -880,13 +1260,14 @@ namespace NakijkTool {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnrapportid = base.Columns["rapportid"];
-                this.columnvraagid = base.Columns["vraagid"];
+                this.columnvraagnummer = base.Columns["vraagnummer"];
                 this.columnstudentnummer = base.Columns["studentnummer"];
                 this.columnstudent_naam = base.Columns["student_naam"];
                 this.columnerrors = base.Columns["errors"];
                 this.columnstudentpunten = base.Columns["studentpunten"];
                 this.columncommentaar = base.Columns["commentaar"];
                 this.columnstudentcode = base.Columns["studentcode"];
+                this.columntentamenid = base.Columns["tentamenid"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -894,8 +1275,8 @@ namespace NakijkTool {
             private void InitClass() {
                 this.columnrapportid = new global::System.Data.DataColumn("rapportid", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrapportid);
-                this.columnvraagid = new global::System.Data.DataColumn("vraagid", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvraagid);
+                this.columnvraagnummer = new global::System.Data.DataColumn("vraagnummer", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvraagnummer);
                 this.columnstudentnummer = new global::System.Data.DataColumn("studentnummer", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstudentnummer);
                 this.columnstudent_naam = new global::System.Data.DataColumn("student_naam", typeof(string), null, global::System.Data.MappingType.Element);
@@ -908,6 +1289,8 @@ namespace NakijkTool {
                 base.Columns.Add(this.columncommentaar);
                 this.columnstudentcode = new global::System.Data.DataColumn("studentcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstudentcode);
+                this.columntentamenid = new global::System.Data.DataColumn("tentamenid", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntentamenid);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnrapportid}, true));
                 this.columnrapportid.AutoIncrement = true;
@@ -916,7 +1299,7 @@ namespace NakijkTool {
                 this.columnrapportid.AllowDBNull = false;
                 this.columnrapportid.ReadOnly = true;
                 this.columnrapportid.Unique = true;
-                this.columnvraagid.AllowDBNull = false;
+                this.columnvraagnummer.AllowDBNull = false;
                 this.columnstudentnummer.AllowDBNull = false;
                 this.columnstudentnummer.MaxLength = 50;
                 this.columnstudent_naam.AllowDBNull = false;
@@ -927,6 +1310,7 @@ namespace NakijkTool {
                 this.columncommentaar.MaxLength = 2147483647;
                 this.columnstudentcode.AllowDBNull = false;
                 this.columnstudentcode.MaxLength = 2147483647;
+                this.columntentamenid.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1066,11 +1450,7 @@ namespace NakijkTool {
             
             private global::System.Data.DataColumn columnvraagnummer;
             
-            private global::System.Data.DataColumn columntestcode;
-            
             private global::System.Data.DataColumn columnvraagpunten;
-            
-            private global::System.Data.DataColumn columnvraagcode;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1131,25 +1511,9 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn testcodeColumn {
-                get {
-                    return this.columntestcode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn vraagpuntenColumn {
                 get {
                     return this.columnvraagpunten;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn vraagcodeColumn {
-                get {
-                    return this.columnvraagcode;
                 }
             }
             
@@ -1190,15 +1554,13 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VraagRow AddVraagRow(TentamensRow parentTentamensRowByFK_Tenamten, int vraagnummer, string testcode, int vraagpunten, string vraagcode) {
+            public VraagRow AddVraagRow(TentamensRow parentTentamensRowByFK_Tenamten, int vraagnummer, int vraagpunten) {
                 VraagRow rowVraagRow = ((VraagRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         vraagnummer,
-                        testcode,
-                        vraagpunten,
-                        vraagcode};
+                        vraagpunten};
                 if ((parentTentamensRowByFK_Tenamten != null)) {
                     columnValuesArray[1] = parentTentamensRowByFK_Tenamten[0];
                 }
@@ -1234,9 +1596,7 @@ namespace NakijkTool {
                 this.columnvraagid = base.Columns["vraagid"];
                 this.columntentamenid = base.Columns["tentamenid"];
                 this.columnvraagnummer = base.Columns["vraagnummer"];
-                this.columntestcode = base.Columns["testcode"];
                 this.columnvraagpunten = base.Columns["vraagpunten"];
-                this.columnvraagcode = base.Columns["vraagcode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1248,12 +1608,8 @@ namespace NakijkTool {
                 base.Columns.Add(this.columntentamenid);
                 this.columnvraagnummer = new global::System.Data.DataColumn("vraagnummer", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvraagnummer);
-                this.columntestcode = new global::System.Data.DataColumn("testcode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntestcode);
                 this.columnvraagpunten = new global::System.Data.DataColumn("vraagpunten", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvraagpunten);
-                this.columnvraagcode = new global::System.Data.DataColumn("vraagcode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvraagcode);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnvraagid}, true));
                 this.columnvraagid.AutoIncrement = true;
@@ -1264,11 +1620,7 @@ namespace NakijkTool {
                 this.columnvraagid.Unique = true;
                 this.columntentamenid.AllowDBNull = false;
                 this.columnvraagnummer.AllowDBNull = false;
-                this.columntestcode.AllowDBNull = false;
-                this.columntestcode.MaxLength = 2147483647;
                 this.columnvraagpunten.AllowDBNull = false;
-                this.columnvraagcode.AllowDBNull = false;
-                this.columnvraagcode.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1398,6 +1750,87 @@ namespace NakijkTool {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class CommentaarRow : global::System.Data.DataRow {
+            
+            private CommentaarDataTable tableCommentaar;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CommentaarRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCommentaar = ((CommentaarDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int commentaarid {
+                get {
+                    return ((int)(this[this.tableCommentaar.commentaaridColumn]));
+                }
+                set {
+                    this[this.tableCommentaar.commentaaridColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string commentaar {
+                get {
+                    return ((string)(this[this.tableCommentaar.commentaarColumn]));
+                }
+                set {
+                    this[this.tableCommentaar.commentaarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal minpunten {
+                get {
+                    return ((decimal)(this[this.tableCommentaar.minpuntenColumn]));
+                }
+                set {
+                    this[this.tableCommentaar.minpuntenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int vraagid {
+                get {
+                    return ((int)(this[this.tableCommentaar.vraagidColumn]));
+                }
+                set {
+                    this[this.tableCommentaar.vraagidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string commentaarnaam {
+                get {
+                    return ((string)(this[this.tableCommentaar.commentaarnaamColumn]));
+                }
+                set {
+                    this[this.tableCommentaar.commentaarnaamColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VraagRow VraagRow {
+                get {
+                    return ((VraagRow)(this.GetParentRow(this.Table.ParentRelations["FK_Vraag"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Vraag"]);
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class TentamensRow : global::System.Data.DataRow {
             
             private TentamensDataTable tableTentamens;
@@ -1466,6 +1899,17 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TestrapportRow[] GetTestrapportRows() {
+                if ((this.Table.ChildRelations["FK_Tentamen"] == null)) {
+                    return new TestrapportRow[0];
+                }
+                else {
+                    return ((TestrapportRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Tentamen"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public VraagRow[] GetVraagRows() {
                 if ((this.Table.ChildRelations["FK_Tenamten"] == null)) {
                     return new VraagRow[0];
@@ -1503,12 +1947,12 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int vraagid {
+            public int vraagnummer {
                 get {
-                    return ((int)(this[this.tableTestrapport.vraagidColumn]));
+                    return ((int)(this[this.tableTestrapport.vraagnummerColumn]));
                 }
                 set {
-                    this[this.tableTestrapport.vraagidColumn] = value;
+                    this[this.tableTestrapport.vraagnummerColumn] = value;
                 }
             }
             
@@ -1585,12 +2029,23 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VraagRow VraagRow {
+            public int tentamenid {
                 get {
-                    return ((VraagRow)(this.GetParentRow(this.Table.ParentRelations["FK_Vraag"])));
+                    return ((int)(this[this.tableTestrapport.tentamenidColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Vraag"]);
+                    this[this.tableTestrapport.tentamenidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TentamensRow TentamensRow {
+                get {
+                    return ((TentamensRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tentamen"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Tentamen"]);
                 }
             }
             
@@ -1656,34 +2111,12 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string testcode {
-                get {
-                    return ((string)(this[this.tableVraag.testcodeColumn]));
-                }
-                set {
-                    this[this.tableVraag.testcodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int vraagpunten {
                 get {
                     return ((int)(this[this.tableVraag.vraagpuntenColumn]));
                 }
                 set {
                     this[this.tableVraag.vraagpuntenColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string vraagcode {
-                get {
-                    return ((string)(this[this.tableVraag.vraagcodeColumn]));
-                }
-                set {
-                    this[this.tableVraag.vraagcodeColumn] = value;
                 }
             }
             
@@ -1700,12 +2133,46 @@ namespace NakijkTool {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TestrapportRow[] GetTestrapportRows() {
+            public CommentaarRow[] GetCommentaarRows() {
                 if ((this.Table.ChildRelations["FK_Vraag"] == null)) {
-                    return new TestrapportRow[0];
+                    return new CommentaarRow[0];
                 }
                 else {
-                    return ((TestrapportRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Vraag"])));
+                    return ((CommentaarRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Vraag"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class CommentaarRowChangeEvent : global::System.EventArgs {
+            
+            private CommentaarRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarRowChangeEvent(CommentaarRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CommentaarRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
                 }
             }
         }
@@ -1815,6 +2282,358 @@ namespace NakijkTool {
 }
 namespace NakijkTool.Database_NakijktoolDataSetTableAdapters {
     
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class CommentaarTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public CommentaarTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Commentaar";
+            tableMapping.ColumnMappings.Add("commentaarid", "commentaarid");
+            tableMapping.ColumnMappings.Add("commentaar", "commentaar");
+            tableMapping.ColumnMappings.Add("minpunten", "minpunten");
+            tableMapping.ColumnMappings.Add("vraagid", "vraagid");
+            tableMapping.ColumnMappings.Add("commentaarnaam", "commentaarnaam");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Commentaar] WHERE (([commentaarid] = @Original_commentaarid) A" +
+                "ND ([minpunten] = @Original_minpunten) AND ([vraagid] = @Original_vraagid) AND (" +
+                "[commentaarnaam] = @Original_commentaarnaam))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_commentaarid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_minpunten", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "minpunten", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_commentaarnaam", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarnaam", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Commentaar] ([commentaar], [minpunten], [vraagid], [commentaarnaam]) VALUES (@commentaar, @minpunten, @vraagid, @commentaarnaam);
+SELECT commentaarid, commentaar, minpunten, vraagid, commentaarnaam FROM Commentaar WHERE (commentaarid = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@minpunten", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "minpunten", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaarnaam", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarnaam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Commentaar] SET [commentaar] = @commentaar, [minpunten] = @minpunten, [vraagid] = @vraagid, [commentaarnaam] = @commentaarnaam WHERE (([commentaarid] = @Original_commentaarid) AND ([minpunten] = @Original_minpunten) AND ([vraagid] = @Original_vraagid) AND ([commentaarnaam] = @Original_commentaarnaam));
+SELECT commentaarid, commentaar, minpunten, vraagid, commentaarnaam FROM Commentaar WHERE (commentaarid = @commentaarid)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@minpunten", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "minpunten", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaarnaam", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarnaam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_commentaarid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_minpunten", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "minpunten", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_commentaarnaam", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarnaam", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaarid", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "commentaarid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::NakijkTool.Properties.Settings.Default.Database_NakijktoolConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT commentaarid, commentaar, minpunten, vraagid, commentaarnaam FROM dbo.Comm" +
+                "entaar";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Database_NakijktoolDataSet.CommentaarDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Database_NakijktoolDataSet.CommentaarDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Database_NakijktoolDataSet.CommentaarDataTable dataTable = new Database_NakijktoolDataSet.CommentaarDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Database_NakijktoolDataSet.CommentaarDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Database_NakijktoolDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Commentaar");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_commentaarid, decimal Original_minpunten, int Original_vraagid, string Original_commentaarnaam) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_commentaarid));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_minpunten));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_vraagid));
+            if ((Original_commentaarnaam == null)) {
+                throw new global::System.ArgumentNullException("Original_commentaarnaam");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_commentaarnaam));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string commentaar, decimal minpunten, int vraagid, string commentaarnaam) {
+            if ((commentaar == null)) {
+                throw new global::System.ArgumentNullException("commentaar");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(commentaar));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(minpunten));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(vraagid));
+            if ((commentaarnaam == null)) {
+                throw new global::System.ArgumentNullException("commentaarnaam");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(commentaarnaam));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string commentaar, decimal minpunten, int vraagid, string commentaarnaam, int Original_commentaarid, decimal Original_minpunten, int Original_vraagid, string Original_commentaarnaam, int commentaarid) {
+            if ((commentaar == null)) {
+                throw new global::System.ArgumentNullException("commentaar");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(commentaar));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(minpunten));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(vraagid));
+            if ((commentaarnaam == null)) {
+                throw new global::System.ArgumentNullException("commentaarnaam");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(commentaarnaam));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_commentaarid));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Original_minpunten));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_vraagid));
+            if ((Original_commentaarnaam == null)) {
+                throw new global::System.ArgumentNullException("Original_commentaarnaam");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_commentaarnaam));
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(commentaarid));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string commentaar, decimal minpunten, int vraagid, string commentaarnaam, int Original_commentaarid, decimal Original_minpunten, int Original_vraagid, string Original_commentaarnaam) {
+            return this.Update(commentaar, minpunten, vraagid, commentaarnaam, Original_commentaarid, Original_minpunten, Original_vraagid, Original_commentaarnaam, Original_commentaarid);
+        }
+    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -2285,55 +3104,57 @@ SELECT tentamenid, datum, aantal_vragen, aantal_punten, tentamen_naam FROM Tenta
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Testrapport";
             tableMapping.ColumnMappings.Add("rapportid", "rapportid");
-            tableMapping.ColumnMappings.Add("vraagid", "vraagid");
+            tableMapping.ColumnMappings.Add("vraagnummer", "vraagnummer");
             tableMapping.ColumnMappings.Add("studentnummer", "studentnummer");
             tableMapping.ColumnMappings.Add("student_naam", "student_naam");
             tableMapping.ColumnMappings.Add("errors", "errors");
             tableMapping.ColumnMappings.Add("studentpunten", "studentpunten");
             tableMapping.ColumnMappings.Add("commentaar", "commentaar");
             tableMapping.ColumnMappings.Add("studentcode", "studentcode");
+            tableMapping.ColumnMappings.Add("tentamenid", "tentamenid");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Testrapport] WHERE (([rapportid] = @Original_rapportid) AND ([" +
-                "vraagid] = @Original_vraagid) AND ([studentnummer] = @Original_studentnummer) AN" +
-                "D ([student_naam] = @Original_student_naam) AND ([studentpunten] = @Original_stu" +
-                "dentpunten))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Testrapport] WHERE (([rapportid] = @Original_rapportid) AND ([vraagnummer] = @Original_vraagnummer) AND ([studentnummer] = @Original_studentnummer) AND ([student_naam] = @Original_student_naam) AND ([studentpunten] = @Original_studentpunten) AND ([tentamenid] = @Original_tentamenid))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rapportid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rapportid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_studentnummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentnummer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_student_naam", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "student_naam", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_studentpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentpunten", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Testrapport] ([vraagid], [studentnummer], [student_naam], [errors], [studentpunten], [commentaar], [studentcode]) VALUES (@vraagid, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode);
-SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, commentaar, studentcode FROM Testrapport WHERE (rapportid = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Testrapport] ([vraagnummer], [studentnummer], [student_naam], [errors], [studentpunten], [commentaar], [studentcode], [tentamenid]) VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode, @tentamenid);
+SELECT rapportid, vraagnummer, studentnummer, student_naam, errors, studentpunten, commentaar, studentcode, tentamenid FROM Testrapport WHERE (rapportid = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentnummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentnummer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@student_naam", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "student_naam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@errors", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "errors", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentpunten", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentcode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Testrapport] SET [vraagid] = @vraagid, [studentnummer] = @studentnummer, [student_naam] = @student_naam, [errors] = @errors, [studentpunten] = @studentpunten, [commentaar] = @commentaar, [studentcode] = @studentcode WHERE (([rapportid] = @Original_rapportid) AND ([vraagid] = @Original_vraagid) AND ([studentnummer] = @Original_studentnummer) AND ([student_naam] = @Original_student_naam) AND ([studentpunten] = @Original_studentpunten));
-SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, commentaar, studentcode FROM Testrapport WHERE (rapportid = @rapportid)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Testrapport] SET [vraagnummer] = @vraagnummer, [studentnummer] = @studentnummer, [student_naam] = @student_naam, [errors] = @errors, [studentpunten] = @studentpunten, [commentaar] = @commentaar, [studentcode] = @studentcode, [tentamenid] = @tentamenid WHERE (([rapportid] = @Original_rapportid) AND ([vraagnummer] = @Original_vraagnummer) AND ([studentnummer] = @Original_studentnummer) AND ([student_naam] = @Original_student_naam) AND ([studentpunten] = @Original_studentpunten) AND ([tentamenid] = @Original_tentamenid));
+SELECT rapportid, vraagnummer, studentnummer, student_naam, errors, studentpunten, commentaar, studentcode, tentamenid FROM Testrapport WHERE (rapportid = @rapportid)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentnummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentnummer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@student_naam", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "student_naam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@errors", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "errors", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentpunten", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@commentaar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "commentaar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentcode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rapportid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rapportid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_studentnummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentnummer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_student_naam", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "student_naam", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_studentpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "studentpunten", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rapportid", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "rapportid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2350,8 +3171,8 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, co" +
-                "mmentaar, studentcode FROM dbo.Testrapport";
+            this._commandCollection[0].CommandText = "SELECT rapportid, vraagnummer, studentnummer, student_naam, errors, studentpunten" +
+                ", commentaar, studentcode, tentamenid FROM dbo.Testrapport";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2412,9 +3233,9 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_rapportid, int Original_vraagid, string Original_studentnummer, string Original_student_naam, int Original_studentpunten) {
+        public virtual int Delete(int Original_rapportid, int Original_vraagnummer, string Original_studentnummer, string Original_student_naam, int Original_studentpunten, int Original_tentamenid) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_rapportid));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_vraagid));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_vraagnummer));
             if ((Original_studentnummer == null)) {
                 throw new global::System.ArgumentNullException("Original_studentnummer");
             }
@@ -2428,6 +3249,7 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_student_naam));
             }
             this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_studentpunten));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_tentamenid));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2448,8 +3270,8 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int vraagid, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(vraagid));
+        public virtual int Insert(int vraagnummer, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode, int tentamenid) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(vraagnummer));
             if ((studentnummer == null)) {
                 throw new global::System.ArgumentNullException("studentnummer");
             }
@@ -2481,6 +3303,7 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(studentcode));
             }
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(tentamenid));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2501,8 +3324,8 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int vraagid, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode, int Original_rapportid, int Original_vraagid, string Original_studentnummer, string Original_student_naam, int Original_studentpunten, int rapportid) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(vraagid));
+        public virtual int Update(int vraagnummer, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode, int tentamenid, int Original_rapportid, int Original_vraagnummer, string Original_studentnummer, string Original_student_naam, int Original_studentpunten, int Original_tentamenid, int rapportid) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(vraagnummer));
             if ((studentnummer == null)) {
                 throw new global::System.ArgumentNullException("studentnummer");
             }
@@ -2534,22 +3357,24 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(studentcode));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_rapportid));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_vraagid));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(tentamenid));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_rapportid));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_vraagnummer));
             if ((Original_studentnummer == null)) {
                 throw new global::System.ArgumentNullException("Original_studentnummer");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_studentnummer));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_studentnummer));
             }
             if ((Original_student_naam == null)) {
                 throw new global::System.ArgumentNullException("Original_student_naam");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_student_naam));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_student_naam));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_studentpunten));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(rapportid));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_studentpunten));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_tentamenid));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(rapportid));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2570,8 +3395,8 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int vraagid, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode, int Original_rapportid, int Original_vraagid, string Original_studentnummer, string Original_student_naam, int Original_studentpunten) {
-            return this.Update(vraagid, studentnummer, student_naam, errors, studentpunten, commentaar, studentcode, Original_rapportid, Original_vraagid, Original_studentnummer, Original_student_naam, Original_studentpunten, Original_rapportid);
+        public virtual int Update(int vraagnummer, string studentnummer, string student_naam, string errors, int studentpunten, string commentaar, string studentcode, int tentamenid, int Original_rapportid, int Original_vraagnummer, string Original_studentnummer, string Original_student_naam, int Original_studentpunten, int Original_tentamenid) {
+            return this.Update(vraagnummer, studentnummer, student_naam, errors, studentpunten, commentaar, studentcode, tentamenid, Original_rapportid, Original_vraagnummer, Original_studentnummer, Original_student_naam, Original_studentpunten, Original_tentamenid, Original_rapportid);
         }
     }
     
@@ -2699,9 +3524,7 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
             tableMapping.ColumnMappings.Add("vraagid", "vraagid");
             tableMapping.ColumnMappings.Add("tentamenid", "tentamenid");
             tableMapping.ColumnMappings.Add("vraagnummer", "vraagnummer");
-            tableMapping.ColumnMappings.Add("testcode", "testcode");
             tableMapping.ColumnMappings.Add("vraagpunten", "vraagpunten");
-            tableMapping.ColumnMappings.Add("vraagcode", "vraagcode");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2715,24 +3538,21 @@ SELECT rapportid, vraagid, studentnummer, student_naam, errors, studentpunten, c
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagpunten", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Vraag] ([tentamenid], [vraagnummer], [testcode], [vraagpunten], [vraagcode]) VALUES (@tentamenid, @vraagnummer, @testcode, @vraagpunten, @vraagcode);
-SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM Vraag WHERE (vraagid = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Vraag] ([tentamenid], [vraagnummer], [vraagpunten]) VALUES (@t" +
+                "entamenid, @vraagnummer, @vraagpunten);\r\nSELECT vraagid, tentamenid, vraagnummer" +
+                ", vraagpunten FROM Vraag WHERE (vraagid = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@testcode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "testcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagpunten", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagcode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Vraag] SET [tentamenid] = @tentamenid, [vraagnummer] = @vraagnummer, [testcode] = @testcode, [vraagpunten] = @vraagpunten, [vraagcode] = @vraagcode WHERE (([vraagid] = @Original_vraagid) AND ([tentamenid] = @Original_tentamenid) AND ([vraagnummer] = @Original_vraagnummer) AND ([vraagpunten] = @Original_vraagpunten));
-SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM Vraag WHERE (vraagid = @vraagid)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Vraag] SET [tentamenid] = @tentamenid, [vraagnummer] = @vraagnummer, [vraagpunten] = @vraagpunten WHERE (([vraagid] = @Original_vraagid) AND ([tentamenid] = @Original_tentamenid) AND ([vraagnummer] = @Original_vraagnummer) AND ([vraagpunten] = @Original_vraagpunten));
+SELECT vraagid, tentamenid, vraagnummer, vraagpunten FROM Vraag WHERE (vraagid = @vraagid)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@testcode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "testcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagpunten", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagpunten", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vraagcode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tentamenid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tentamenid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vraagnummer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vraagnummer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2753,8 +3573,7 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM db" +
-                "o.Vraag";
+            this._commandCollection[0].CommandText = "SELECT vraagid, tentamenid, vraagnummer, vraagpunten FROM dbo.Vraag";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2840,22 +3659,10 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int tentamenid, int vraagnummer, string testcode, int vraagpunten, string vraagcode) {
+        public virtual int Insert(int tentamenid, int vraagnummer, int vraagpunten) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(tentamenid));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(vraagnummer));
-            if ((testcode == null)) {
-                throw new global::System.ArgumentNullException("testcode");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(testcode));
-            }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(vraagpunten));
-            if ((vraagcode == null)) {
-                throw new global::System.ArgumentNullException("vraagcode");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(vraagcode));
-            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(vraagpunten));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2876,27 +3683,15 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int tentamenid, int vraagnummer, string testcode, int vraagpunten, string vraagcode, int Original_vraagid, int Original_tentamenid, int Original_vraagnummer, int Original_vraagpunten, int vraagid) {
+        public virtual int Update(int tentamenid, int vraagnummer, int vraagpunten, int Original_vraagid, int Original_tentamenid, int Original_vraagnummer, int Original_vraagpunten, int vraagid) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(tentamenid));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(vraagnummer));
-            if ((testcode == null)) {
-                throw new global::System.ArgumentNullException("testcode");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(testcode));
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(vraagpunten));
-            if ((vraagcode == null)) {
-                throw new global::System.ArgumentNullException("vraagcode");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(vraagcode));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_vraagid));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_tentamenid));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_vraagnummer));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_vraagpunten));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(vraagid));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(vraagpunten));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_vraagid));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_tentamenid));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_vraagnummer));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_vraagpunten));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(vraagid));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2917,8 +3712,8 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int tentamenid, int vraagnummer, string testcode, int vraagpunten, string vraagcode, int Original_vraagid, int Original_tentamenid, int Original_vraagnummer, int Original_vraagpunten) {
-            return this.Update(tentamenid, vraagnummer, testcode, vraagpunten, vraagcode, Original_vraagid, Original_tentamenid, Original_vraagnummer, Original_vraagpunten, Original_vraagid);
+        public virtual int Update(int tentamenid, int vraagnummer, int vraagpunten, int Original_vraagid, int Original_tentamenid, int Original_vraagnummer, int Original_vraagpunten) {
+            return this.Update(tentamenid, vraagnummer, vraagpunten, Original_vraagid, Original_tentamenid, Original_vraagnummer, Original_vraagpunten, Original_vraagid);
         }
     }
     
@@ -2933,6 +3728,8 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
     public partial class TableAdapterManager : global::System.ComponentModel.Component {
         
         private UpdateOrderOption _updateOrder;
+        
+        private CommentaarTableAdapter _commentaarTableAdapter;
         
         private TentamensTableAdapter _tentamensTableAdapter;
         
@@ -2952,6 +3749,20 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
             }
             set {
                 this._updateOrder = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public CommentaarTableAdapter CommentaarTableAdapter {
+            get {
+                return this._commentaarTableAdapter;
+            }
+            set {
+                this._commentaarTableAdapter = value;
             }
         }
         
@@ -3016,6 +3827,10 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._commentaarTableAdapter != null) 
+                            && (this._commentaarTableAdapter.Connection != null))) {
+                    return this._commentaarTableAdapter.Connection;
+                }
                 if (((this._tentamensTableAdapter != null) 
                             && (this._tentamensTableAdapter.Connection != null))) {
                     return this._tentamensTableAdapter.Connection;
@@ -3041,6 +3856,9 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._commentaarTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._tentamensTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -3079,6 +3897,15 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._commentaarTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Commentaar.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._commentaarTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._testrapportTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Testrapport.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -3114,6 +3941,14 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._commentaarTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Commentaar.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._commentaarTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._testrapportTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Testrapport.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -3137,6 +3972,14 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._testrapportTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._commentaarTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Commentaar.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._commentaarTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3195,6 +4038,11 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
+            if (((this._commentaarTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._commentaarTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             if (((this._tentamensTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._tentamensTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -3242,6 +4090,15 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._commentaarTableAdapter != null)) {
+                    revertConnections.Add(this._commentaarTableAdapter, this._commentaarTableAdapter.Connection);
+                    this._commentaarTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._commentaarTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._commentaarTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._commentaarTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._commentaarTableAdapter.Adapter);
+                    }
+                }
                 if ((this._tentamensTableAdapter != null)) {
                     revertConnections.Add(this._tentamensTableAdapter, this._tentamensTableAdapter.Connection);
                     this._tentamensTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -3326,6 +4183,10 @@ SELECT vraagid, tentamenid, vraagnummer, testcode, vraagpunten, vraagcode FROM V
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
+                }
+                if ((this._commentaarTableAdapter != null)) {
+                    this._commentaarTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._commentaarTableAdapter]));
+                    this._commentaarTableAdapter.Transaction = null;
                 }
                 if ((this._tentamensTableAdapter != null)) {
                     this._tentamensTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tentamensTableAdapter]));
