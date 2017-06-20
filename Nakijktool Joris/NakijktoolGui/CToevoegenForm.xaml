@@ -13,7 +13,7 @@
         <Button x:Name="AnnuleerButton" Content="Annuleren." HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="272" Click="AnnuleerButton_Click"/>
         <Label Content="Punten aftrek:" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="PuntenAftrekBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26" Margin="94,183,137,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="VraagidBox" HorizontalAlignment="Left" Height="23" Margin="172,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54"/>
+        <TextBox x:Name="VraagidBox" HorizontalAlignment="Left" Height="23" Margin="172,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Visibility="Hidden"/>
 
     </Grid>
 </Window>

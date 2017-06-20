@@ -36,11 +36,14 @@ namespace NakijktoolGui
         public Nakijkform()
         {
             InitializeComponent();
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(q); }));
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(q); CheckedListBox(Convert.ToInt32(VraagIdBox.Text)); }));
         }
 
         public void CheckedListBox(int vraagid)
         {
+            List<BoolStringClass> leeg = new List<BoolStringClass>() { };
+            ListCheckBox.ItemsSource = leeg;
+
             TheList = new ObservableCollection<BoolStringClass>();
 
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
@@ -59,7 +62,7 @@ namespace NakijktoolGui
                 TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
             }
 
-            DataContext = this;
+            ListCheckBox.ItemsSource = TheList;
         }
 
         private void data(int vraagnummer)
@@ -85,13 +88,11 @@ namespace NakijktoolGui
                     InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
                 }
             }
-
-            CheckedListBox(Convert.ToInt32(rapporten.Tables[0].Rows[v]["vraagid"].ToString()));
         }
 
         private void Commentaar_Click(object sender, RoutedEventArgs e)
         {
-            CToevoegenForm ctv = new CToevoegenForm();
+            CToevoegenForm ctv = new CToevoegenForm(this);
             ctv.VraagidBox.Text = rapporten.Tables[0].Rows[v]["vraagid"].ToString();
             ctv.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             ctv.Show();
@@ -104,6 +105,7 @@ namespace NakijktoolGui
             {
                 v = 0;
                 data(q);
+                CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
             else q++;
         }
@@ -115,6 +117,7 @@ namespace NakijktoolGui
             {
                 v = 0;
                 data(q);
+                CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
             else q--;
         }
@@ -133,6 +136,7 @@ namespace NakijktoolGui
             if (v >= 0)
             {
                 data(q);
+                CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
             else v++;
         }
@@ -143,6 +147,7 @@ namespace NakijktoolGui
             if (v <= rapporten.Tables[0].Rows.Count - 1)
             {
                 data(q);
+                CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
             else v--;
         }

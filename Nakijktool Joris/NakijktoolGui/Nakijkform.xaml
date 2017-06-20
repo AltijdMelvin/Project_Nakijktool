@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NakijktoolGui"
         mc:Ignorable="d"
         Title="Nakijkform" Height="478.5" Width="757">
-    <Grid>
+    <Grid x:Name="Canvas">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="319*"/>
             <ColumnDefinition Width="221*"/>
@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="StopButton"  Click="StopButton_Click" Content="Nakijken stoppen en opslaan." HorizontalAlignment="Left" Margin="26,23,0,0" VerticalAlignment="Top" Width="177"/>
         <GroupBox HorizontalAlignment="Left" Height="380" Margin="26,57,0,0" VerticalAlignment="Top" Width="697" Grid.ColumnSpan="3">
-            <Grid HorizontalAlignment="Left" Height="361" VerticalAlignment="Top" Width="687" Margin="0,0,-2,-3">
+            <Grid x:Name="NakijkGrid" HorizontalAlignment="Left" Height="361" VerticalAlignment="Top" Width="687" Margin="0,0,-2,-3">
                 <Label x:Name="InfoLabel" HorizontalContentAlignment="Center" Content="" Margin="10,0,522,0" VerticalAlignment="Top" Height="28" Width="155"/>
                 <TextBox x:Name="CommentaarTextBox" HorizontalAlignment="Left" Height="97" Margin="10,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
                 <Button x:Name="VorigeStudent" Content="Vorige" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="75" Click="Vorige_Tentamen_Click"/>
@@ -22,7 +22,7 @@
                 <TextBox x:Name="StudentCodeBox" HorizontalAlignment="Left" IsReadOnly="True" Height="241" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="487"/>
                 <TextBox x:Name="FoutmeldingBox" HorizontalAlignment="Left" IsReadOnly="True" Height="62" Margin="190,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="487"/>
                 <Label Content="Foutmeldingen&#xD;&#xA;" HorizontalAlignment="Left" Margin="190,254,0,0" VerticalAlignment="Top"/>
-                <ListBox ItemsSource="{Binding TheList}" Margin="10,33,522,193">
+                <ListBox x:Name="ListCheckBox" ItemsSource="{Binding TheList}" Margin="10,33,522,193">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding TheText}"/>

@@ -7,6 +7,7 @@ using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -14,7 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using NakijktoolGui;
 
 namespace NakijktoolGui
 {
@@ -25,9 +25,11 @@ namespace NakijktoolGui
     {
         private static string connectionstring;
         static SqlConnection connection;
+        private Nakijkform mainForm = null;
 
-        public CToevoegenForm()
+        public CToevoegenForm(Window callingForm)
         {
+            mainForm = callingForm as Nakijkform;
             InitializeComponent();
         }
 
@@ -48,14 +50,14 @@ namespace NakijktoolGui
                 command.ExecuteScalar();
 
             }
+            this.mainForm.CheckedListBox(Convert.ToInt32(VraagidBox.Text));
 
-            this.Hide();
-
+            this.Close();
         }
 
         private void AnnuleerButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }
