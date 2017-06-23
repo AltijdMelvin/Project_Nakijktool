@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace NakijkTool
 {
@@ -114,16 +115,6 @@ namespace NakijkTool
 
     public class Program
     {
-<<<<<<< HEAD
-        int? questionNumber = 2;
-
-        public int? QuestionNumber
-        {
-            get { return this.questionNumber; }
-            set { this.questionNumber = value; }
-        }
-        
-=======
         static int? questionNumber = 2;
         public static int? QuestionNumber
         {
@@ -133,7 +124,6 @@ namespace NakijkTool
 
         private static string connectionstring;
         static SqlConnection connection;
->>>>>>> Database
 
         const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
 
@@ -149,12 +139,6 @@ namespace NakijkTool
         private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
-<<<<<<< HEAD
-        private const string directoryExamResults = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\prg3Anoniem";
-        private const string TestsFileSrc = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\TentamenPrg3-1-2016-2017-AntwoordModel.txt";
-        
-=======
->>>>>>> Database
         MetadataReference[] references = new MetadataReference[]
         {
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
@@ -181,33 +165,6 @@ namespace NakijkTool
 
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            List<TestRapport> repports = new List<TestRapport>(); //maakt een lijst van testrapporten
-
-            //haalt alle tentamens uit de ingevuld maplocatie (eindigend op .cs)
-            var files = Directory.GetFiles(
-                directoryExamResults,
-                searchPattern: "*.cs");
-
-            Program p = new Program(TestsFileSrc);
-
-            //maakt van alle .cs files testrapporten
-            foreach (var stundentCsFilePath in files/*.Skip(16).Take(5)*/)
-            {
-                Console.WriteLine($"Processing {stundentCsFilePath}");
-                TestRapport testRapport = p.GetTestRapport(stundentCsFilePath);
-                repports.Add(testRapport);
-            }
-            //ExcelWriter.CreateTestRapport(repports);
-        }
-
-        public void FileWriterReport(string[] files, List<TestRapport> repports, int questionNr)
-        {
-            string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
-            string vraag = @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\Vraag" + Convert.ToString(questionNr) + ".txt";
-            using (StreamWriter writer = File.CreateText(vraag))
-            {
-=======
 
         }
 
@@ -259,7 +216,6 @@ namespace NakijkTool
 
                 string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
 
->>>>>>> Database
                 var reportsByName = new Dictionary<string, TestRapport>();
                 foreach (var rep in repports)
                 {
@@ -267,20 +223,13 @@ namespace NakijkTool
                         reportsByName.Add(rep.StudentInfo.UserName, rep);
                 }
 
-<<<<<<< HEAD
-
-                foreach (string username in usernames)
-=======
                 foreach (string username in usernames) //database vullen
->>>>>>> Database
                 {
                     if (reportsByName.ContainsKey(username))
                     {
                         var testRapport = reportsByName[username];
-<<<<<<< HEAD
-=======
+
                         var testError = string.Empty;
->>>>>>> Database
 
                         var errors = testRapport.RapportQuestions
                             .SelectMany(x => x.RapportTestCases)
@@ -299,55 +248,15 @@ namespace NakijkTool
                         }
 
                         string errorMsg = errorBuilder.ToString(0, errorBuilder.Length > 100 ? 100 : errorBuilder.Length);
-<<<<<<< HEAD
-                        //IEnumerable<IEnumerable<string>> r = reportsByName[username].RapportQuestions.Select(x => x.RapportTestCases.Select(w => w.Error)).ToList();
-
-                        writer.WriteLine($"{testRapport.StudentInfo.UserName} \t ---Begin---------------------");
-=======
->>>>>>> Database
 
                         if (testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result ==
                             CompilerUtil.CompileAndExecuteInfo.eStatus.CompileError)
                         {
-<<<<<<< HEAD
-                            writer.WriteLine("Compiler Errors:");
-                            writer.WriteLine(string.Join("\n",
-                                testRapport.RapportQuestions[0].CompileAndExecuteInfo.CompilerDiagnostics.Select(x => x.ToString())));
-                            writer.WriteLine("##################");
-                            writer.WriteLine();
-=======
                             testError = testError + string.Join("\n", testRapport.RapportQuestions[0].CompileAndExecuteInfo.CompilerDiagnostics.Select(x => x.ToString()));
->>>>>>> Database
                         }
 
                         if (testRapport.RapportQuestions[0].Exception != null)
                         {
-<<<<<<< HEAD
-                            writer.WriteLine("Runtime Errors:");
-                            writer.WriteLine(testRapport.RapportQuestions[0].Exception.Message);
-                            writer.WriteLine("-#-#-#-#-#-#-#-#");
-                            writer.WriteLine();
-                        }
-
-
-                        writer.WriteLine(
-                            $"{username},{testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result},{errorMsg}");
-
-                        if (testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result ==
-                            CompilerUtil.CompileAndExecuteInfo.eStatus.ExceptionDuringExecution)
-                        {
-                            writer.WriteLine($"Runtime exception: {testRapport.RapportQuestions[0].CompileAndExecuteInfo.Message}");
-                        }
-
-                        writer.WriteLine(testRapport.RapportQuestions[0].StudentSourceCode);
-
-                        writer.WriteLine($"{testRapport} \t ---End---------------------");
-                        writer.WriteLine();
-                    }
-                    else
-                    {
-                        writer.WriteLine(username);
-=======
                             testError = testError + testRapport.RapportQuestions[0].Exception.Message;
                         }
 
@@ -376,7 +285,6 @@ namespace NakijkTool
 
                             command.ExecuteScalar();
                         }
->>>>>>> Database
                     }
                 }
             }

@@ -154,8 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerUtil.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Database_NakijktoolDataSet.cs">
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
     </Compile>
@@ -164,7 +162,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
     </Compile>
->>>>>>> Database
     <Compile Include="ExcelWriter.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
@@ -173,9 +170,6 @@
     <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <None Include="App.config" />
-=======
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -190,7 +184,6 @@
     <None Include="Database_NakijktoolDataSet.xss">
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
     </None>
->>>>>>> Database
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -184,9 +184,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
-    <Page Include="MainWindow.xaml">
-=======
     <Compile Include="CToevoegenForm.xaml.cs">
       <DependentUpon>CToevoegenForm.xaml</DependentUpon>
     </Compile>
@@ -205,7 +202,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainForm.xaml">
->>>>>>> Database
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
