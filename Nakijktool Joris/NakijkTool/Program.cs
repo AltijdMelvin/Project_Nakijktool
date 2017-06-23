@@ -187,8 +187,8 @@ namespace NakijkTool
                 command.Parameters.AddWithValue("@aantal_vragen", nrOfq);
                 command.Parameters.AddWithValue("@aantal_punten", 100);
                 command.Parameters.AddWithValue("@tentamen_naam", tentamennaam);
-                tentamenid = Convert.ToInt32(command.ExecuteScalar());
 
+                tentamenid = Convert.ToInt32(command.ExecuteScalar());
             }
 
             for (int i = 2; i <= nrOfq; i++)
@@ -214,7 +214,6 @@ namespace NakijkTool
                     command.Parameters.AddWithValue("@vraagpunten", 15);
 
                     vraagid = Convert.ToInt32(command.ExecuteScalar());
-
                 }
 
                 string[] usernames = files.Select(f => GetUsernNameFromFile(f, examPrefixNameBeforeUserName)).ToArray();
@@ -268,7 +267,7 @@ namespace NakijkTool
                             testError = testError + testRapport.RapportQuestions[0].CompileAndExecuteInfo.Message;
                         }
 
-                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaar, @studentcode, @tentamenid, @vraagid)";
+                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaartext, @studentcode, @tentamenid, @vraagid, @commentaar)";
                         using (connection = new SqlConnection(connectionstring))
                         using (SqlCommand command = new SqlCommand(querytestrapport, connection))
                         {
@@ -277,12 +276,13 @@ namespace NakijkTool
                             command.Parameters.AddWithValue("@vraagnummer", QuestionNumber);
                             command.Parameters.AddWithValue("@studentnummer", testRapport.StudentInfo.StudentNr);
                             command.Parameters.AddWithValue("@student_naam", testRapport.StudentInfo.LastName + ", " + testRapport.StudentInfo.FirstName);
-                            command.Parameters.AddWithValue("@errors", testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result + ",\n" + testError);
-                            command.Parameters.AddWithValue("@studentpunten", 10);
-                            command.Parameters.AddWithValue("@commentaar", "Dit is commentaar.");
+                            command.Parameters.AddWithValue("@errors", testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result + ", \n" + testError);
+                            command.Parameters.AddWithValue("@studentpunten", 0);
+                            command.Parameters.AddWithValue("@commentaartext", "");
                             command.Parameters.AddWithValue("@studentcode", testRapport.RapportQuestions[0].StudentSourceCode);
                             command.Parameters.AddWithValue("@tentamenid", tentamenid);
                             command.Parameters.AddWithValue("@vraagid", vraagid);
+                            command.Parameters.AddWithValue("commentaar", string.Empty);
 
                             command.ExecuteScalar();
                         }

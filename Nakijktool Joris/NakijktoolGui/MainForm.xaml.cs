@@ -76,12 +76,6 @@ namespace NakijktoolGui
 
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
         {
-            //Nakijkform nakijk = new Nakijkform();
-            //directoryExamResults = TentamenBox.Text;
-            //nakijk.StudentCodeBox.Text = directoryExamResults;
-            //this.Hide();
-            //nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //nakijk.Show();
             GeschiedenisForm gform = new GeschiedenisForm();
             this.Hide();
             gform.WindowStartupLocation = WindowStartupLocation.CenterScreen;

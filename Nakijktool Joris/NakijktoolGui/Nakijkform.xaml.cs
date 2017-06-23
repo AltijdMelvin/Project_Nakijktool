@@ -27,6 +27,7 @@ namespace NakijktoolGui
         static int v = 0;
         static int q = 2;
         static int aantalvragen;
+        static int aantalpunten;
         private static string connectionstring;
         static SqlConnection connection;
         DataSet rapporten;
@@ -48,24 +49,34 @@ namespace NakijktoolGui
 
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
+            string tof;
+            string commentaarquery = "SELECT commentaar FROM Testrapport WHERE rapportid = " + RapportIdBox.Text;
             string query = "SELECT * FROM Commentaar WHERE vraagid = " + vraagid;
             using (connection = new SqlConnection(connectionstring))
             {
+                using (SqlCommand command = new SqlCommand(commentaarquery, connection))
+                {
+                    connection.Open();
+                    tof = command.ExecuteScalar().ToString();
+                }
                 using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
                 {
                     commentaar = new DataSet();
                     command.Fill(commentaar);
                 }
             }
+            tof = tof + "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+
             for (int i = 0; i < commentaar.Tables[0].Rows.Count; i++)
             {
-                TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
+                if (Convert.ToInt32(tof[i]) - 48 == 1) TheList.Add(new BoolStringClass { IsSelected = true, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
+                else TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
             }
 
             ListCheckBox.ItemsSource = TheList;
         }
 
-        private void data(int vraagnummer)
+        public void data(int vraagnummer)
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
             int vraag = v + 1;
@@ -85,8 +96,46 @@ namespace NakijktoolGui
                     StudentCodeBox.Text = rapporten.Tables[0].Rows[v]["studentcode"].ToString();
                     FoutmeldingBox.Text = rapporten.Tables[0].Rows[v]["errors"].ToString();
                     VraagIdBox.Text = rapporten.Tables[0].Rows[v]["vraagid"].ToString();
+                    PuntenLabel.Content = rapporten.Tables[0].Rows[v]["studentpunten"].ToString();
+                    CommentaarTextBox.Text = rapporten.Tables[0].Rows[v]["commentaartext"].ToString();
+                    RapportIdBox.Text = rapporten.Tables[0].Rows[v]["rapportid"].ToString();
                     InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
                 }
+            }
+
+            PuntenData();
+        }
+
+        private void PuntenData()
+        {
+            string puntenquery = "SELECT vraagpunten FROM Vraag WHERE vraagid = " + VraagIdBox.Text;
+            using (connection = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand command = new SqlCommand(puntenquery, connection))
+                {
+                    connection.Open();
+                    aantalpunten = Convert.ToInt32(command.ExecuteScalar());
+                    PuntenLabel.Content = PuntenLabel.Content + " van de " + aantalpunten + " punten.";
+                }
+            }
+        }
+
+        public void DataOpslaan()
+        {
+            string binairtf = string.Empty;
+
+            foreach (BoolStringClass item in TheList)
+            {
+                if (item.IsSelected == true) binairtf += 1;
+                else binairtf += 0;
+            }
+
+            string queryvraag = "UPDATE Testrapport SET commentaartext = '" + CommentaarTextBox.Text + "', commentaar = '" + binairtf + "' WHERE rapportid = " + RapportIdBox.Text;
+            using (connection = new SqlConnection(connectionstring))
+            using (SqlCommand command = new SqlCommand(queryvraag, connection))
+            {
+                connection.Open();
+                command.ExecuteScalar();
             }
         }
 
@@ -104,6 +153,7 @@ namespace NakijktoolGui
             if (q >= 2)
             {
                 v = 0;
+                DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
@@ -116,6 +166,7 @@ namespace NakijktoolGui
             if (q <= aantalvragen)
             {
                 v = 0;
+                DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
@@ -135,6 +186,7 @@ namespace NakijktoolGui
             v--;
             if (v >= 0)
             {
+                DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
@@ -146,11 +198,14 @@ namespace NakijktoolGui
             v++;
             if (v <= rapporten.Tables[0].Rows.Count - 1)
             {
+                DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             }
             else v--;
         }
+
+
     }
 }
 

@@ -16,7 +16,7 @@
         <GroupBox HorizontalAlignment="Left" Height="380" Margin="26,57,0,0" VerticalAlignment="Top" Width="697" Grid.ColumnSpan="3">
             <Grid x:Name="NakijkGrid" HorizontalAlignment="Left" Height="361" VerticalAlignment="Top" Width="687" Margin="0,0,-2,-3">
                 <Label x:Name="InfoLabel" HorizontalContentAlignment="Center" Content="" Margin="10,0,522,0" VerticalAlignment="Top" Height="28" Width="155"/>
-                <TextBox x:Name="CommentaarTextBox" HorizontalAlignment="Left" Height="97" Margin="10,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
+                <TextBox x:Name="CommentaarTextBox" HorizontalAlignment="Left" Height="102" Margin="10,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
                 <Button x:Name="VorigeStudent" Content="Vorige" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="75" Click="Vorige_Tentamen_Click"/>
                 <Button x:Name="VolgendeStudent" Content="Volgende" HorizontalAlignment="Left" Margin="90,331,0,0" VerticalAlignment="Top" Width="75" Click="Volgende_Tentamen_Click"/>
                 <TextBox x:Name="StudentCodeBox" HorizontalAlignment="Left" IsReadOnly="True" Height="241" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="487"/>
@@ -29,14 +29,15 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Content="Commentaar toevoegen..." HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.4,0.15" Click="Commentaar_Click"/>
-                <Label x:Name="PuntenLabel" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="155"/>
+                <Button Content="Commentaar toevoegen..." HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.4,0.15" Click="Commentaar_Click"/>
+                <Label x:Name="PuntenLabel" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="155"/>
             </Grid>
         </GroupBox>
         <Button x:Name="VorigeVraag" Content="Vorige Opdracht" Grid.Column="1" HorizontalAlignment="Left" Margin="57,23,0,0" VerticalAlignment="Top" Width="133" Click="Vorige_Opdracht_Click"/>
         <Button x:Name="VolgendeVraag" Content="Volgende Opdracht" Grid.Column="2" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="133" Click="Volgende_Opdracht_Click"/>
         <TextBox x:Name="TentamenIdBox" HorizontalAlignment="Left" Height="22" Margin="232,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="27" Visibility="Hidden"/>
-        <TextBox x:Name="VraagIdBox" Height="23" Margin="264,22,29,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="5.962,12.913"/>
+        <TextBox x:Name="VraagIdBox" Height="23" Margin="264,22,29,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="5.962,12.913" Visibility="Hidden"/>
         <TextBox x:Name="AantalVragenBox" Margin="299,23,213,401" TextWrapping="Wrap" RenderTransformOrigin="0.64,1.131" Grid.ColumnSpan="2" Visibility="Hidden"/>
+        <TextBox x:Name="RapportIdBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
     </Grid>
 </Window>
