@@ -28,6 +28,7 @@ namespace NakijktoolGui
         static int q = 2;
         static int aantalvragen;
         static int aantalpunten;
+        static int studentpunten;
         private static string connectionstring;
         static SqlConnection connection;
         DataSet rapporten;
@@ -37,11 +38,12 @@ namespace NakijktoolGui
         public Nakijkform()
         {
             InitializeComponent();
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(q); CheckedListBox(Convert.ToInt32(VraagIdBox.Text)); }));
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { data(q); CheckedListBox(Convert.ToInt32(VraagIdBox.Text)); PuntenData(); }));
         }
 
         public void CheckedListBox(int vraagid)
         {
+            studentpunten = 0;
             List<BoolStringClass> leeg = new List<BoolStringClass>() { };
             ListCheckBox.ItemsSource = leeg;
 
@@ -64,15 +66,19 @@ namespace NakijktoolGui
                     commentaar = new DataSet();
                     command.Fill(commentaar);
                 }
-            }
-            tof = tof + "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+                tof = tof + "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
-            for (int i = 0; i < commentaar.Tables[0].Rows.Count; i++)
-            {
-                if (Convert.ToInt32(tof[i]) - 48 == 1) TheList.Add(new BoolStringClass { IsSelected = true, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
-                else TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
+                for (int i = 0; i < commentaar.Tables[0].Rows.Count; i++)
+                {
+                    if (Convert.ToInt32(tof[i]) - 48 == 1)
+                    {
+                        TheList.Add(new BoolStringClass { IsSelected = true, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
+                        studentpunten = studentpunten + Convert.ToInt32(commentaar.Tables[0].Rows[i]["pluspunten"].ToString());
+                    }
+                    else TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
+                }
             }
-
+            
             ListCheckBox.ItemsSource = TheList;
         }
 
@@ -102,8 +108,6 @@ namespace NakijktoolGui
                     InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
                 }
             }
-
-            PuntenData();
         }
 
         private void PuntenData()
@@ -115,7 +119,7 @@ namespace NakijktoolGui
                 {
                     connection.Open();
                     aantalpunten = Convert.ToInt32(command.ExecuteScalar());
-                    PuntenLabel.Content = PuntenLabel.Content + " van de " + aantalpunten + " punten.";
+                    PuntenLabel.Content = studentpunten + " van de " + aantalpunten + " punten.";
                 }
             }
         }
@@ -156,6 +160,7 @@ namespace NakijktoolGui
                 DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+                PuntenData();
             }
             else q++;
         }
@@ -169,6 +174,7 @@ namespace NakijktoolGui
                 DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+                PuntenData();
             }
             else q--;
         }
@@ -189,6 +195,7 @@ namespace NakijktoolGui
                 DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+                PuntenData();
             }
             else v++;
         }
@@ -201,6 +208,7 @@ namespace NakijktoolGui
                 DataOpslaan();
                 data(q);
                 CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+                PuntenData();
             }
             else v--;
         }
