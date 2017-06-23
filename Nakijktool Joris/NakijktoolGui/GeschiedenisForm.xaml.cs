@@ -37,7 +37,7 @@ namespace NakijktoolGui
 
         private void tentamensDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
@@ -57,5 +57,5 @@ namespace NakijktoolGui
             main.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             main.Show();
         }
-        }
+    }
 }
