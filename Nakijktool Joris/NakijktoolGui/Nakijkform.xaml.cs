@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using NakijkTool;
 
 namespace NakijktoolGui
 {
@@ -213,7 +214,10 @@ namespace NakijktoolGui
             else v--;
         }
 
-
+        private void excelButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExcelWriter.CreateTestRapportFromSQL(Convert.ToInt16(TentamenIdBox.Text));
+        }
     }
 }
 
