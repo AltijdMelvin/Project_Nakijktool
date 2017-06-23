@@ -1,0 +1,18 @@
+﻿<Window x:Class="NakijktoolGui.CToevoegenForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NakijktoolGui"
+        mc:Ignorable="d"
+        Title="CToevoegenForm" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="NaamBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Commentaarnaam..." VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="CommentaarBox"  HorizontalAlignment="Left" Height="140" Margin="10,38,0,0" TextWrapping="Wrap" Text="Commentaar..." VerticalAlignment="Top" Width="272"/>
+        <Button x:Name="ToevoegButton" Content="Commentaar toevoegen." HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="272" Click="ToevoegButton_Click"/>
+        <Button x:Name="AnnuleerButton" Content="Annuleren." HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="272" Click="AnnuleerButton_Click"/>
+        <Label Content="Pluspunten:" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PlusPuntenBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26" Margin="87,183,144,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="VraagidBox" HorizontalAlignment="Left" Height="23" Margin="172,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Visibility="Hidden"/>
+    </Grid>
+</Window>
