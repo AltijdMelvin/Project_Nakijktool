@@ -13,7 +13,7 @@
         <Button x:Name="AntwoordenModelButton" Content="..." HorizontalAlignment="Left" Margin="419,119,0,0" VerticalAlignment="Top" Width="87" Click="AntwoordenModelButton_Click" Height="23"/>
         <Button x:Name="TentamenButton" Content="..." HorizontalAlignment="Left" Margin="419,157,0,0" VerticalAlignment="Top" Width="87" Click="TentamenButton_Click_1" Height="23"/>
         <Button Content="Geschiedenis" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Width="118" Click="NakijkButton_Click" Height="23"/>
-        <TextBox x:Name="TentamenNaam" HorizontalAlignment="Left" Height="23" Margin="133,80,0,0" TextWrapping="Wrap" Text="Vul hier de tentamennaam in." VerticalAlignment="Top" Width="281" TextChanged="TextBox_TextChanged_2" AutoWordSelection="False" MaxLength="100" MaxLines="1"/>
+        <TextBox x:Name="TentamenNaam" HorizontalAlignment="Left" Height="23" Margin="133,80,0,0" TextWrapping="Wrap" Text="Vul hier de tentamennaam in." VerticalAlignment="Top" Width="281" AutoWordSelection="False" MaxLength="100" MaxLines="1"/>
         <DatePicker x:Name="TentamenDatum" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" SelectedDateFormat="Short" Width="118" Text="Selecteer datum"/>
         <TextBox x:Name="NrOfQuestionsBox" HorizontalAlignment="Left" Height="23" Margin="419,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" TextAlignment="Center"/>
         <Label Content="Aantal vragen" HorizontalAlignment="Left" Margin="343,194,0,0" VerticalAlignment="Top" Width="71" Height="23" FontSize="9" FontWeight="Bold"/>

@@ -36,7 +36,7 @@ namespace NakijkTool
             }
             catch (Exception ex)
             {
-                //Log exception here
+                Console.WriteLine(ex);
             }
         }
 
@@ -75,7 +75,7 @@ namespace NakijkTool
             }
             catch (Exception ex)
             {
-                //Log exception here
+                Console.WriteLine(ex);
             }
 
             return objectOut;

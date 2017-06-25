@@ -185,11 +185,13 @@ namespace NakijkTool
 
                 command.Parameters.AddWithValue("@datum", dag.Date);
                 command.Parameters.AddWithValue("@aantal_vragen", nrOfq);
-                command.Parameters.AddWithValue("@aantal_punten", 100);
+                command.Parameters.AddWithValue("@aantal_punten", 9.0);
                 command.Parameters.AddWithValue("@tentamen_naam", tentamennaam);
 
                 tentamenid = Convert.ToInt32(command.ExecuteScalar());
             }
+
+            List<decimal> punten = getPointsPerQuestion(TestsFileSrc);
 
             for (int i = 2; i <= nrOfq; i++)
             {
@@ -211,7 +213,7 @@ namespace NakijkTool
 
                     command.Parameters.AddWithValue("@tentamenid", tentamenid);
                     command.Parameters.AddWithValue("@vraagnummer", QuestionNumber);
-                    command.Parameters.AddWithValue("@vraagpunten", 15);
+                    command.Parameters.AddWithValue("@vraagpunten", punten[i-1]);
 
                     vraagid = Convert.ToInt32(command.ExecuteScalar());
                 }
@@ -277,7 +279,7 @@ namespace NakijkTool
                             command.Parameters.AddWithValue("@studentnummer", testRapport.StudentInfo.StudentNr);
                             command.Parameters.AddWithValue("@student_naam", testRapport.StudentInfo.LastName + ", " + testRapport.StudentInfo.FirstName);
                             command.Parameters.AddWithValue("@errors", testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result + ", \n" + testError);
-                            command.Parameters.AddWithValue("@studentpunten", 0);
+                            command.Parameters.AddWithValue("@studentpunten", 0.0);
                             command.Parameters.AddWithValue("@commentaartext", "");
                             command.Parameters.AddWithValue("@studentcode", testRapport.RapportQuestions[0].StudentSourceCode);
                             command.Parameters.AddWithValue("@tentamenid", tentamenid);
@@ -289,6 +291,22 @@ namespace NakijkTool
                     }
                 }
             }
+        }
+
+        public List<decimal> getPointsPerQuestion(string antwoordenSrc)
+        {
+            string[] antwoordenModelText = File.ReadAllLines(antwoordenSrc);
+            List<decimal> punten = new List<decimal>();
+            string temp = "";
+            foreach (string line in antwoordenModelText)
+            {
+                if (line.Contains("punten"))
+                {
+                    temp = line.Substring(line.IndexOf("punten") + 6);
+                    punten.Add(Convert.ToDecimal(temp.Trim()));
+                }
+            }
+            return punten;
         }
 
         public static string[] LoadTestMethodsCode(string testsFileSrcPath)
@@ -449,6 +467,7 @@ namespace NakijkTool
             catch (Exception ex)
             {
                 info.UserName = "NA";
+                Console.WriteLine(ex);
             }
 
             string[] lines = csSourceCode.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);

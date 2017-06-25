@@ -27,8 +27,8 @@ namespace NakijktoolGui
         static int v = 0;
         static int q = 2;
         static int aantalvragen;
-        static int aantalpunten;
-        static int studentpunten;
+        static decimal aantalpunten;
+        static decimal studentpunten;
         private static string connectionstring;
         static SqlConnection connection;
         DataSet rapporten;
@@ -43,7 +43,7 @@ namespace NakijktoolGui
 
         public void CheckedListBox(int vraagid)
         {
-            studentpunten = 0;
+            studentpunten = 0.0m;
             List<BoolStringClass> leeg = new List<BoolStringClass>() { };
             ListCheckBox.ItemsSource = leeg;
 
@@ -73,7 +73,7 @@ namespace NakijktoolGui
                     if (Convert.ToInt32(tof[i]) - 48 == 1)
                     {
                         TheList.Add(new BoolStringClass { IsSelected = true, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
-                        studentpunten = studentpunten + Convert.ToInt32(commentaar.Tables[0].Rows[i]["pluspunten"].ToString());
+                        studentpunten = studentpunten + Convert.ToDecimal(commentaar.Tables[0].Rows[i]["pluspunten"].ToString());
                     }
                     else TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
                 }
@@ -118,7 +118,7 @@ namespace NakijktoolGui
                 using (SqlCommand command = new SqlCommand(puntenquery, connection))
                 {
                     connection.Open();
-                    aantalpunten = Convert.ToInt32(command.ExecuteScalar());
+                    aantalpunten = Convert.ToDecimal(command.ExecuteScalar());
                     PuntenLabel.Content = studentpunten + " van de " + aantalpunten + " punten.";
                 }
             }
@@ -181,6 +181,7 @@ namespace NakijktoolGui
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
+            DataOpslaan();
             GeschiedenisForm gform = new GeschiedenisForm();
             this.Hide();
             gform.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -212,8 +213,6 @@ namespace NakijktoolGui
             }
             else v--;
         }
-
-
     }
 }
 

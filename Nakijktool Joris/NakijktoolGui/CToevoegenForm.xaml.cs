@@ -46,7 +46,7 @@ namespace NakijktoolGui
                     connection.Open();
 
                     command.Parameters.AddWithValue("@commentaar", CommentaarBox.Text);
-                    command.Parameters.AddWithValue("@pluspunten", Convert.ToInt32(PlusPuntenBox.Text));
+                    command.Parameters.AddWithValue("@pluspunten", Convert.ToDecimal(PlusPuntenBox.Text));
                     command.Parameters.AddWithValue("@vraagid", Convert.ToInt32(VraagidBox.Text));
                     command.Parameters.AddWithValue("@commentaarnaam", NaamBox.Text);
                     command.ExecuteScalar();
