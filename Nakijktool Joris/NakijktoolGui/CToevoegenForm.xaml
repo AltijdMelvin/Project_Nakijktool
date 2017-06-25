@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NakijktoolGui"
         mc:Ignorable="d"
-        Title="CToevoegenForm" Height="300" Width="300">
+        Title="Commentaar toevoegen" Height="300" Width="300">
     <Grid>
         <TextBox x:Name="NaamBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Commentaarnaam..." VerticalAlignment="Top" Width="272"/>
         <TextBox x:Name="CommentaarBox"  HorizontalAlignment="Left" Height="140" Margin="10,38,0,0" TextWrapping="Wrap" Text="Commentaar..." VerticalAlignment="Top" Width="272"/>
