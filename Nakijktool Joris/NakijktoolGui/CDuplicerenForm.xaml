@@ -12,7 +12,7 @@
         <ComboBox x:Name="tentamenBox" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="tentamenBox_SelectionChanged"/>
         <TextBox x:Name="commentBox" HorizontalAlignment="Left" Height="42" Margin="10,38,0,0" TextWrapping="Wrap" Text="Commentaar..." VerticalAlignment="Top" Width="272" IsReadOnly="True"/>
         <Button x:Name="cancelButton" Content="Annuleren" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="272"/>
-        <ComboBox x:Name="selectBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="272"/>
+        <ComboBox x:Name="selectBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="selectBox_SelectionChanged"/>
 
     </Grid>
 </Window>
