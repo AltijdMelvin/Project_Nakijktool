@@ -29,8 +29,9 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Content="Commentaar toevoegen..." HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="212" RenderTransformOrigin="0.4,0.15" Click="Commentaar_Click"/>
                 <Label x:Name="PuntenLabel" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="212"/>
+                <Button Content="Toevoegen..." HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.4,0.15" Click="Commentaar_Click"/>
+                <Button x:Name="duplicateButton" Content="Dupliceer..." HorizontalAlignment="Left" Margin="115,168,0,0" VerticalAlignment="Top" Width="107" Click="duplicateButton_Click"/>
             </Grid>
         </GroupBox>
         <Button x:Name="VorigeVraag" Content="Vorige Opdracht" Grid.Column="1" HorizontalAlignment="Left" Margin="274,10,0,0" VerticalAlignment="Top" Width="134" Click="Vorige_Opdracht_Click" Grid.ColumnSpan="2"/>

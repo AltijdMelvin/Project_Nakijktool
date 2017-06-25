@@ -219,6 +219,14 @@ namespace NakijktoolGui
         {
             ExcelWriter.CreateTestRapportFromSQL(Convert.ToInt16(TentamenIdBox.Text));
         }
+
+        private void duplicateButton_Click(object sender, RoutedEventArgs e)
+        {
+            CDuplicerenForm dup = new CDuplicerenForm();
+            dup.KopieerCommentaar(Convert.ToInt16(VraagIdBox.Text));
+            dup.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            dup.Show();
+        }
     }
 }
 

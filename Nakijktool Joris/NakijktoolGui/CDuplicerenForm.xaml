@@ -1,0 +1,18 @@
+﻿<Window x:Name="cCopyForm" x:Class="NakijktoolGui.CDuplicerenForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NakijktoolGui"
+        mc:Ignorable="d"
+        Title="Commentaar kopieëren" Height="227.793" Width="300">
+    <Grid>
+        <Button x:Name="copyButton" Content="Kopieër commentaar" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="272" Click="copyButton_Click"/>
+        <ComboBox x:Name="questionBox" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="272"/>
+        <ComboBox x:Name="tentamenBox" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="tentamenBox_SelectionChanged"/>
+        <TextBox x:Name="commentBox" HorizontalAlignment="Left" Height="42" Margin="10,38,0,0" TextWrapping="Wrap" Text="Commentaar..." VerticalAlignment="Top" Width="272" IsReadOnly="True"/>
+        <Button x:Name="cancelButton" Content="Annuleren" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="272"/>
+        <ComboBox x:Name="selectBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="selectBox_SelectionChanged"/>
+
+    </Grid>
+</Window>

@@ -186,6 +186,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CDuplicerenForm.xaml.cs">
+      <DependentUpon>CDuplicerenForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CToevoegenForm.xaml.cs">
       <DependentUpon>CToevoegenForm.xaml</DependentUpon>
     </Compile>
@@ -195,6 +198,10 @@
     <Compile Include="Testen.xaml.cs">
       <DependentUpon>Testen.xaml</DependentUpon>
     </Compile>
+    <Page Include="CDuplicerenForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CToevoegenForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
