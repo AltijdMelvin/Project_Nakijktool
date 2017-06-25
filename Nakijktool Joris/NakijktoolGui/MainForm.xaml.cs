@@ -29,6 +29,7 @@ namespace NakijktoolGui
         private string directoryExamResults;
         private string TestsFileSrc;
         private int nrOfQuestions;
+        List<string> tVragen = new List<string>();
 
         public MainForm()
         {
@@ -52,6 +53,13 @@ namespace NakijktoolGui
             files = Directory.GetFiles(
                 directoryExamResults,
                 searchPattern: "*.cs");
+
+            foreach(string path in files)
+            {
+                string tVraag = File.ReadAllText(path);
+                string tVraagAntwoord = tVraag.Substring(tVraag.IndexOf("Vraag1"), tVraag.IndexOf("Vraag2") - tVraag.IndexOf("Vraag1"));
+                tVragen.Add(tVraagAntwoord);
+            }
            
             p.FileWriterReport(files, TentamenNaam.Text, TentamenDatum.SelectedDate.Value, TestsFileSrc, nrOfQuestions);
         }
