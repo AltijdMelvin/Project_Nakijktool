@@ -19,16 +19,19 @@ namespace NakijkTool
                 DataSet test = new DataSet();
                 DataSet vragen = new DataSet();
                 DataSet students = new DataSet();
+                DataSet commentaar = new DataSet();
                 int totaalpunten = 0;
                 int totaalvragen = 0;
+                int totaalstudenten = 0;
                 int minvraag = 2;
                 string queryTest = $"SELECT * FROM Tentamens WHERE tentamenid = {tentamenID}";
                 string queryStudents = $"SELECT DISTINCT studentnummer, student_naam FROM Testrapport WHERE tentamenid = {tentamenID}";
                 string queryVragen = $"SELECT * FROM Vraag WHERE tentamenid = {tentamenID} ORDER BY vraagnummer";
+                string queryCommentaar = "SELECT * FROM Commentaar WHERE vraagid in (SELECT DISTINCT vraagid FROM Testrapport WHERE tentamenid = @tentamenid)";
                 using (SqlDataAdapter command = new SqlDataAdapter(queryTest, connection))
                 {
                     command.Fill(test);
-                    totaalpunten = (int)test.Tables[0].Rows[0]["aantal_punten"];
+                    totaalpunten = Convert.ToInt16(test.Tables[0].Rows[0]["aantal_punten"]);
                     totaalvragen = (int)test.Tables[0].Rows[0]["aantal_vragen"] - minvraag;
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(queryVragen, connection))
@@ -38,6 +41,12 @@ namespace NakijkTool
                 using (SqlDataAdapter command = new SqlDataAdapter(queryStudents, connection))
                 {
                     command.Fill(students);
+                    totaalstudenten = students.Tables[0].Rows.Count;
+                }
+                using (SqlDataAdapter command = new SqlDataAdapter(queryCommentaar, connection))
+                {
+                    command.SelectCommand.Parameters.AddWithValue("tentamenid", tentamenID);
+                    command.Fill(commentaar);
                 }
                 Microsoft.Office.Interop.Excel.Application oXL;
                 Microsoft.Office.Interop.Excel.Workbook oWB;
@@ -78,7 +87,7 @@ namespace NakijkTool
                 oSheet.Range["A4"].EntireRow.Font.Bold = true;
                 oSheet.Range["A1", "A4"].EntireRow.EntireColumn.AutoFit();
 
-                for (int s = 0; s < students.Tables[0].Rows.Count; s++)
+                for (int s = 0; s < totaalstudenten; s++)
                 {
                     int c = s + 2;
                     int m = 3;
@@ -100,7 +109,7 @@ namespace NakijkTool
                         command.Fill(opdr);
                         for (int v = 0; v < totaalvragen; v++)
                         {
-                            punten += (int)opdr.Tables[0].Rows[v]["studentpunten"];
+                            punten += Convert.ToInt16(opdr.Tables[0].Rows[v]["studentpunten"]);
                             Microsoft.Office.Interop.Excel.Worksheet newSheet;
                             newSheet = oWB.Worksheets[v + 2];
                             newSheet.Cells[c, "A"] = studentnaam;
@@ -152,10 +161,25 @@ namespace NakijkTool
                         oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 46;
                     }
                     oSheet.Range[$"A{c}"].EntireRow.EntireColumn.AutoFit();
-                    //TODO: autofit
                 }
+
+                //// per vraag
+                //int tab = 2;
+                //for (int i = 0; i < totaalvragen; i++)
+                //{
+                    
+                //    int x = totaalvragen + 4;
+                //    DataRow r = vragen.Tables[0].Rows[i];
+                //    DataRow[] q = commentaar.Tables[0].Select($"vraagid = {r["vraagid"]}");
+                //    DataRow[] t = test.Tables[0].Select($"vraagid = {r["vraagid"]}");
+                //        // TODO: maak iets
+                //    tab++;
+                //}
             }
         }
+        /// <summary>
+        /// Achterhaald: gebruik nu CreateTestRapportSQL();
+        /// </summary>
         public static void CreateTestRapport(List<TestRapport> repports)
         {
             Microsoft.Office.Interop.Excel.Application oXL;

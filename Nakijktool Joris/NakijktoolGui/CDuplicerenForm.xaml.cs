@@ -26,16 +26,19 @@ namespace NakijktoolGui
         {
             InitializeComponent();
         }
+        private int vraagid = -1;
         string connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
         private DataSet commentaar = new DataSet();
         private DataSet tentamens = new DataSet();
         private DataSet vragen = new DataSet();
         string queryinsert = "INSERT INTO Commentaar (commentaar, pluspunten, vraagid, commentaarnaam) VALUES (@commentaar, @pluspunten, @vraagid, @commentaarnaam)";
         string querycommentaar = "SELECT * FROM Commentaar WHERE vraagid = @vraagid";
-        string querytentamen = "SELECT tentamenid, tentamen_naam FROM Tentamens";
+        string querytentamen = "SELECT tentamenid, tentamen_naam, aantal_vragen FROM Tentamens";
         string queryvragendoel = "SELECT * FROM Vraag";
+        string oldText = "";
         public void KopieerCommentaar(int vraagID)
         {
+            vraagid = vraagID;
             string connectionstring;
             SqlConnection connection;
             commentaar = new DataSet();
@@ -70,6 +73,7 @@ namespace NakijktoolGui
                 {
                     v.Fill(vragen);
                 }
+                connection.Close();
             }
         }
         private void tentamenBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,15 +95,51 @@ namespace NakijktoolGui
             using (SqlConnection connection = new SqlConnection(connectionstring))
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand(queryinsert, connection))
+                if (allQuestionsBox.IsChecked == false)
                 {
-                    DataRow current = commentaar.Tables[0].Rows[selectBox.SelectedIndex];
-                    command.Parameters.AddWithValue("commentaar", current["commentaar"]);
-                    command.Parameters.AddWithValue("commentaarnaam", current["commentaarnaam"]);
-                    command.Parameters.AddWithValue("pluspunten", current["pluspunten"]);
-                    command.Parameters.AddWithValue("vraagid", questionBox.SelectedValue);
-                    command.ExecuteScalar();
-                    this.Close();
+                    if (selectBox.SelectedIndex >= 0 && questionBox.SelectedIndex >= 0 && vraagid >= 0)
+                    {
+                        using (SqlCommand command = new SqlCommand(queryinsert, connection))
+                        {
+                            DataRow current = commentaar.Tables[0].Rows[selectBox.SelectedIndex];
+                            command.Parameters.AddWithValue("commentaar", commentBox.Text);
+                            command.Parameters.AddWithValue("commentaarnaam", current["commentaarnaam"]);
+                            command.Parameters.AddWithValue("pluspunten", current["pluspunten"]);
+                            command.Parameters.AddWithValue("vraagid", questionBox.SelectedValue);
+                            command.ExecuteScalar();
+                        }
+                    }
+                }
+                else if (allQuestionsBox.IsChecked == true)
+                {
+                    if (vraagid >= 0 && tentamenBox.SelectedIndex >= 0)
+                    {
+                        int tentamenIdA = (int)vragen.Tables[0].Select($"vraagid = {vraagid}")[0]["tentamenid"];
+                        int tentamenIdB = (int)tentamenBox.SelectedValue;
+                        int goal = 0;
+                        int aantalVragenA = (int)vragen.Tables[0].Select($"tentamenid = {tentamenIdA}").Length;
+                        int aantalVragenB = (int)vragen.Tables[0].Select($"tentamenid = {tentamenIdB}").Length;
+                        if (aantalVragenA <= aantalVragenB) goal = aantalVragenA;
+                        else goal = aantalVragenB;
+                        DataRow[] vA = vragen.Tables[0].Select($"tentamenid = {tentamenIdA}");
+                        DataRow[] vB = vragen.Tables[0].Select($"tentamenid = {tentamenIdB}");
+                        for (int i = 0; i < goal; i++)
+                        {
+                            int vraagid = (int)vA[i]["vraagid"];
+                            DataRow[] y = commentaar.Tables[0].Select($"vraagid = {vraagid}");
+                            for (int j = 0; j < y.Length; j++)
+                            {
+                                using (SqlCommand command = new SqlCommand(queryinsert, connection))
+                                {
+                                    command.Parameters.AddWithValue("commentaar", y[j]["commentaar"]);
+                                    command.Parameters.AddWithValue("commentaarnaam", y[j]["commentaarnaam"]);
+                                    command.Parameters.AddWithValue("pluspunten", y[j]["pluspunten"]);
+                                    command.Parameters.AddWithValue("vraagid", vB[i]["vraagid"]);
+                                    command.ExecuteScalar();
+                                }
+                            }
+                        }
+                    }
                 }
                 connection.Close();
             }
@@ -111,6 +151,29 @@ namespace NakijktoolGui
             {
                 commentBox.Text = commentaar.Tables[0].Rows[selectBox.SelectedIndex]["commentaar"].ToString();
             }
+        }
+        private void allQuestionsBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (allQuestionsBox.IsChecked == true)
+            {
+                commentBox.IsEnabled = false;
+                oldText = commentBox.Text;
+                selectBox.IsEnabled = false;
+                questionBox.IsEnabled = false;
+                commentBox.Text = "Kopieër al het commentaar naar een tentamen (aantal vragen moeten hetzelfde of meer zijn!)";
+            }
+            else
+            {
+                commentBox.IsEnabled = true;
+                selectBox.IsEnabled = true;
+                questionBox.IsEnabled = true;
+                commentBox.Text = oldText;
+            }
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 
