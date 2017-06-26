@@ -40,5 +40,8 @@
         <TextBox x:Name="VraagIdBox" Height="23" Margin="264,22,29,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="5.962,12.913" Visibility="Hidden"/>
         <TextBox x:Name="AantalVragenBox" Margin="299,23,213,401" TextWrapping="Wrap" RenderTransformOrigin="0.64,1.131" Grid.ColumnSpan="2" Visibility="Hidden"/>
         <TextBox x:Name="RapportIdBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+<<<<<<< HEAD
+=======
+        <Button x:Name="excelButton" Content="Exporteer tentamen naar Excel" HorizontalAlignment="Left" Margin="192,10,0,0" VerticalAlignment="Top" Width="180" Click="excelButton_Click"/>
     </Grid>
 </Window>
