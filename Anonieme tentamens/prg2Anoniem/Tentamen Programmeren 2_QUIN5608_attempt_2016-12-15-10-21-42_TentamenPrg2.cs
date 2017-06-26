@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: ARMIDA
-Achternaam: QUINN
-StudentNr: s56082
-Klas: i1e
+//Voornaam: ARMIDA
+//Achternaam: QUINN
+//StudentNr: s56082
+//Klas: i1e
 //Datum:
 namespace Tentamens20162017
 {

@@ -169,11 +169,13 @@
     <Compile Include="CompilerUtil.cs" />
     <Compile Include="Database_NakijktoolDataSet.cs">
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Database_NakijktoolDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ExcelWriter.cs" />
     <Compile Include="Model.cs" />
@@ -193,14 +195,17 @@
     </None>
     <None Include="Database_NakijktoolDataSet.xsc">
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Database_NakijktoolDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Database_NakijktoolDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Database_NakijktoolDataSet.xss">
       <DependentUpon>Database_NakijktoolDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

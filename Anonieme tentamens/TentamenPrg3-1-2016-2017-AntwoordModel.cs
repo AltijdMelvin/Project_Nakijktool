@@ -12,7 +12,7 @@ using Tentamens;
 
 namespace TentamenPrg3_1_2016_2017
 {
-    //Vraag 1 punten 1,0
+    //Vraag 1 punten 10
         //Vraag 1A
         //
         //
@@ -25,7 +25,7 @@ namespace TentamenPrg3_1_2016_2017
         //
         //
 
-    //Vraag 2 punten 2,0
+    //Vraag 2 punten 20
     public class Bus 
     {
         public int BusNr { get; }
@@ -65,7 +65,7 @@ namespace TentamenPrg3_1_2016_2017
         }
     }
 
-    //Vraag 3 punten 1,5
+    //Vraag 3 punten 15
     public class Lijn
     {
         //twee varianten!
@@ -121,7 +121,7 @@ namespace TentamenPrg3_1_2016_2017
     }
     //Eind Vraag 2
 
-    //Vraag 4 punten 2,0
+    //Vraag 4 punten 20
     public class HalteStack
     {
         private string[] stack = new string[20];
@@ -177,7 +177,7 @@ namespace TentamenPrg3_1_2016_2017
         public HalteLinked Volgende { get; set; }
     }
 
-    //Vraag 5 punten 2,5
+    //Vraag 5 punten 25
     public class LijnLinked
     {
         private HalteLinked _begin = null;

@@ -126,18 +126,32 @@ namespace NakijkTool
         private static string connectionstring;
         static SqlConnection connection;
 
-        const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
 
-        readonly static string[] _questionNamesTest = { "TestVraag1", "TestVraag2", "TestVraag3", "TestVraag4A", "TestVraag5A" };
-        private static readonly ClassesCodeLocator classesCodeLocator = new ClassesCodeLocator(new string[] { "Bus", "Lijn", "Halte" });
+        static bool openvraag = false; //Als vraag 1 open vraag is.
+
+        //const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
+
+        //readonly static string[] _questionNamesTest = { "TestVraag1", "TestVraag2", "TestVraag3", "TestVraag4A", "TestVraag5A" };
+        //private static readonly ClassesCodeLocator classesCodeLocator = new ClassesCodeLocator(new string[] { "Bus", "Lijn", "Halte" });
+        //readonly ICodeLocator[] _questionCodeLoactors = { new MethodCodeLocator("Vraag1"),
+        //    classesCodeLocator,
+        //    new CompositionCodeCompose(new ICodeLocator[]{classesCodeLocator, new MethodCodeLocator("Vraag3")})
+        //    , /*new CompositionCodeCompose(new ICodeLocator[] {new ClassCodeLocator("HalteStack"), new ClassCodeLocator("Halte") })*/
+        //    new ClassCodeLocator("HalteStack"), 
+        //    new CompositionCodeCompose(new [] {new ClassCodeLocator("HalteLinked"),
+        //        new ClassCodeLocator("LijnLinked")})};
+        //private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
+        //private string[] _testMethodeCode;
+
+        const string examPrefixNameBeforeUserName = "Tentamen Programmeren 2_";
+
+        readonly static string[] _questionNamesTest = { "Test_Vraag1", "Test_Vraag2", "Test_Vraag3", "Test_Vraag4", "Test_Vraag5" };
         readonly ICodeLocator[] _questionCodeLoactors = { new MethodCodeLocator("Vraag1"),
-            classesCodeLocator,
-            new CompositionCodeCompose(new ICodeLocator[]{classesCodeLocator, new MethodCodeLocator("Vraag3")})
-            , /*new CompositionCodeCompose(new ICodeLocator[] {new ClassCodeLocator("HalteStack"), new ClassCodeLocator("Halte") })*/
-            new ClassCodeLocator("HalteStack"), 
-            new CompositionCodeCompose(new [] {new ClassCodeLocator("HalteLinked"),
-                new ClassCodeLocator("LijnLinked")})};
-        private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
+            new MethodCodeLocator("Vraag2"),
+            new MethodCodeLocator("Vraag3"),
+            new MethodCodeLocator("Vraag4"),
+            new MethodCodeLocator("Vraag5")};
+        private readonly string[] _loadExtraCode = { "", "", "", "", @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
         MetadataReference[] references = new MetadataReference[]
@@ -176,7 +190,7 @@ namespace NakijkTool
 
             //tentamen in database
             int tentamenid;
-            string querytentamen = "INSERT INTO Tentamens VALUES (@datum, @aantal_vragen, @aantal_punten, @tentamen_naam)" +
+            string querytentamen = "INSERT INTO Tentamens VALUES (@datum, @aantal_vragen, @aantal_punten, @tentamen_naam, @q_vraag, @v_tentamen)" +
                 "SELECT SCOPE_IDENTITY()";
             using (connection = new SqlConnection(connectionstring))
             using (SqlCommand command = new SqlCommand(querytentamen, connection))
@@ -185,13 +199,15 @@ namespace NakijkTool
 
                 command.Parameters.AddWithValue("@datum", dag.Date);
                 command.Parameters.AddWithValue("@aantal_vragen", nrOfq);
-                command.Parameters.AddWithValue("@aantal_punten", 9.0);
+                command.Parameters.AddWithValue("@aantal_punten", 90);
                 command.Parameters.AddWithValue("@tentamen_naam", tentamennaam);
+                command.Parameters.AddWithValue("@q_vraag", 1);
+                command.Parameters.AddWithValue("@v_tentamen", 0);
 
                 tentamenid = Convert.ToInt32(command.ExecuteScalar());
             }
 
-            List<decimal> punten = getPointsPerQuestion(TestsFileSrc);
+            List<int> punten = getPointsPerQuestion(TestsFileSrc);
             List<string> openvragen = getOpenVragen(files);
 
             for (int i = 1; i <= nrOfq; i++)
@@ -228,7 +244,7 @@ namespace NakijkTool
                         reportsByName.Add(rep.StudentInfo.UserName, rep);
                 }
 
-                if(questionNumber == 1)
+                if(openvraag == true)
                 {
                     int x = 0;
                     foreach(string username in usernames)
@@ -244,7 +260,7 @@ namespace NakijkTool
                             command.Parameters.AddWithValue("@studentnummer", testRapport.StudentInfo.StudentNr);
                             command.Parameters.AddWithValue("@student_naam", testRapport.StudentInfo.LastName + ", " + testRapport.StudentInfo.FirstName);
                             command.Parameters.AddWithValue("@errors","Open vraag, zie hierboven.");
-                            command.Parameters.AddWithValue("@studentpunten", 0.0);
+                            command.Parameters.AddWithValue("@studentpunten", 0);
                             command.Parameters.AddWithValue("@commentaartext", "");
                             command.Parameters.AddWithValue("@studentcode", openvragen[x]);
                             command.Parameters.AddWithValue("@tentamenid", tentamenid);
@@ -299,7 +315,13 @@ namespace NakijkTool
                             {
                                 testError = testError + testRapport.RapportQuestions[0].CompileAndExecuteInfo.Message;
                             }
-
+                            string studentcode = testRapport.CsCode;
+                            string commentaar = "CompileErrors. Handmatig nakijken.";
+                            if (testRapport.RapportQuestions[0].StudentSourceCode != null)
+                            {
+                                studentcode = testRapport.RapportQuestions[0].StudentSourceCode; commentaar = "";
+                            }
+                   
                             string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaartext, @studentcode, @tentamenid, @vraagid, @commentaar)";
                             using (connection = new SqlConnection(connectionstring))
                             using (SqlCommand command = new SqlCommand(querytestrapport, connection))
@@ -310,9 +332,9 @@ namespace NakijkTool
                                 command.Parameters.AddWithValue("@studentnummer", testRapport.StudentInfo.StudentNr);
                                 command.Parameters.AddWithValue("@student_naam", testRapport.StudentInfo.LastName + ", " + testRapport.StudentInfo.FirstName);
                                 command.Parameters.AddWithValue("@errors", testRapport.RapportQuestions[0].CompileAndExecuteInfo.Result + ", \n" + testError);
-                                command.Parameters.AddWithValue("@studentpunten", 0.0);
-                                command.Parameters.AddWithValue("@commentaartext", "");
-                                command.Parameters.AddWithValue("@studentcode", testRapport.RapportQuestions[0].StudentSourceCode);
+                                command.Parameters.AddWithValue("@studentpunten", 0);
+                                command.Parameters.AddWithValue("@commentaartext", commentaar);
+                                command.Parameters.AddWithValue("@studentcode", studentcode);
                                 command.Parameters.AddWithValue("@tentamenid", tentamenid);
                                 command.Parameters.AddWithValue("@vraagid", vraagid);
                                 command.Parameters.AddWithValue("commentaar", string.Empty);
@@ -336,17 +358,17 @@ namespace NakijkTool
             return tVragen;
         }
 
-        public List<decimal> getPointsPerQuestion(string antwoordenSrc)
+        public List<int> getPointsPerQuestion(string antwoordenSrc)
         {
             string[] antwoordenModelText = File.ReadAllLines(antwoordenSrc);
-            List<decimal> punten = new List<decimal>();
+            List<int> punten = new List<int>();
             string temp = "";
             foreach (string line in antwoordenModelText)
             {
                 if (line.Contains("punten"))
                 {
                     temp = line.Substring(line.IndexOf("punten") + 6);
-                    punten.Add(Convert.ToDecimal(temp.Trim()));
+                    punten.Add(Convert.ToInt32(temp.Trim()));
                 }
             }
             return punten;

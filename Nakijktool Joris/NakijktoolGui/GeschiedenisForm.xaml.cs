@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NakijkTool;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -48,6 +49,12 @@ namespace NakijktoolGui
             nakijk.TentamenIdBox.Text = tentamenid;
             nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             nakijk.Show();
+        }
+
+        private void ExclButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tentamenid = (((Button)sender).Tag.ToString());
+            ExcelWriter.CreateTestRapportFromSQL(Convert.ToInt16(tentamenid));
         }
 
         private void TerugButton_Click(object sender, RoutedEventArgs e)

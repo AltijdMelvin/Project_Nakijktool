@@ -12,12 +12,12 @@
         <CollectionViewSource x:Key="tentamensViewSource" Source="{Binding Tentamens, Source={StaticResource database_NakijktoolDataSet}}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource tentamensViewSource}">
-        <DataGrid x:Name="tentamensDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,46,10,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="tentamensDataGrid_SelectionChanged">
+        <DataGrid x:Name="tentamensDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,46,10,10" ItemsSource="{Binding}" CanUserAddRows="false" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="tentamensDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="datumColumn" IsReadOnly="True" Width="100" Header="Datum">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding datum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsTodayHighlighted="True" SnapsToDevicePixels="True" IsHitTestVisible="True"/>
+                            <DatePicker Focusable="false" SelectedDate="{Binding datum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsTodayHighlighted="True" SnapsToDevicePixels="True" IsHitTestVisible="False"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -28,6 +28,13 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="NakijkButton" Click="NakijkButton_Click" Content="Nakijken" Tag="{Binding tentamenid}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ExclButton" Click="ExclButton_Click" Content="Exporteren" Tag="{Binding tentamenid}"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

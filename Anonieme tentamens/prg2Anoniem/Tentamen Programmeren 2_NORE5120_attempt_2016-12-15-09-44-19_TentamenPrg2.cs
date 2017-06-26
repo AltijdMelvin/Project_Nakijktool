@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: GIUSEPPINA
-Achternaam: NORENE
-StudentNr: s51208
-Klas: i1b
+//Voornaam: GIUSEPPINA
+//Achternaam: NORENE
+//StudentNr: s51208
+//Klas: i1b
 //Datum: 15-12-2016
 // Ik hoop dat 2017 voor mij een beter jaar word betreft school dan 2016. Want 2016 was echt kwalitatief 
 //uitermate teleurstellend. Komt helemaal door mezelf natuurlijk. Moet beter gaan leren.
