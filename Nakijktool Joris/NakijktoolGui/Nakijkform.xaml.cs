@@ -26,7 +26,7 @@ namespace NakijktoolGui
     public partial class Nakijkform : Window
     {
         static int v = 0;
-        static int q = 2;
+        static int q = 1;
         static int aantalvragen;
         static decimal aantalpunten;
         static decimal studentpunten;
@@ -155,7 +155,7 @@ namespace NakijktoolGui
         private void Vorige_Opdracht_Click(object sender, RoutedEventArgs e)
         {
             q--;
-            if (q >= 2)
+            if (q >= 1)
             {
                 v = 0;
                 DataOpslaan();
