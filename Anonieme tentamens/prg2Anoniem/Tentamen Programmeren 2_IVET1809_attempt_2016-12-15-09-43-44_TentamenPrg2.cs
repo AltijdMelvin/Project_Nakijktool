@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 
-Voornaam: GREGG
-Achternaam: IVETTE
-StudentNr: s18095
-Klas: i1f
+//Voornaam: GREGG
+//Achternaam: IVETTE
+//StudentNr: s18095
+//Klas: i1f
 namespace Tentamens
 {
     class TentamenPrg2Tentamen20162017

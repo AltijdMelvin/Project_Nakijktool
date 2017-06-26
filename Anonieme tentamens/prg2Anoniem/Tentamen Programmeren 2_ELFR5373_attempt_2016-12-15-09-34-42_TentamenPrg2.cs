@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System.Linq;
 
-Voornaam: LATIA
-Achternaam: ELFRIEDA
-StudentNr: s53738
-Klas: i1d
+//Voornaam: LATIA
+//Achternaam: ELFRIEDA
+//StudentNr: s53738
+//Klas: i1d
 //Datum:
 namespace Tentamens20162017
 {

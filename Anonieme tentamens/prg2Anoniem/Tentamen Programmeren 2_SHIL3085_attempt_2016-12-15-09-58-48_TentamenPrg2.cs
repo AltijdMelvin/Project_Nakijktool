@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 
-Voornaam: CATALINA
-Achternaam: SHILA
-StudentNr: s30856
-Klas: i1d
+//Voornaam: CATALINA
+//Achternaam: SHILA
+//StudentNr: s30856
+//Klas: i1d
 //Datum:15-12-2016
 namespace Tentamens20162017
 {

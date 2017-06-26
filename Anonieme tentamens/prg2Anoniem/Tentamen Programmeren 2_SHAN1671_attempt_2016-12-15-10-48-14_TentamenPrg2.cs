@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: GONZALO
-Achternaam: SHANNON
-StudentNr: s16710
-Klas: i1f
+//Voornaam: GONZALO
+//Achternaam: SHANNON
+//StudentNr: s16710
+//Klas: i1f
 //Datum: 15 december 2016
 namespace Tentamens20162017
 {

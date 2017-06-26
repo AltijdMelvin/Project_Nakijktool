@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: DUSTY
-Achternaam: CELINE
-StudentNr: s21480
-Klas: i1f
+//Voornaam: DUSTY
+//Achternaam: CELINE
+//StudentNr: s21480
+//Klas: i1f
 //Datum: 15-12-2016
 namespace Tentamens20162017
 {

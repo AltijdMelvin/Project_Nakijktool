@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: FRITZ
-Achternaam: HISAKO
-StudentNr: s48368
-Klas: i1f
+//Voornaam: FRITZ
+//Achternaam: HISAKO
+//StudentNr: s48368
+//Klas: i1f
 //Datum: 15-12-2016
 namespace Tentamens20162017
 {

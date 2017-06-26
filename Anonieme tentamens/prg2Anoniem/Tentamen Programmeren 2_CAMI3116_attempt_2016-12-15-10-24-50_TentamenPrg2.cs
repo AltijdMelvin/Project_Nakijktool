@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: HAL
-Achternaam: CAMILLA
-StudentNr: s31167
-Klas: i1f
+//Voornaam: HAL
+//Achternaam: CAMILLA
+//StudentNr: s31167
+//Klas: i1f
 //Datum:
 namespace Tentamens20162017
 {

@@ -28,8 +28,8 @@ namespace NakijktoolGui
         static int v = 0;
         static int q = 1;
         static int aantalvragen;
-        static decimal aantalpunten;
-        static decimal studentpunten;
+        static int aantalpunten;
+        static int studentpunten;
         private static string connectionstring;
         static SqlConnection connection;
         DataSet rapporten;
@@ -44,7 +44,7 @@ namespace NakijktoolGui
 
         public void CheckedListBox(int vraagid)
         {
-            studentpunten = 0.0m;
+            studentpunten = 0;
             List<BoolStringClass> leeg = new List<BoolStringClass>() { };
             ListCheckBox.ItemsSource = leeg;
 
@@ -74,7 +74,7 @@ namespace NakijktoolGui
                     if (Convert.ToInt32(tof[i]) - 48 == 1)
                     {
                         TheList.Add(new BoolStringClass { IsSelected = true, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
-                        studentpunten = studentpunten + Convert.ToDecimal(commentaar.Tables[0].Rows[i]["pluspunten"].ToString());
+                        studentpunten = studentpunten + Convert.ToInt32(commentaar.Tables[0].Rows[i]["pluspunten"].ToString());
                     }
                     else TheList.Add(new BoolStringClass { IsSelected = false, TheText = commentaar.Tables[0].Rows[i]["commentaarnaam"].ToString() });
                 }
@@ -85,16 +85,25 @@ namespace NakijktoolGui
 
         public void data(int vraagnummer)
         {
+            DataSet tentamen;
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
             int vraag = v + 1;
             string query = "SELECT * FROM Testrapport WHERE tentamenid = "+ TentamenIdBox.Text + " AND vraagnummer = " + vraagnummer;
             string aantalquery = "SELECT aantal_vragen FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
+            string tentamenquery = "SELECT * FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
             using (connection = new SqlConnection(connectionstring))
             {
                 using (SqlCommand command = new SqlCommand(aantalquery, connection))
                 {
                     connection.Open();
                     aantalvragen = Convert.ToInt32(command.ExecuteScalar());
+                }
+                using (SqlDataAdapter command = new SqlDataAdapter(tentamenquery, connection))
+                {
+                    tentamen = new DataSet();
+                    command.Fill(tentamen);
+                    v = Convert.ToInt32(tentamen.Tables[0].Rows[0]["v_tentamen"]);
+                    q = Convert.ToInt32(tentamen.Tables[0].Rows[0]["q_vraag"]);
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
                 {
@@ -119,7 +128,7 @@ namespace NakijktoolGui
                 using (SqlCommand command = new SqlCommand(puntenquery, connection))
                 {
                     connection.Open();
-                    aantalpunten = Convert.ToDecimal(command.ExecuteScalar());
+                    aantalpunten = Convert.ToInt32(command.ExecuteScalar());
                     PuntenLabel.Content = studentpunten + " van de " + aantalpunten + " punten.";
                 }
             }
@@ -135,12 +144,19 @@ namespace NakijktoolGui
                 else binairtf += 0;
             }
 
-            string queryvraag = "UPDATE Testrapport SET commentaartext = '" + CommentaarTextBox.Text + "', commentaar = '" + binairtf + "' WHERE rapportid = " + RapportIdBox.Text;
+            string queryvraag = "UPDATE Testrapport SET commentaartext = '" + CommentaarTextBox.Text + "', commentaar = '" + binairtf + "', studentpunten = '" + studentpunten + "'  WHERE rapportid = " + RapportIdBox.Text;
+            string querytentamen = "UPDATE Tentamens SET q_vraag = '" + q + "', v_tentamen = '" + v + "' WHERE tentamenid = " + TentamenIdBox.Text;
             using (connection = new SqlConnection(connectionstring))
-            using (SqlCommand command = new SqlCommand(queryvraag, connection))
             {
-                connection.Open();
-                command.ExecuteScalar();
+                using (SqlCommand command = new SqlCommand(queryvraag, connection))
+                {
+                    connection.Open();
+                    command.ExecuteScalar();
+                }
+                using (SqlCommand command = new SqlCommand(querytentamen, connection))
+                {
+                    command.ExecuteScalar();
+                }
             }
         }
 
@@ -213,11 +229,6 @@ namespace NakijktoolGui
                 PuntenData();
             }
             else v--;
-        }
-
-        private void excelButton_Click(object sender, RoutedEventArgs e)
-        {
-            ExcelWriter.CreateTestRapportFromSQL(Convert.ToInt16(TentamenIdBox.Text));
         }
 
         private void duplicateButton_Click(object sender, RoutedEventArgs e)

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-Voornaam: MICHIKO
-Achternaam: KERSTIN
-StudentNr: s3929
-Klas: i1d
+//Voornaam: MICHIKO
+//Achternaam: KERSTIN
+//StudentNr: s3929
+//Klas: i1d
 //Datum:
 namespace Tentamens20162017
 {
