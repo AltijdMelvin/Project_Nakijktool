@@ -29,6 +29,8 @@ namespace NakijktoolGui
         private string directoryExamResults;
         private string TestsFileSrc;
         private int nrOfQuestions;
+        private bool selectPath;
+        private bool selectModel;
         List<string> tVragen = new List<string>();
 
         public MainForm()
@@ -44,24 +46,38 @@ namespace NakijktoolGui
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            TestsFileSrc = @AntwoordenModelBox.Text;
-            nrOfQuestions = Convert.ToInt32(NrOfQuestionsBox.Text);
-            directoryExamResults = TentamenBox.Text;
-
-            Program p = new Program(TestsFileSrc);
-
-            files = Directory.GetFiles(
-                directoryExamResults,
-                searchPattern: "*.cs");
-
-            foreach(string path in files)
+            if (TentamenDatum.SelectedDate == null)
             {
-                string tVraag = File.ReadAllText(path);
-                string tVraagAntwoord = tVraag.Substring(tVraag.IndexOf("Vraag1"), tVraag.IndexOf("Vraag2") - tVraag.IndexOf("Vraag1"));
-                tVragen.Add(tVraagAntwoord);
+                System.Windows.MessageBox.Show("Er is geen datum opgegeven", "Oeps", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
-           
-            p.FileWriterReport(files, TentamenNaam.Text, TentamenDatum.SelectedDate.Value, TestsFileSrc, nrOfQuestions);
+            else if (!selectModel || !selectPath)
+            {
+                System.Windows.MessageBox.Show("Niet alle bestandspaden zijn opgegeven", "Oeps", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else if (NrOfQuestionsBox.Text == "")
+            {
+                System.Windows.MessageBox.Show("Het aantal vragen is niet opgegeven", "Oeps", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else {
+                TestsFileSrc = @AntwoordenModelBox.Text;
+                nrOfQuestions = Convert.ToInt32(NrOfQuestionsBox.Text);
+                directoryExamResults = TentamenBox.Text;
+
+                Program p = new Program(TestsFileSrc);
+
+                files = Directory.GetFiles(
+                    directoryExamResults,
+                    searchPattern: "*.cs");
+
+                foreach (string path in files)
+                {
+                    string tVraag = File.ReadAllText(path);
+                    string tVraagAntwoord = tVraag.Substring(tVraag.IndexOf("Vraag1"), tVraag.IndexOf("Vraag2") - tVraag.IndexOf("Vraag1"));
+                    tVragen.Add(tVraagAntwoord);
+                }
+
+                p.FileWriterReport(files, TentamenNaam.Text, TentamenDatum.SelectedDate.Value, TestsFileSrc, nrOfQuestions);
+            }
         }
 
         private void AntwoordenModelButton_Click(object sender, RoutedEventArgs e)
@@ -70,6 +86,7 @@ namespace NakijktoolGui
             if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 AntwoordenModelBox.Text = fd.FileName;
+                selectModel = true;
             }
         }
 
@@ -79,6 +96,7 @@ namespace NakijktoolGui
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 TentamenBox.Text = fbd.SelectedPath;
+                selectPath = true;
             }
         }
 

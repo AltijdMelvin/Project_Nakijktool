@@ -20,10 +20,9 @@ namespace NakijkTool
                 DataSet vragen = new DataSet();
                 DataSet students = new DataSet();
                 DataSet commentaar = new DataSet();
-                int totaalpunten = 0;
+                decimal totaalpunten = 0;
                 int totaalvragen = 0;
                 int totaalstudenten = 0;
-                int minvraag = 2;
                 string queryTest = $"SELECT * FROM Tentamens WHERE tentamenid = {tentamenID}";
                 string queryStudents = $"SELECT DISTINCT studentnummer, student_naam FROM Testrapport WHERE tentamenid = {tentamenID}";
                 string queryVragen = $"SELECT * FROM Vraag WHERE tentamenid = {tentamenID} ORDER BY vraagnummer";
@@ -31,12 +30,12 @@ namespace NakijkTool
                 using (SqlDataAdapter command = new SqlDataAdapter(queryTest, connection))
                 {
                     command.Fill(test);
-                    totaalpunten = Convert.ToInt16(test.Tables[0].Rows[0]["aantal_punten"]);
-                    totaalvragen = (int)test.Tables[0].Rows[0]["aantal_vragen"] - minvraag;
+                    totaalpunten = Convert.ToDecimal(test.Tables[0].Rows[0]["aantal_punten"]);
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(queryVragen, connection))
                 {
                     command.Fill(vragen);
+                    totaalvragen = vragen.Tables[0].Select($"tentamenid = {tentamenID}").Count();
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(queryStudents, connection))
                 {
@@ -63,7 +62,7 @@ namespace NakijkTool
                     // Opdrachtensheets
                     Microsoft.Office.Interop.Excel.Worksheet newSheet;
                     newSheet = oWB.Worksheets.Add(After: oWB.Sheets[oWB.Sheets.Count]);
-                    newSheet.Name = $"Opdracht {o + minvraag}";
+                    newSheet.Name = $"Opdracht {o + 1}";
                     newSheet.Cells[1, "A"] = "Studentnaam";
                     newSheet.Cells[1, "B"] = "Studentnummer";
                     newSheet.Cells[1, "C"] = "Resultaat";
@@ -95,6 +94,7 @@ namespace NakijkTool
                     int ec = 0; // compile error
                     int er = 0; // execution error
                     int ac = 0; // correct
+                    bool unknown = false;
                     string studentnr = students.Tables[0].Rows[s]["studentnummer"].ToString();
                     string studentnaam = students.Tables[0].Rows[s]["student_naam"].ToString();
                     oSheet.Cells[c + m, "A"] = studentnaam;
@@ -136,9 +136,20 @@ namespace NakijkTool
                                 newSheet.Cells[c, "C"] = "Compile error";
                                 newSheet.Range[$"C{c}"].Interior.ColorIndex = 46;
                             }
+                            else if (error.StartsWith("Open vraag"))
+                            {
+                                newSheet.Cells[c, "C"] = "Open vraag";
+                                newSheet.Range[$"C{c}"].Interior.ColorIndex = 15;
+                            }
+                            else
+                            {
+                                unknown = true;
+                                newSheet.Cells[c, "C"] = "Anders...";
+                                newSheet.Range[$"C{c}"].Interior.ColorIndex = 48;
+                            }
                         }
                     }
-                    double cijfer = punten / totaalpunten;
+                    decimal cijfer = punten / totaalpunten;
                     oSheet.Cells[c + m, "C"] = cijfer;
                     if (er == 0 && ec == 0)
                     {
@@ -155,6 +166,11 @@ namespace NakijkTool
                         oSheet.Cells[c + m, "D"] = $"{ec} compiler error(s), {ac} correct.";
                         oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 46;
                     }
+                    else if (unknown)
+                    {
+                        oSheet.Cells[c + m, "D"] = $"Onbekende fout(en)... {ec} compiler error(s), {er} runtime error(s), {ac} correct.";
+                        oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 48;
+                    }
                     else
                     {
                         oSheet.Cells[c + m, "D"] = $"{ec} compiler error(s), {er} runtime error(s), {ac} correct.";
@@ -163,18 +179,31 @@ namespace NakijkTool
                     oSheet.Range[$"A{c}"].EntireRow.EntireColumn.AutoFit();
                 }
 
-                //// per vraag
-                //int tab = 2;
-                //for (int i = 0; i < totaalvragen; i++)
-                //{
-                    
-                //    int x = totaalvragen + 4;
-                //    DataRow r = vragen.Tables[0].Rows[i];
-                //    DataRow[] q = commentaar.Tables[0].Select($"vraagid = {r["vraagid"]}");
-                //    DataRow[] t = test.Tables[0].Select($"vraagid = {r["vraagid"]}");
-                //        // TODO: maak iets
-                //    tab++;
-                //}
+                // tijdelijk uit omdat het de excelwriter crashed
+                if (false) {
+                    for (int i = 0; i < totaalvragen; i++)
+                    {
+                        Microsoft.Office.Interop.Excel.Worksheet commentSheet;
+                        commentSheet = oWB.Worksheets[i + 1];
+                        int x = totaalvragen + 5;
+                        DataRow r = vragen.Tables[0].Rows[i];
+                        DataRow[] q = commentaar.Tables[0].Select($"vraagid = {r["vraagid"]}");
+                        DataRow[] t = test.Tables[0].Select($"vraagid = {r["vraagid"]}");
+                        int[] count = new int[q.Length];
+                        for (int j = 0; j < q.Length; j++)
+                        {
+                            foreach (DataRow ts in t)
+                            {
+                                if (ts["commentaar"].ToString()[j] == '1')
+                                {
+                                    count[j]++;
+                                }
+                            }
+                            commentSheet.Cells[x, "A"] = q[j]["commentaarnaam"];
+                            commentSheet.Cells[x, "B"] = count[j];
+                        }
+                    }
+                }
             }
         }
         /// <summary>
