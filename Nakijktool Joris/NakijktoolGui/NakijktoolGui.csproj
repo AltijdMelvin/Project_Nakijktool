@@ -195,6 +195,9 @@
     <Compile Include="GeschiedenisForm.xaml.cs">
       <DependentUpon>GeschiedenisForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InzienForm.xaml.cs">
+      <DependentUpon>InzienForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Testen.xaml.cs">
       <DependentUpon>Testen.xaml</DependentUpon>
     </Compile>
@@ -207,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GeschiedenisForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InzienForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
