@@ -127,32 +127,32 @@ namespace NakijkTool
         static SqlConnection connection;
 
 
-        static bool openvraag = false; //Als vraag 1 open vraag is.
+        static int openvraag = 1; //Welke vraag open is, anders 0 invullen
 
-        //const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
+        const string examPrefixNameBeforeUserName = "Tentamen Programmeren 3_";
 
-        //readonly static string[] _questionNamesTest = { "TestVraag1", "TestVraag2", "TestVraag3", "TestVraag4A", "TestVraag5A" };
-        //private static readonly ClassesCodeLocator classesCodeLocator = new ClassesCodeLocator(new string[] { "Bus", "Lijn", "Halte" });
-        //readonly ICodeLocator[] _questionCodeLoactors = { new MethodCodeLocator("Vraag1"),
-        //    classesCodeLocator,
-        //    new CompositionCodeCompose(new ICodeLocator[]{classesCodeLocator, new MethodCodeLocator("Vraag3")})
-        //    , /*new CompositionCodeCompose(new ICodeLocator[] {new ClassCodeLocator("HalteStack"), new ClassCodeLocator("Halte") })*/
-        //    new ClassCodeLocator("HalteStack"), 
-        //    new CompositionCodeCompose(new [] {new ClassCodeLocator("HalteLinked"),
-        //        new ClassCodeLocator("LijnLinked")})};
-        //private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
-        //private string[] _testMethodeCode;
-
-        const string examPrefixNameBeforeUserName = "Tentamen Programmeren 2_";
-
-        readonly static string[] _questionNamesTest = { "Test_Vraag1", "Test_Vraag2", "Test_Vraag3", "Test_Vraag4", "Test_Vraag5" };
+        readonly static string[] _questionNamesTest = { "TestVraag1", "TestVraag2", "TestVraag3", "TestVraag4A", "TestVraag5A" };
+        private static readonly ClassesCodeLocator classesCodeLocator = new ClassesCodeLocator(new string[] { "Bus", "Lijn", "Halte" });
         readonly ICodeLocator[] _questionCodeLoactors = { new MethodCodeLocator("Vraag1"),
-            new MethodCodeLocator("Vraag2"),
-            new MethodCodeLocator("Vraag3"),
-            new MethodCodeLocator("Vraag4"),
-            new MethodCodeLocator("Vraag5")};
-        private readonly string[] _loadExtraCode = { "", "", "", "", @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\StudentDatabase.cs" };
+            classesCodeLocator,
+            new CompositionCodeCompose(new ICodeLocator[]{classesCodeLocator, new MethodCodeLocator("Vraag3")})
+            , /*new CompositionCodeCompose(new ICodeLocator[] {new ClassCodeLocator("HalteStack"), new ClassCodeLocator("Halte") })*/
+            new ClassCodeLocator("HalteStack"),
+            new CompositionCodeCompose(new [] {new ClassCodeLocator("HalteLinked"),
+                new ClassCodeLocator("LijnLinked")})};
+        private readonly string[] _loadExtraCode = null; //{ "", "", "", "", @"C:\Dev\Werk\Programmeren\Programmeren2Tests2\Tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
+
+        //const string examPrefixNameBeforeUserName = "Tentamen Programmeren 2_";
+
+        //readonly static string[] _questionNamesTest = { "Test_Vraag1", "Test_Vraag2", "Test_Vraag3", "Test_Vraag4", "Test_Vraag5" };
+        //readonly ICodeLocator[] _questionCodeLoactors = { new MethodCodeLocator("Vraag1"),
+        //    new MethodCodeLocator("Vraag2"),
+        //    new MethodCodeLocator("Vraag3"),
+        //    new MethodCodeLocator("Vraag4"),
+        //    new MethodCodeLocator("Vraag5")};
+        //private readonly string[] _loadExtraCode = { "", "", "", "", @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\StudentDatabase.cs" };
+        //private string[] _testMethodeCode;
 
         MetadataReference[] references = new MetadataReference[]
         {
@@ -244,7 +244,7 @@ namespace NakijkTool
                         reportsByName.Add(rep.StudentInfo.UserName, rep);
                 }
 
-                if(openvraag == true)
+                if(questionNumber == openvraag)
                 {
                     int x = 0;
                     foreach(string username in usernames)
