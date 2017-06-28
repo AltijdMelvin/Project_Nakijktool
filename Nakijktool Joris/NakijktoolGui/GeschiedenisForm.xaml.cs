@@ -51,6 +51,17 @@ namespace NakijktoolGui
             nakijk.Show();
         }
 
+        private void InzienButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tentamenid = (((Button)sender).Tag.ToString());
+            InzienForm inzien = new InzienForm();
+            this.Hide();
+            inzien.TentamenidBox.Text = tentamenid;
+            inzien.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            inzien.Show();
+
+        }
+
         private void ExclButton_Click(object sender, RoutedEventArgs e)
         {
             var tentamenid = (((Button)sender).Tag.ToString());
