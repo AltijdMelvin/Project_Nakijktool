@@ -82,8 +82,10 @@ namespace NakijkTool
                 // Resultatensheet
                 oSheet.Cells[1, "A"] = "Toetsnaam";
                 oSheet.Cells[1, "B"] = "Datum";
+                oSheet.Cells[1, "C"] = "Totaal punten";
                 oSheet.Cells[2, "A"] = test.Tables[0].Rows[0]["tentamen_naam"].ToString();
                 oSheet.Cells[2, "B"] = test.Tables[0].Rows[0]["datum"].ToString();
+                oSheet.Cells[2, "C"] = totaalpunten;
                 oSheet.Cells[4, "A"] = "Naam";
                 oSheet.Cells[4, "B"] = "Studentnummer";
                 oSheet.Cells[4, "C"] = "Cijfer";
@@ -101,7 +103,7 @@ namespace NakijkTool
                     int ec = 0; // compile error
                     int er = 0; // execution error
                     int ac = 0; // correct
-                    bool unknown = false;
+                    bool unknown = false; // unknown error
                     string studentnr = students.Tables[0].Rows[s]["studentnummer"].ToString();
                     string studentnaam = students.Tables[0].Rows[s]["student_naam"].ToString();
                     oSheet.Cells[c + m, "A"] = studentnaam;
@@ -155,7 +157,12 @@ namespace NakijkTool
                     oSheet.Cells[c + m, "C"] = cijfer;
                     if (cijfer >= 5.5m) oSheet.Range[$"C{c + m}"].Interior.ColorIndex = 43;
                     else oSheet.Range[$"C{c + m}"].Interior.ColorIndex = 46;
-                    if (er == 0 && ec == 0)
+                    if (unknown)
+                    {
+                        oSheet.Cells[c + m, "D"] = $"Onbekende fout(en)... {ec} compiler error(s), {er} runtime error(s), {ac} correct.";
+                        oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 48;
+                    }
+                    else if (er == 0 && ec == 0)
                     {
                         oSheet.Cells[c + m, "D"] = "Alles correct!";
                         oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 43;
@@ -169,11 +176,6 @@ namespace NakijkTool
                     {
                         oSheet.Cells[c + m, "D"] = $"{ec} compiler error(s), {ac} correct.";
                         oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 46;
-                    }
-                    else if (unknown)
-                    {
-                        oSheet.Cells[c + m, "D"] = $"Onbekende fout(en)... {ec} compiler error(s), {er} runtime error(s), {ac} correct.";
-                        oSheet.Range[$"D{c + m}"].Interior.ColorIndex = 48;
                     }
                     else
                     {
