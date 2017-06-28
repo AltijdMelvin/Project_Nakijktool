@@ -85,25 +85,16 @@ namespace NakijktoolGui
 
         public void data(int vraagnummer)
         {
-            DataSet tentamen;
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
             int vraag = v + 1;
             string query = "SELECT * FROM Testrapport WHERE tentamenid = " + TentamenIdBox.Text + " AND vraagnummer = " + vraagnummer + " AND studentnummer = '" + StudennummerBox.Text + "'";
             string aantalquery = "SELECT aantal_vragen FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
-            string tentamenquery = "SELECT * FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
             using (connection = new SqlConnection(connectionstring))
             {
                 using (SqlCommand command = new SqlCommand(aantalquery, connection))
                 {
                     connection.Open();
                     aantalvragen = Convert.ToInt32(command.ExecuteScalar());
-                }
-                using (SqlDataAdapter command = new SqlDataAdapter(tentamenquery, connection))
-                {
-                    tentamen = new DataSet();
-                    command.Fill(tentamen);
-                    v = Convert.ToInt32(tentamen.Tables[0].Rows[0]["v_tentamen"]);
-                    q = Convert.ToInt32(tentamen.Tables[0].Rows[0]["q_vraag"]);
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
                 {
@@ -117,7 +108,7 @@ namespace NakijktoolGui
                     RapportIdBox.Text = rapporten.Tables[0].Rows[0]["rapportid"].ToString();
                     StudentNaamLabel.Content = "Studentnummer: " + rapporten.Tables[0].Rows[0]["studentnummer"].ToString();
                     Studentnaam.Content = "Studentnaam: " + rapporten.Tables[0].Rows[0]["student_naam"].ToString();
-                    InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
+                    InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen;
                 }
             }
         }

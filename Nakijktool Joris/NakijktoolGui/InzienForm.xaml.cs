@@ -55,5 +55,13 @@ namespace NakijktoolGui
             inst.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             inst.Show();
         }
+
+        private void TerugButton_Click(object sender, RoutedEventArgs e)
+        {
+            GeschiedenisForm gsf = new GeschiedenisForm();
+            this.Hide();
+            gsf.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            gsf.Show();
+        }
     }
 }

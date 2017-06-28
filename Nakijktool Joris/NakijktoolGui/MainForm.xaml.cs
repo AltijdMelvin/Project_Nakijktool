@@ -24,7 +24,6 @@ namespace NakijktoolGui
     /// </summary>
     public partial class MainForm: Window
     {
-        private List<string> filePaths;
         private string[] files;
         private string directoryExamResults;
         private string TestsFileSrc;
@@ -37,10 +36,6 @@ namespace NakijktoolGui
         {
             InitializeComponent();
 
-            filePaths = new List<string>()
-            {
-                @"C:\Users\Emiell\Documents\GitHub\Project_Nakijktool\Anonieme tentamens\prg3Anoniem\Tentamen Programmeren 3_ALYS6101_attempt_2017-03-17-12-57-02_TentamenPrg3_1_2016_2017.cs"
-            };
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
