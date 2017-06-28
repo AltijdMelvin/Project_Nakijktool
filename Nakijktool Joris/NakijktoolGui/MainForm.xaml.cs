@@ -30,13 +30,29 @@ namespace NakijktoolGui
         private int nrOfQuestions;
         private bool selectPath;
         private bool selectModel;
+        private static Random rng = new Random();
         List<string> tVragen = new List<string>();
 
         public MainForm()
         {
             InitializeComponent();
-
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+
+<<<<<<< HEAD
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+=======
+        public void Shuffle<T>(Random rng, T[] array)
+        {
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = rng.Next(n--);
+                T temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
+>>>>>>> d2b580ce32c69c358f77ba2f0ffe4ec38bf35b93
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -63,6 +79,8 @@ namespace NakijktoolGui
                 files = Directory.GetFiles(
                     directoryExamResults,
                     searchPattern: "*.cs");
+
+                Shuffle(new Random(), files);
 
                 foreach (string path in files)
                 {

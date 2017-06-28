@@ -151,7 +151,10 @@ namespace NakijkTool
                     }
                     decimal cijfer = Math.Round(((punten / totaalpunten) * 9) + 1, 1);
                     if (cijfer > 10.0m) cijfer = 10.0m;
+                    else if (cijfer < 1.0m) cijfer = 1.0m;
                     oSheet.Cells[c + m, "C"] = cijfer;
+                    if (cijfer >= 5.5m) oSheet.Range[$"C{c + m}"].Interior.ColorIndex = 43;
+                    else oSheet.Range[$"C{c + m}"].Interior.ColorIndex = 46;
                     if (er == 0 && ec == 0)
                     {
                         oSheet.Cells[c + m, "D"] = "Alles correct!";
@@ -183,7 +186,10 @@ namespace NakijkTool
                 {
                     Microsoft.Office.Interop.Excel.Worksheet commentSheet;
                     commentSheet = oWB.Worksheets[i + 2];
-                    int x = totaalstudenten + 5;
+                    int x = totaalstudenten + 4;
+                    commentSheet.Cells[x - 1, "A"] = "Commentaarnaam";
+                    commentSheet.Cells[x - 1, "B"] = "Aantal";
+                    commentSheet.Range[$"A{x - 1}", $"B{x - 1}"].Font.Bold = true;
                     DataRow r = vragen.Tables[0].Rows[i];
                     DataRow[] q = commentaar.Tables[0].Select($"vraagid = {r["vraagid"]}");
                     DataRow[] t = opdr.Tables[0].Select($"vraagid = {r["vraagid"]}");
@@ -193,7 +199,7 @@ namespace NakijkTool
                         foreach (DataRow ts in t)
                         {
                             //todo: werkt nog niet helemaal goed
-                            if (ts["commentaar"].ToString().Length != 0 && ts["commentaar"].ToString().Length >= j)
+                            if (ts["commentaar"].ToString().Length > j)
                                 if (ts["commentaar"].ToString()[j] == '1')
                                 {
                                     count[j]++;
