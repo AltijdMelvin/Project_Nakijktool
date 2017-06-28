@@ -87,7 +87,7 @@ namespace NakijktoolGui
         {
             DataSet tentamen;
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
-            int vraag = v + 1;
+
             string query = "SELECT * FROM Testrapport WHERE tentamenid = "+ TentamenIdBox.Text + " AND vraagnummer = " + vraagnummer;
             string aantalquery = "SELECT aantal_vragen FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
             string tentamenquery = "SELECT * FROM Tentamens WHERE tentamenid = " + TentamenIdBox.Text;
@@ -107,6 +107,7 @@ namespace NakijktoolGui
                 }
                 using (SqlDataAdapter command = new SqlDataAdapter(query, connection))
                 {
+                    int vraag = v + 1;
                     rapporten = new DataSet();
                     command.Fill(rapporten);
                     StudentCodeBox.Text = rapporten.Tables[0].Rows[v]["studentcode"].ToString();
@@ -115,7 +116,7 @@ namespace NakijktoolGui
                     PuntenLabel.Content = rapporten.Tables[0].Rows[v]["studentpunten"].ToString();
                     CommentaarTextBox.Text = rapporten.Tables[0].Rows[v]["commentaartext"].ToString();
                     RapportIdBox.Text = rapporten.Tables[0].Rows[v]["rapportid"].ToString();
-                    InfoLabel.Content = "Opdracht " + vraagnummer + "/" + aantalvragen + " (" + Convert.ToInt32(vraag) + "/" + rapporten.Tables[0].Rows.Count + ")";
+                    InfoLabel.Content = "Opdracht " + q + "/" + aantalvragen + " (" + vraag + "/" + rapporten.Tables[0].Rows.Count + ")";
                 }
             }
         }
