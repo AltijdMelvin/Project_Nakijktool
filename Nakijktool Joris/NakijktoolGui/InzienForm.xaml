@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NakijktoolGui"
         mc:Ignorable="d"
-        Title="InzienForm" Height="300" Width="300">
+        Title="InzienForm" Height="350" Width="525">
     <Grid>
-        
+        <DataGrid x:Name="TestrapData" Margin="10,41,10,10" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="studentnummer_Column" Width="100" IsReadOnly="True" TextBlock.TextAlignment="Center" Header="Studentnummer" Binding="{Binding studentnummer}"/>
+                <DataGridTextColumn x:Name="studentnaam_Column" Width="200" IsReadOnly="True" TextBlock.TextAlignment="Center" Header="Naam" Binding="{Binding student_naam}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="InzienButton" Click="InzienButton_Click" Width="100" Content="Inzien" Tag="{Binding studentnummer}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="TentamenidBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="342,6,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Window>

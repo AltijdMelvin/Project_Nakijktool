@@ -198,6 +198,9 @@
     <Compile Include="InzienForm.xaml.cs">
       <DependentUpon>InzienForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InzienStudentForm.xaml.cs">
+      <DependentUpon>InzienStudentForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Testen.xaml.cs">
       <DependentUpon>Testen.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <DependentUpon>MainForm.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="InzienStudentForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Nakijkform.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
