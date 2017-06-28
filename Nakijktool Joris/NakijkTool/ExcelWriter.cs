@@ -112,7 +112,7 @@ namespace NakijkTool
                     DataRow[] o = opdr.Tables[0].Select($"studentnummer = '{studentnr}'", "studentnummer ASC");
                     for (int v = 0; v < totaalvragen; v++)
                     {
-                        punten =+ Convert.ToInt16(o[v]["studentpunten"]);
+                        punten += Convert.ToInt16(o[v]["studentpunten"]);
                         Microsoft.Office.Interop.Excel.Worksheet newSheet;
                         newSheet = oWB.Worksheets[v + 2];
                         newSheet.Cells[c, "A"] = studentnaam;
