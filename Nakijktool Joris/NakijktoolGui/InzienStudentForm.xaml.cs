@@ -67,7 +67,7 @@ namespace NakijktoolGui
                     commentaar = new DataSet();
                     command.Fill(commentaar);
                 }
-                tof = tof + "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+                tof = tof + "00000000000000000000000000000000000000000000000000000000000000000000000";
 
                 for (int i = 0; i < commentaar.Tables[0].Rows.Count; i++)
                 {
@@ -188,7 +188,7 @@ namespace NakijktoolGui
         {
             DataOpslaan();
             GeschiedenisForm gform = new GeschiedenisForm();
-            this.Hide();
+            this.Close();
             gform.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             gform.Show();
         }

@@ -167,6 +167,26 @@ namespace NakijktoolGui
             data(q);
             CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
             PuntenData();
+            if (studentpunten > aantalpunten )
+            {
+                System.Windows.MessageBox.Show("Teveel punten toegekend. Niet mogelijk.", "Oeps", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                foreach (BoolStringClass item in TheList)
+                {
+                    item.IsSelected = false;
+                }
+                DataOpslaan();
+                data(q);
+                CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+                PuntenData();
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            DataOpslaan();
+            data(q);
+            CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+            PuntenData();
         }
 
         private void Commentaar_Click(object sender, RoutedEventArgs e)

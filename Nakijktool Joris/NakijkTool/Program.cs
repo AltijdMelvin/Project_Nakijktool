@@ -151,7 +151,7 @@ namespace NakijkTool
             new MethodCodeLocator("Vraag3"),
             new MethodCodeLocator("Vraag4"),
             new MethodCodeLocator("MeestExamensVoorVak")};
-        private readonly string[] _loadExtraCode = { "", "", "", "", @"C:\School\Project 4 GIT\Project_Nakijktool\Anonieme tentamens\StudentDatabase.cs" };
+        private readonly string[] _loadExtraCode = { "", "", "", "", @"D:\School\Project_Nakijktool\Anonieme tentamens\StudentDatabase.cs" };
         private string[] _testMethodeCode;
 
         MetadataReference[] references = new MetadataReference[]
@@ -250,7 +250,7 @@ namespace NakijkTool
                     foreach(string username in usernames)
                     {
                         var testRapport = reportsByName[username];
-                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaartext, @studentcode, @tentamenid, @vraagid, @commentaar)";
+                        string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaartext, @studentcode, @tentamenid, @vraagid, @commentaar, @nagekeken)";
                         using (connection = new SqlConnection(connectionstring))
                         using (SqlCommand command = new SqlCommand(querytestrapport, connection))
                         {
@@ -266,6 +266,7 @@ namespace NakijkTool
                             command.Parameters.AddWithValue("@tentamenid", tentamenid);
                             command.Parameters.AddWithValue("@vraagid", vraagid);
                             command.Parameters.AddWithValue("commentaar", string.Empty);
+                            command.Parameters.AddWithValue("@nagekeken", false);
 
                             command.ExecuteScalar();
                         }
@@ -322,7 +323,7 @@ namespace NakijkTool
                                 studentcode = testRapport.RapportQuestions[0].StudentSourceCode; commentaar = "";
                             }
                    
-                            string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaartext, @studentcode, @tentamenid, @vraagid, @commentaar)";
+                            string querytestrapport = "INSERT INTO Testrapport VALUES (@vraagnummer, @studentnummer, @student_naam, @errors, @studentpunten, @commentaartext, @studentcode, @tentamenid, @vraagid, @commentaar, @nagekeken)";
                             using (connection = new SqlConnection(connectionstring))
                             using (SqlCommand command = new SqlCommand(querytestrapport, connection))
                             {
@@ -338,6 +339,7 @@ namespace NakijkTool
                                 command.Parameters.AddWithValue("@tentamenid", tentamenid);
                                 command.Parameters.AddWithValue("@vraagid", vraagid);
                                 command.Parameters.AddWithValue("commentaar", string.Empty);
+                                command.Parameters.AddWithValue("@nagekeken", false);
 
                                 command.ExecuteScalar();
                             }

@@ -25,7 +25,7 @@
                 <ListBox x:Name="ListCheckBox" ItemsSource="{Binding TheList}" Margin="10,43,730,314">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding TheText}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                            <CheckBox ToolTip="{Binding commentaar}" IsChecked="{Binding IsSelected}" Content="{Binding TheText}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

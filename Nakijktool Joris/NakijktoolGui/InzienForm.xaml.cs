@@ -49,7 +49,7 @@ namespace NakijktoolGui
             var studentnummer = (((Button)sender).Tag.ToString());
 
             InzienStudentForm inst = new InzienStudentForm();
-            this.Hide();
+            this.Close();
             inst.TentamenIdBox.Text = TentamenidBox.Text;
             inst.StudennummerBox.Text = studentnummer;
             inst.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -59,7 +59,7 @@ namespace NakijktoolGui
         private void TerugButton_Click(object sender, RoutedEventArgs e)
         {
             GeschiedenisForm gsf = new GeschiedenisForm();
-            this.Hide();
+            this.Close();
             gsf.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             gsf.Show();
         }
