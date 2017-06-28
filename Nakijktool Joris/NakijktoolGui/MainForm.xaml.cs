@@ -39,9 +39,6 @@ namespace NakijktoolGui
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-<<<<<<< HEAD
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-=======
         public void Shuffle<T>(Random rng, T[] array)
         {
             int n = array.Length;
@@ -52,7 +49,6 @@ namespace NakijktoolGui
                 array[n] = array[k];
                 array[k] = temp;
             }
->>>>>>> d2b580ce32c69c358f77ba2f0ffe4ec38bf35b93
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
