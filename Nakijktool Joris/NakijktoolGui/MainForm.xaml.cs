@@ -112,7 +112,7 @@ namespace NakijktoolGui
         private void NakijkButton_Click(object sender, RoutedEventArgs e)
         {
             GeschiedenisForm gform = new GeschiedenisForm();
-            this.Hide();
+            this.Close();
             gform.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             gform.Show();
         }

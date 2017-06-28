@@ -201,9 +201,6 @@
     <Compile Include="InzienStudentForm.xaml.cs">
       <DependentUpon>InzienStudentForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Testen.xaml.cs">
-      <DependentUpon>Testen.xaml</DependentUpon>
-    </Compile>
     <Page Include="CDuplicerenForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -237,10 +234,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Nakijkform.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Testen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

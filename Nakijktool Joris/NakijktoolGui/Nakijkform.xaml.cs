@@ -160,6 +160,14 @@ namespace NakijktoolGui
             }
         }
 
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            DataOpslaan();
+            data(q);
+            CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+            PuntenData();
+        }
+
         private void Commentaar_Click(object sender, RoutedEventArgs e)
         {
             CToevoegenForm ctv = new CToevoegenForm(this);
@@ -200,7 +208,7 @@ namespace NakijktoolGui
         {
             DataOpslaan();
             GeschiedenisForm gform = new GeschiedenisForm();
-            this.Hide();
+            this.Close();
             gform.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             gform.Show();
         }

@@ -45,7 +45,7 @@ namespace NakijktoolGui
         {
             var tentamenid = (((Button)sender).Tag.ToString());
             Nakijkform nakijk = new Nakijkform();
-            this.Hide();
+            this.Close();
             nakijk.TentamenIdBox.Text = tentamenid;
             nakijk.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             nakijk.Show();
@@ -55,7 +55,7 @@ namespace NakijktoolGui
         {
             var tentamenid = (((Button)sender).Tag.ToString());
             InzienForm inzien = new InzienForm();
-            this.Hide();
+            this.Close();
             inzien.TentamenidBox.Text = tentamenid;
             inzien.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             inzien.Show();
@@ -71,7 +71,7 @@ namespace NakijktoolGui
         private void TerugButton_Click(object sender, RoutedEventArgs e)
         {
             MainForm main = new MainForm();
-            this.Hide();
+            this.Close();
             main.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             main.Show();
         }

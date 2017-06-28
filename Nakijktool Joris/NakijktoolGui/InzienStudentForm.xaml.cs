@@ -200,5 +200,13 @@ namespace NakijktoolGui
             dup.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             dup.Show();
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            DataOpslaan();
+            data(q);
+            CheckedListBox(Convert.ToInt32(VraagIdBox.Text));
+            PuntenData();
+        }
     }
 }
