@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace NakijktoolGui
 {
@@ -32,7 +33,7 @@ namespace NakijktoolGui
         private DataSet tentamens = new DataSet();
         private DataSet vragen = new DataSet();
         string queryinsert = "INSERT INTO Commentaar (commentaar, pluspunten, vraagid, commentaarnaam) VALUES (@commentaar, @pluspunten, @vraagid, @commentaarnaam)";
-        string querycommentaar = "SELECT * FROM Commentaar WHERE vraagid = @vraagid";
+        string querycommentaar = "SELECT * FROM Commentaar";
         string querytentamen = "SELECT tentamenid, tentamen_naam, aantal_vragen FROM Tentamens";
         string queryvragendoel = "SELECT * FROM Vraag";
         string oldText = "";
@@ -109,6 +110,7 @@ namespace NakijktoolGui
                             command.ExecuteScalar();
                         }
                     }
+                    this.Close();
                 }
                 else if (allQuestionsBox.IsChecked == true)
                 {
@@ -117,6 +119,7 @@ namespace NakijktoolGui
                         int tentamenIdA = (int)vragen.Tables[0].Select($"vraagid = {vraagid}")[0]["tentamenid"];
                         int tentamenIdB = (int)tentamenBox.SelectedValue;
                         int goal = 0;
+                        int changes = 0;
                         int aantalVragenA = (int)vragen.Tables[0].Select($"tentamenid = {tentamenIdA}").Length;
                         int aantalVragenB = (int)vragen.Tables[0].Select($"tentamenid = {tentamenIdB}").Length;
                         if (aantalVragenA <= aantalVragenB) goal = aantalVragenA;
@@ -135,10 +138,16 @@ namespace NakijktoolGui
                                     command.Parameters.AddWithValue("commentaarnaam", y[j]["commentaarnaam"]);
                                     command.Parameters.AddWithValue("pluspunten", y[j]["pluspunten"]);
                                     command.Parameters.AddWithValue("vraagid", vB[i]["vraagid"]);
-                                    command.ExecuteScalar();
+                                    changes += command.ExecuteNonQuery();
                                 }
                             }
                         }
+                        System.Windows.MessageBox.Show($"{changes} commentaren gekopieërd.", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Er ging iets mis met het vinden van het geselecteerde tentamen", "Oeps", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                 }
                 connection.Close();
