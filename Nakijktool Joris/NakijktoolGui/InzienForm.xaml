@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="InzienForm" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="TestrapData" Margin="10,41,10,10" >
+        <DataGrid x:Name="TestrapData" Margin="10,46,10,10" >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="studentnummer_Column" Width="100" IsReadOnly="True" TextBlock.TextAlignment="Center" Header="Studentnummer" Binding="{Binding studentnummer}"/>
                 <DataGridTextColumn x:Name="studentnaam_Column" Width="200" IsReadOnly="True" TextBlock.TextAlignment="Center" Header="Naam" Binding="{Binding student_naam}"/>
@@ -20,6 +20,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="TerugButton" Click="TerugButton_Click" Content="Terug" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Height="31"/>
         <TextBlock x:Name="TentamenidBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="342,6,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Window>

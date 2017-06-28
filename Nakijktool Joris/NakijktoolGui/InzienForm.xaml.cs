@@ -29,7 +29,7 @@ namespace NakijktoolGui
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
-            string rapportquery = "SELECT DISTINCT studentnummer, student_naam, tentamenid FROM Testrapport WHERE tentamenid = " + TentamenidBox.Text;
+            string rapportquery = "SELECT DISTINCT studentnummer, student_naam, tentamenid FROM Testrapport WHERE tentamenid = " + TentamenidBox.Text + "ORDER BY studentnummer";
             using (connection = new SqlConnection(connectionstring))
             {
                 using (SqlDataAdapter command = new SqlDataAdapter(rapportquery, connection))
@@ -54,6 +54,14 @@ namespace NakijktoolGui
             inst.StudennummerBox.Text = studentnummer;
             inst.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             inst.Show();
+        }
+
+        private void TerugButton_Click(object sender, RoutedEventArgs e)
+        {
+            GeschiedenisForm gsf = new GeschiedenisForm();
+            this.Hide();
+            gsf.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            gsf.Show();
         }
     }
 }
