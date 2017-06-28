@@ -29,7 +29,7 @@ namespace NakijktoolGui
         {
             connectionstring = ConfigurationManager.ConnectionStrings["NakijkTool.Properties.Settings.Database_NakijktoolConnectionString"].ConnectionString;
 
-            string rapportquery = "SELECT DISTINCT studentnummer, student_naam, tentamenid FROM Testrapport WHERE tentamenid = " + TentamenidBox.Text;
+            string rapportquery = "SELECT DISTINCT studentnummer, student_naam, tentamenid FROM Testrapport WHERE tentamenid = " + TentamenidBox.Text + "ORDER BY studentnummer";
             using (connection = new SqlConnection(connectionstring))
             {
                 using (SqlDataAdapter command = new SqlDataAdapter(rapportquery, connection))
